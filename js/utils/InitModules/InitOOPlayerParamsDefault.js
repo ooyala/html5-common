@@ -1,3 +1,5 @@
+require("./InitOO.js");
+
 //if player params doesn't exist or is empty, then fill it with these default values
 if (!!OO.playerParams)
 {

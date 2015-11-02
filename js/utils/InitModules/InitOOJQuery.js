@@ -1,4 +1,4 @@
-require("InitOO.js");
+require("./InitOO.js");
 
 if (!OO.$)
 {
