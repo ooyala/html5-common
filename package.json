@@ -1,0 +1,29 @@
+{
+  "name": "html5-common",
+  "version": "0.0.1",
+  "description": "Ooyala common html5 code repo",
+  "keywords": [
+    "ooyala",
+    "common"
+  ],
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ooyala/html5-common"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "hazmat": "^0.1.4",
+    "jquery": "^2.1.4",
+    "jsdom": "0.11.1",
+    "mocha": "~1.8.2",
+    "underscore": "^1.8.3"
+  },
+  "author": "Ooyala",
+  "contributors": [],
+  "license": "ISC",
+  "homepage": "https://github.com/ooyala/html5-common"
+}
