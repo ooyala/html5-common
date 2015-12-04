@@ -1135,7 +1135,143 @@
 
     OO.VIDEO = {
       MAIN: "main",
-      ADS: "ads"
+      ADS: "ads",
+
+      /**
+       * @description
+       * @summary Represents the <code>OO.VIDEO.ENCODING</code> encoding types.
+       * @namespace OO.VIDEO.ENCODING
+       */
+      ENCODING: {
+        /**
+         * @description <code>OO.VIDEO.ENCODING.HLS ('hls')</code>:
+         *   An encoding type for non-drm HLS streams (m3u8 extension).
+         * @constant OO.VIDEO.ENCODING.HLS
+         * @type {string}
+         */
+        HLS: "hls",
+
+        /**
+         * @description <code>OO.VIDEO.ENCODING.DASH ('dash')</code>:
+         *   An encoding type for non-drm dash streams (mpd extension).
+         * @constant OO.VIDEO.ENCODING.DASH
+         * @type {string}
+         */
+        DASH: "dash",
+
+        /**
+         * @description <code>OO.VIDEO.ENCODING.MP4 ('mp4')</code>:
+         *   An encoding type for non-drm mp4 streams (mp4 extension).
+         * @constant OO.VIDEO.ENCODING.MP4
+         * @type {string}
+         */
+        MP4: "mp4",
+
+        /**
+         * @description <code>OO.VIDEO.ENCODING.WEBM ('webm')</code>:
+         *   An encoding type for non-drm webm streams (webm extension).
+         * @constant OO.VIDEO.ENCODING.WEBM
+         * @type {string}
+         */
+        WEBM: "webm",
+
+        /**
+         * @description <code>OO.VIDEO.ENCODING.HDS ('hds')</code>:
+         *   An encoding type for non-drm hds streams (hds extension).
+         * @constant OO.VIDEO.ENCODING.HDS
+         * @type {string}
+         */
+        HDS: "hds",
+
+        /**
+         * @description <code>OO.VIDEO.ENCODING.WIDEVINE_HLS ('wv_hls')</code>:
+         *   An encoding type for widevine hls streams.
+         * @constant OO.VIDEO.ENCODING.WIDEVINE_HLS
+         * @type {string}
+         */
+        WIDEVINE_HLS: "wv_hls",
+
+        /**
+         * @description <code>OO.VIDEO.ENCODING.WIDEVINE_WVM ('wv_wvm')</code>:
+         *   An encoding type for widevine wvm streams.
+         * @constant OO.VIDEO.ENCODING.WIDEVINE_WVM
+         * @type {string}
+         */
+        WIDEVINE_WVM: "wv_wvm",
+
+        /**
+         * @description <code>OO.VIDEO.ENCODING.WIDEVINE_MP4 ('wv_mp4')</code>:
+         *   An encoding type for widevine mp4 streams.
+         * @constant OO.VIDEO.ENCODING.WIDEVINE_MP4
+         * @type {string}
+         */
+        WIDEVINE_MP4: "wv_mp4",
+
+        /**
+         * @description <code>OO.VIDEO.ENCODING.RTMP ('rtmp')</code>:
+         *   An encoding type for non-drm rtmp streams.
+         * @constant OO.VIDEO.ENCODING.RTMP
+         * @type {string}
+         */
+        RTMP: "rtmp",
+
+        /**
+         * @description <code>OO.VIDEO.ENCODING.AUDIO ('audio')</code>:
+         *   An encoding type for non-drm audio streams.
+         * @constant OO.VIDEO.ENCODING.AUDIO
+         * @type {string}
+         */
+        AUDIO: "audio",
+
+        /**
+         * @description <code>OO.VIDEO.ENCODING.SMOOTH ('smooth')</code>:
+         *   An encoding type for non-drm smooth streams.
+         * @constant OO.VIDEO.ENCODING.SMOOTH
+         * @type {string}
+         */
+        SMOOTH: "smooth",
+
+        /**
+         * @description <code>OO.VIDEO.ENCODING.FAXS_HLS ('faxs_hls')</code>:
+         *   An encoding type for adobe faxs streams.
+         * @constant OO.VIDEO.ENCODING.FAXS_HLS
+         * @type {string}
+         */
+        FAXS_HLS: "faxs_hls",
+
+        /**
+         * @description <code>OO.VIDEO.ENCODING.AKAMAI_HD_VOD ('akamai_hd_vod')</code>:
+         *   An encoding type for akamai hd vod streams.
+         * @constant OO.VIDEO.ENCODING.AKAMAI_HD_VOD
+         * @type {string}
+         */
+        AKAMAI_HD_VOD: "akamai_hd_vod",
+
+        /**
+         * @description <code>OO.VIDEO.ENCODING.AKAMAI_HD2_VOD_HLS ('akamai_hd2_vod_hls')</code>:
+         *   An encoding type for akamai hd2 vod hls streams.
+         * @constant OO.VIDEO.ENCODING.AKAMAI_HD2_VOD_HLS
+         * @type {string}
+         */
+        AKAMAI_HD2_VOD_HLS: "akamai_hd2_vod_hls",
+
+        /**
+         * @description <code>OO.VIDEO.ENCODING.AKAMAI_HD2_VOD_HDS ('akamai_hd2_vod_hds')</code>:
+         *   An encoding type for akamai hd2 vod hds streams.
+         * @constant OO.VIDEO.ENCODING.AKAMAI_HD2_VOD_HDS
+         * @type {string}
+         */
+        AKAMAI_HD2_VOD_HDS: "akamai_hd2_vod_hds",
+
+        /**
+         * @description <code>OO.VIDEO.ENCODING.IMA ('ima')</code>:
+         *   A string that repsents a video stream that is controlled and configured directly by IMA.
+         * @constant OO.VIDEO.ENCODING.IMA
+         * @type {string}
+         */
+        IMA: "ima"
+      }
+
     };
 
     OO.CSS = {
