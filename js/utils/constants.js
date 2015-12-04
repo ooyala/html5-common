@@ -181,19 +181,7 @@
       WILL_FETCH_AD_AUTHORIZATION: 'willFetchAdAuthorization',
       AD_AUTHORIZATION_FETCHED: 'adAuthorizationFetched',
 
-      PRELOAD_STREAM: 'preloadStream',
-      RELOAD_STREAM: 'reloadStream',
-      WILL_PLAY_STREAM: 'willPlayStream',
-      PLAY_STREAM: 'playStream',
-      PAUSE_STREAM: 'pauseStream',
-      STREAM_PLAYING: 'streamPlaying',
-      STREAM_PLAY_FAILED: 'streamPlayFailed',
-      STREAM_PAUSED: 'streamPaused',
-      STREAM_PLAYED: 'streamPlayed',
-      SEEK_STREAM: 'seekStream',
       CAN_SEEK: 'canSeek',
-      PLAY_MIDROLL_STREAM: 'playMidrollStream',
-      MIDROLL_STREAM_PLAYED: 'midrollStreamPlayed',
       WILL_RESUME_MAIN_VIDEO: 'willResumeMainVideo',
 
       /**
@@ -232,6 +220,7 @@
        *   <li>The duration.</li>
        *   <li>The name of the buffer.</li>
        *   <li>The seek range.</li>
+       *   <li>The id of the video (as defined by the module that controls it).</li>
        * </ul>
        *
        * <h5>Compatibility: </h5>
@@ -246,7 +235,12 @@
       PLAYHEAD_TIME_CHANGED: 'playheadTimeChanged',
 
       /**
-       * The player is buffering the data stream.<br/><br/>
+       * The player is buffering the data stream.
+       * The handler is called with the following arguments:
+       * <ul>
+       *   <li>The url of the video that is buffering.</li>
+       *   <li>The id of the video that is buffering (as defined by the module that controls it).</li>
+       * </ul><br/><br/>
        *
        * <h5>Compatibility: </h5>
        * <p style="text-indent: 1em;">HTML5, Flash</p>
@@ -256,7 +250,12 @@
       BUFFERING: 'buffering', // playing stops because player is buffering
 
       /**
-       * Play resumes because the player has completed buffering. The handler is called with the URL of the stream.<br/><br/>
+       * Play resumes because the player has completed buffering. The handler is called with the URL of the stream.
+       * The handler is called with the following arguments:
+       * <ul>
+       *   <li>The url of the video that has buffered.</li>
+       *   <li>The id of the video that has buffered (as defined by the module that controls it).</li>
+       * </ul><br/><br/>
        *
        * <h5>Compatibility: </h5>
        * <p style="text-indent: 1em;">HTML5</p>
@@ -266,7 +265,16 @@
       BUFFERED: 'buffered',
 
       /**
-       * The player is downloading content (it can play while downloading). The handler is called with the time of the event.<br/><br/>
+       * The player is downloading content (it can play while downloading).
+       * The handler is called with the following arguments:
+       * <ul>
+       *   <li>The current time.</li>
+       *   <li>The duration.</li>
+       *   <li>The name of the buffer.</li>
+       *   <li>The seek range.</li>
+       *   <li>The id of the video (as defined by the module that controls it).</li>
+       * </ul>
+       * <br/><br/>
        *
        * <h5>Compatibility: </h5>
        * <p style="text-indent: 1em;">HTML5</p>
@@ -325,7 +333,7 @@
       SEEK: 'seek',
 
       /**
-       * The player has finished seeking to the requested position.<br/><br/>
+       * The player has finished seeking the main video to the requested position.
        *
        * <h5>Compatibility: </h5>
        * <p style="text-indent: 1em;">HTML5</p>
@@ -400,10 +408,15 @@
 
       /**
        * The fullscreen state has changed. Depending on the context, the handler is called with:
-       *   <ul>
-       *     <li><code>isFullscreen</code> is set to <code>true</code> or <code>false</code>.</li>
-       *     <li><code>isFullscreen</code> and <code>paused</code> are each set to <code>true</code> or <code>false</code>.</li>
-       *   </ul>
+       * <ul>
+       *   <li><code>isFullscreen</code> and <code>paused</code>:</li>
+       *     <ul>
+       *       <li><code>isFullscreen</code> is set to <code>true</code> or <code>false</code>.</li>
+       *       <li><code>isFullscreen</code> and <code>paused</code> are each set to <code>true</code> or <code>false</code>.</li>
+       *     </ul>
+       *   </li>
+       *   <li>The id of the video that has entered fullscreen (as defined by the module that controls it).
+       * </ul>
        *
        * <h5>Compatibility: </h5>
        * <p style="text-indent: 1em;">HTML5, Flash</p>
@@ -428,7 +441,13 @@
       SIZE_CHANGED: 'sizeChanged',
 
       /**
-       * A request to change volume has been made. The handler is called with the volume level.<br/><br/>
+       * A request to change volume has been made.
+       * The handler is called with the following arguments:
+       * <ul>
+       *   <li>The desired volume of the video element.</li>
+       *   <li>The id of the video on which to change the volume (as defined by the module that controls it).
+       *        If null or undefined, all video elements volume will be changed</li>
+       * </ul>
        *
        * <h5>Compatibility: </h5>
        * <p style="text-indent: 1em;">HTML5, Flash</p>
@@ -498,6 +517,237 @@
 
       DISABLE_PLAYBACK_CONTROLS: 'disablePlaybackControls',
       ENABLE_PLAYBACK_CONTROLS: 'enablePlaybackControls',
+
+
+      // Video Controller action events
+
+      /**
+       * Commands the video controller to create a video element.
+       * It should be given the following arguments:
+       * <ul>
+       *   <li>videoId (string)
+       *   </li>
+       *   <li>object of streams denoted by encoding type (object)
+       *   </li>
+       *   <li>parentContainer of the element. This is a jquery element. (object)
+       *   </li>
+       *   <li>optional params object (object) containing:
+       *     <ul>
+       *       <li>closedCaptions: The possible closed captions available on this video. (object)</li>
+       *       <li>crossorigin: The crossorigin attribute value to set on the video. (string)</li>
+       *     </ul>
+       *   </li>
+       * </ul>
+       * @event OO.EVENTS#VC_CREATE_VIDEO_ELEMENT
+       */
+      VC_CREATE_VIDEO_ELEMENT: 'videoControllerCreateVideoElement',
+
+      /**
+       * The Video Controller has created the desired video element, as denoted by id (string).
+       * The handler is called with the following arguments:
+       * <ul>
+       *   <li>Object containing:
+       *     <ul>
+       *       <li>videoId: The id of the video as defined by the module that controls it.</li>
+       *       <li>encodings: The encoding types supported by the new video element.</li>
+       *       <li>parent: The parent element of the video element.</li>
+       *       <li>domId: The DOM id of the video element.</li>
+       *       <li>videoElement: The video element or its wrapper as created by the video plugin.</li>
+       *     </ul>
+       *   </li>
+       * </ul>
+       * @event OO.EVENTS#VC_VIDEO_ELEMENT_CREATED
+       */
+      VC_VIDEO_ELEMENT_CREATED: 'videoControllerVideoElementCreated',
+
+      /**
+       * Commands the Video Controller to bring a video element into the visible range given the video element id (string).
+       * The handler is called with the following arguments:
+       * <ul>
+       *   <li>The id of the video to focus (as defined by the module that controls it).</li>
+       * </ul>
+       * @event OO.EVENTS#VC_FOCUS_VIDEO_ELEMENT
+       */
+      VC_FOCUS_VIDEO_ELEMENT: 'videoControllerFocusVideoElement',
+
+      /**
+       * The Video Controller has moved a video element (string) into focus.
+       * The handler is called with the following arguments:
+       * <ul>
+       *   <li>The id of the video that is in focus (as defined by the module that controls it).</li>
+       * </ul>
+       * @event OO.EVENTS#VC_VIDEO_ELEMENT_IN_FOCUS
+       */
+      VC_VIDEO_ELEMENT_IN_FOCUS: 'videoControllerVideoElementInFocus',
+
+      /**
+       * The Video Controller has removed a video element (string) from focus.
+       * The handler is called with the following arguments:
+       * <ul>
+       *   <li>The id of the video that lost focus (as defined by the module that controls it).</li>
+       * </ul>
+       * @event OO.EVENTS#VC_VIDEO_ELEMENT_LOST_FOCUS
+       */
+      VC_VIDEO_ELEMENT_LOST_FOCUS: 'videoControllerVideoElementLostFocus',
+
+      /**
+       * Commands the Video Controller to dispose a video element given the video element id (string).
+       * @event OO.EVENTS#VC_DISPOSE_VIDEO_ELEMENT
+       */
+      VC_DISPOSE_VIDEO_ELEMENT: 'videoControllerDisposeVideoElement',
+
+      /**
+       * The Video Controller has disposed the denoted video element (string).
+       * The handler is called with the following arguments:
+       * <ul>
+       *   <li>The id of the video that was disposed (as defined by the module that controls it).</li>
+       * </ul>
+       * @event OO.EVENTS#VC_VIDEO_ELEMENT_DISPOSED
+       */
+      VC_VIDEO_ELEMENT_DISPOSED: 'videoControllerVideoElementDisposed',
+
+      /**
+       * Commands the video controller to set the stream for a video element.
+       * It should be given the video element name (string) and an object of streams denoted by encoding type (object).
+       * @event OO.EVENTS#VC_SET_VIDEO_STREAMS
+       */
+      VC_SET_VIDEO_STREAMS: 'videoControllerSetVideoStreams',
+
+      /**
+       * The Video Controller has encountered an error attempting to configure video elements.
+       * The handler is called with the following arguments:
+       * <ul>
+       *   <li>The id of the video that encountered the error (as defined by the module that controls it).</li>
+       *   <li>The error details (object) containing an error code.</li>
+       * @event OO.EVENTS#VC_ERROR
+       */
+      VC_ERROR: 'videoControllerError',
+
+
+      // Video Player action events
+
+      /**
+       * Sets the video element's initial playback time.
+       * @event OO.EVENTS#VC_SET_INITIAL_TIME
+       */
+      VC_SET_INITIAL_TIME: 'videoSetInitialTime',
+
+      /**
+       * Commands the video element to play.
+       * The handler is called with the following arguments:
+       * <ul>
+       *   <li>The id of the video to play (as defined by the module that controls it).</li>
+       * </ul>
+       * @event OO.EVENTS#VC_PLAY
+       */
+      VC_PLAY: 'videoPlay',
+
+      /**
+       * The video element has detected a command to play and will begin playback.
+       * The handler is called with the following arguments:
+       * <ul>
+       *   <li>The id of the video to seek (as defined by the module that controls it).</li>
+       *   <li>The url of the video that will play.</li>
+       * </ul>
+       * @event OO.EVENTS#VC_WILL_PLAY
+       */
+      VC_WILL_PLAY: 'videoWillPlay',
+
+      /**
+       * The video element has detected playback in progress.
+       * The handler is called with the following arguments:
+       * <ul>
+       *   <li>The id of the video that is playing (as defined by the module that controls it).</li>
+       * </ul>
+       * @event OO.EVENTS#VC_PLAYING
+       */
+      VC_PLAYING: 'videoPlaying',
+
+      /**
+       * The video element has detected playback completion.
+       * The handler is called with the following arguments:
+       * <ul>
+       *   <li>The id of the video that has played (as defined by the module that controls it).</li>
+       * </ul>
+       * @event OO.EVENTS#VC_PLAYED
+       */
+      VC_PLAYED: 'videoPlayed',
+
+      /**
+       * The video element has detected playback failure.
+       * The handler is called with the following arguments:
+       * <ul>
+       *   <li>The id of the video that has played (as defined by the module that controls it).</li>
+       *   <li>The error code of the failure (string).</li>
+       * </ul>
+       * @event OO.EVENTS#VC_PLAY_FAILED
+       */
+      VC_PLAY_FAILED: 'videoPlayFailed',
+
+      /**
+       * Commands the video element to pause.
+       * The handler is called with the following arguments:
+       * <ul>
+       *   <li>The id of the video to pause (as defined by the module that controls it).</li>
+       * </ul>
+       * @event OO.EVENTS#VC_PAUSE
+       */
+      VC_PAUSE: 'videoPause',
+
+      /**
+       * The video element has detected video state change to paused.
+       * The handler is called with the following arguments:
+       * <ul>
+       *   <li>The id of the video that has paused (as defined by the module that controls it).</li>
+       * </ul>
+       * @event OO.EVENTS#VC_PAUSED
+       */
+      VC_PAUSED: 'videoPaused',
+
+      /**
+       * Commands the video element to seek.
+       * The handler is called with the following arguments:
+       * <ul>
+       *   <li>The id of the video to seek (as defined by the module that controls it).</li>
+       *   <li>The time position to seek to (in seconds).</li>
+       * </ul>
+       * @event OO.EVENTS#VC_SEEK
+       */
+      VC_SEEK: 'videoSeek',
+
+      /**
+       * The video element has detected seeking.
+       * The handler is called with the following arguments:
+       * <ul>
+       *   <li>The id of the video that is seeking (as defined by the module that controls it).</li>
+       * </ul>
+       * @event OO.EVENTS#VC_SEEKING
+       */
+      VC_SEEKING: 'videoSeeking',
+
+      /**
+       * The video element has detected seeked.
+       * The handler is called with the following arguments:
+       * <ul>
+       *   <li>The id of the video that has seeked (as defined by the module that controls it).</li>
+       * </ul>
+       * @event OO.EVENTS#VC_SEEKED
+       */
+      VC_SEEKED: 'videoSeeked',
+
+      /**
+       * Commands the video element to preload.
+       * @event OO.EVENTS#VC_PRELOAD
+       */
+      VC_PRELOAD: 'videoPreload',
+
+      /**
+       * Commands the video element to reload.
+       * @event OO.EVENTS#VC_RELOAD
+       */
+      VC_RELOAD: 'videoReload',
+
+
       WILL_FETCH_ADS: 'willFetchAds',
       DISABLE_SEEKING: 'disableSeeking',
       ENABLE_SEEKING: 'enableSeeking',
@@ -845,7 +1095,31 @@
        * @constant OO.ERROR.CHANNEL_CONTENT
        * @type {string}
        */
-      CHANNEL_CONTENT:'channel_content'
+      CHANNEL_CONTENT:'channel_content',
+      /**
+       * @description Represents the <code>OO.ERROR.VC</code> Ooyala V4 Player Errors for the Video Technology stack.
+       * Use message bus events to handle errors by subscribing to or intercepting the <code>OO.EVENTS.ERROR</code> event.
+           * For more information, see <a href="http://support.ooyala.com/developers/documentation/concepts/errors_overview.html" target="target">Errors and Error Handling Overview</a>.
+           * @summary Represents the <code>OO.ERROR.VC</code> Ooyala V4 Player Errors.
+       * @namespace OO.ERROR.VC
+       */
+      VC: {
+        /**
+        * @description <code>OO.ERROR.VC.UNSUPPORTED_ENCODING ('unsupported_encoding')</code>:
+        *    This device does not have an available decoder for this stream type.
+        * @constant OO.ERROR.VC.UNSUPPORTED_ENCODING
+        * @type {string}
+        */
+        UNSUPPORTED_ENCODING:'unsupported_encoding',
+
+        /**
+        * @description <code>OO.ERROR.VC.UNABLE_TO_CREATE_VIDEO_ELEMENT ('unable_to_create_video_element')</code>:
+        *    A video element to play the given stream could not be created
+        * @constant OO.ERROR.VC.UNABLE_TO_CREATE_VIDEO_ELEMENT
+        * @type {string}
+        */
+        UNABLE_TO_CREATE_VIDEO_ELEMENT:'unable_to_create_video_element',
+      }
     };
 
     // All Server-side URLS
@@ -859,9 +1133,15 @@
       __end_marker : true
     };
 
+    OO.VIDEO = {
+      MAIN: "main",
+      ADS: "ads"
+    };
+
     OO.CSS = {
       VISIBLE_POSITION : "0px",
       INVISIBLE_POSITION : "-100000px",
+      VIDEO_Z_INDEX: 10000,
       SUPER_Z_INDEX: 20000,
       ALICE_SKIN_Z_INDEX: 11000,
       OVERLAY_Z_INDEX: 10500,
