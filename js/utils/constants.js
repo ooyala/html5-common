@@ -1144,12 +1144,12 @@
        */
       ENCODING: {
         /**
-         * @description <code>OO.VIDEO.ENCODING.HLS ('hls')</code>:
-         *   An encoding type for non-drm HLS streams (m3u8 extension).
-         * @constant OO.VIDEO.ENCODING.HLS
+         * @description <code>OO.VIDEO.ENCODING.AUDIO ('audio')</code>:
+         *   An encoding type for non-drm audio streams.
+         * @constant OO.VIDEO.ENCODING.AUDIO
          * @type {string}
          */
-        HLS: "hls",
+        AUDIO: "audio",
 
         /**
          * @description <code>OO.VIDEO.ENCODING.DASH ('dash')</code>:
@@ -1160,22 +1160,6 @@
         DASH: "dash",
 
         /**
-         * @description <code>OO.VIDEO.ENCODING.MP4 ('mp4')</code>:
-         *   An encoding type for non-drm mp4 streams (mp4 extension).
-         * @constant OO.VIDEO.ENCODING.MP4
-         * @type {string}
-         */
-        MP4: "mp4",
-
-        /**
-         * @description <code>OO.VIDEO.ENCODING.WEBM ('webm')</code>:
-         *   An encoding type for non-drm webm streams (webm extension).
-         * @constant OO.VIDEO.ENCODING.WEBM
-         * @type {string}
-         */
-        WEBM: "webm",
-
-        /**
          * @description <code>OO.VIDEO.ENCODING.HDS ('hds')</code>:
          *   An encoding type for non-drm hds streams (hds extension).
          * @constant OO.VIDEO.ENCODING.HDS
@@ -1184,28 +1168,28 @@
         HDS: "hds",
 
         /**
-         * @description <code>OO.VIDEO.ENCODING.WIDEVINE_HLS ('wv_hls')</code>:
-         *   An encoding type for widevine hls streams.
-         * @constant OO.VIDEO.ENCODING.WIDEVINE_HLS
+         * @description <code>OO.VIDEO.ENCODING.HLS ('hls')</code>:
+         *   An encoding type for non-drm HLS streams (m3u8 extension).
+         * @constant OO.VIDEO.ENCODING.HLS
          * @type {string}
          */
-        WIDEVINE_HLS: "wv_hls",
+        HLS: "hls",
 
         /**
-         * @description <code>OO.VIDEO.ENCODING.WIDEVINE_WVM ('wv_wvm')</code>:
-         *   An encoding type for widevine wvm streams.
-         * @constant OO.VIDEO.ENCODING.WIDEVINE_WVM
+         * @description <code>OO.VIDEO.ENCODING.IMA ('ima')</code>:
+         *   A string that repsents a video stream that is controlled and configured directly by IMA.
+         * @constant OO.VIDEO.ENCODING.IMA
          * @type {string}
          */
-        WIDEVINE_WVM: "wv_wvm",
+        IMA: "ima",
 
         /**
-         * @description <code>OO.VIDEO.ENCODING.WIDEVINE_MP4 ('wv_mp4')</code>:
-         *   An encoding type for widevine mp4 streams.
-         * @constant OO.VIDEO.ENCODING.WIDEVINE_MP4
+         * @description <code>OO.VIDEO.ENCODING.MP4 ('mp4')</code>:
+         *   An encoding type for non-drm mp4 streams (mp4 extension).
+         * @constant OO.VIDEO.ENCODING.MP4
          * @type {string}
          */
-        WIDEVINE_MP4: "wv_mp4",
+        MP4: "mp4",
 
         /**
          * @description <code>OO.VIDEO.ENCODING.RTMP ('rtmp')</code>:
@@ -1216,14 +1200,6 @@
         RTMP: "rtmp",
 
         /**
-         * @description <code>OO.VIDEO.ENCODING.AUDIO ('audio')</code>:
-         *   An encoding type for non-drm audio streams.
-         * @constant OO.VIDEO.ENCODING.AUDIO
-         * @type {string}
-         */
-        AUDIO: "audio",
-
-        /**
          * @description <code>OO.VIDEO.ENCODING.SMOOTH ('smooth')</code>:
          *   An encoding type for non-drm smooth streams.
          * @constant OO.VIDEO.ENCODING.SMOOTH
@@ -1232,12 +1208,12 @@
         SMOOTH: "smooth",
 
         /**
-         * @description <code>OO.VIDEO.ENCODING.FAXS_HLS ('faxs_hls')</code>:
-         *   An encoding type for adobe faxs streams.
-         * @constant OO.VIDEO.ENCODING.FAXS_HLS
+         * @description <code>OO.VIDEO.ENCODING.WEBM ('webm')</code>:
+         *   An encoding type for non-drm webm streams (webm extension).
+         * @constant OO.VIDEO.ENCODING.WEBM
          * @type {string}
          */
-        FAXS_HLS: "faxs_hls",
+        WEBM: "webm",
 
         /**
          * @description <code>OO.VIDEO.ENCODING.AKAMAI_HD_VOD ('akamai_hd_vod')</code>:
@@ -1264,12 +1240,36 @@
         AKAMAI_HD2_VOD_HDS: "akamai_hd2_vod_hds",
 
         /**
-         * @description <code>OO.VIDEO.ENCODING.IMA ('ima')</code>:
-         *   A string that repsents a video stream that is controlled and configured directly by IMA.
-         * @constant OO.VIDEO.ENCODING.IMA
+         * @description <code>OO.VIDEO.ENCODING.FAXS_HLS ('faxs_hls')</code>:
+         *   An encoding type for adobe faxs streams.
+         * @constant OO.VIDEO.ENCODING.FAXS_HLS
          * @type {string}
          */
-        IMA: "ima"
+        FAXS_HLS: "faxs_hls",
+
+        /**
+         * @description <code>OO.VIDEO.ENCODING.WIDEVINE_HLS ('wv_hls')</code>:
+         *   An encoding type for widevine hls streams.
+         * @constant OO.VIDEO.ENCODING.WIDEVINE_HLS
+         * @type {string}
+         */
+        WIDEVINE_HLS: "wv_hls",
+
+        /**
+         * @description <code>OO.VIDEO.ENCODING.WIDEVINE_MP4 ('wv_mp4')</code>:
+         *   An encoding type for widevine mp4 streams.
+         * @constant OO.VIDEO.ENCODING.WIDEVINE_MP4
+         * @type {string}
+         */
+        WIDEVINE_MP4: "wv_mp4",
+
+        /**
+         * @description <code>OO.VIDEO.ENCODING.WIDEVINE_WVM ('wv_wvm')</code>:
+         *   An encoding type for widevine wvm streams.
+         * @constant OO.VIDEO.ENCODING.WIDEVINE_WVM
+         * @type {string}
+         */
+        WIDEVINE_WVM: "wv_wvm",
       }
 
     };
