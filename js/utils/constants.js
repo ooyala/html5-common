@@ -1138,7 +1138,8 @@
       ADS: "ads",
 
       /**
-       * @description
+       * @description Represents the <code>OO.VIDEO.ENCODING</code> encoding types. Used to denote video
+       *              encoding types associated with a video stream url.
        * @summary Represents the <code>OO.VIDEO.ENCODING</code> encoding types.
        * @namespace OO.VIDEO.ENCODING
        */
@@ -1278,6 +1279,70 @@
          * @type {string}
          */
         UNKNOWN: "unknown"
+      },
+
+      /**
+       * @description Represents the <code>OO.VIDEO.FEATURE</code> feature list. Used to denote which
+       * features are supported by a video player.
+       * @summary Represents the <code>OO.VIDEO.FEATURE</code> feature list.
+       * @namespace OO.VIDEO.FEATURE
+       */
+      FEATURE: {
+        /**
+         * @description <code>OO.VIDEO.FEATURE.CLOSED_CAPTIONS ('closedCaptions')</code>:
+         *   Closed captions parsed by the video element and sent to the player.
+         * @constant OO.VIDEO.FEATURE.CLOSED_CAPTIONS
+         * @type {string}
+         */
+        CLOSED_CAPTIONS: "closedCaptions",
+
+        /**
+         * @description <code>OO.VIDEO.FEATURE.VIDEO_OBJECT_OPEN ('videoObjectOpen')</code>:
+         *   The video object is accessible and can be found by the player via the DOM element id.
+         * @constant OO.VIDEO.FEATURE.VIDEO_OBJECT_OPEN
+         * @type {string}
+         */
+        VIDEO_OBJECT_OPEN: "videoObjectOpen"
+      },
+
+      /**
+       * @description Represents the <code>OO.VIDEO.TECHNOLOGY</code> core video technology.
+       * @summary Represents the <code>OO.VIDEO.TECHNOLOGY</code> core technology of the video element.
+       * @namespace OO.VIDEO.TECHNOLOGY
+       */
+      TECHNOLOGY: {
+        /**
+         * @description <code>OO.VIDEO.TECHNOLOGY.FLASH ('flash')</code>:
+         *   The core video technology is based on Adobe Flash.
+         * @constant OO.VIDEO.TECHNOLOGY.FLASH
+         * @type {string}
+         */
+        FLASH: "flash",
+
+        /**
+         * @description <code>OO.VIDEO.TECHNOLOGY.HTML5 ('html5')</code>:
+         *   The core video technology is based on the native html5 'video' tag.
+         * @constant OO.VIDEO.TECHNOLOGY.HTML5
+         * @type {string}
+         */
+        HTML5: "html5",
+
+        /**
+         * @description <code>OO.VIDEO.TECHNOLOGY.MIXED ('mixed')</code>:
+         *   The core video technology used may be based on any one of multiple core technologies.
+         * @constant OO.VIDEO.TECHNOLOGY.MIXED
+         * @type {string}
+         */
+        MIXED: "mixed",
+
+        /**
+         * @description <code>OO.VIDEO.TECHNOLOGY.OTHER ('other')</code>:
+         *   The video is based on a core video technology that doesn't fit into another classification
+         *   found in <code>OO.VIDEO.TECHNOLOGY</code>.
+         * @constant OO.VIDEO.TECHNOLOGY.OTHER
+         * @type {string}
+         */
+        OTHER: "other"
       }
 
     };
