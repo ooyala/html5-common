@@ -1270,6 +1270,14 @@
          * @type {string}
          */
         WIDEVINE_WVM: "wv_wvm",
+
+        /**
+         * @description <code>OO.VIDEO.ENCODING.UNKNOWN ('unknown')</code>:
+         *   An encoding type for unknown streams.
+         * @constant OO.VIDEO.ENCODING.UNKNOWN
+         * @type {string}
+         */
+        UNKNOWN: "unknown"
       }
 
     };
