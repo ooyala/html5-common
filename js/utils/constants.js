@@ -1337,7 +1337,8 @@
 
         /**
          * @description <code>OO.VIDEO.TECHNOLOGY.OTHER ('other')</code>:
-         *   The core video technology is based on a unique core video technology.
+         *   The video is based on a core video technology that doesn't fit into another classification
+         *   found in <code>OO.VIDEO.TECHNOLOGY</code>.
          * @constant OO.VIDEO.TECHNOLOGY.OTHER
          * @type {string}
          */
