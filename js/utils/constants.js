@@ -535,6 +535,8 @@
        *     <ul>
        *       <li>closedCaptions: The possible closed captions available on this video. (object)</li>
        *       <li>crossorigin: The crossorigin attribute value to set on the video. (string)</li>
+       *       <li>technology: The core video technology required (string) (ex. OO.VIDEO.TECHNOLOGY.HTML5)</li>
+       *       <li>features: The video plugin features required (string) (ex. OO.VIDEO.FEATURE.CLOSED_CAPTIONS)</li>
        *     </ul>
        *   </li>
        * </ul>
