@@ -240,6 +240,21 @@
       return !OO.isIos && !OO.os.match(/Android [23]/);
     }());
 
+    /**
+     * Determines if a single video element should be used.<br/>
+     * <ul><li>Use single video element on iOS, all versions</li>
+     *     <li>Use single video element on Android < v4.0</li>
+     *     <li>Use single video element on Android with Chrome < v40<br/>
+     *       (note, it might work on earlier versions but don't know which ones! Does not work on v18)</li>
+     * @private
+     * @returns {boolean} True if a single video element is required
+     */
+    OO.requiresSingleVideoElement = (function() {
+      var iosRequireSingleElement = OO.isIos;
+      var androidRequireSingleElement = OO.isAndroid && (!OO.isAndroid4Plus || OO.chromeMajorVersion < 40);
+      return iosRequireSingleElement || androidRequireSingleElement;
+    }());
+
     OO.supportedVideoTypes = (function() {
       // tweak to force MP4 playback
       if (!!OO.tweaks["html5-force-mp4"]) {
