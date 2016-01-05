@@ -914,4 +914,30 @@ describe('emitter', function(){
     mb.publish("foo", "random");
     expect(messageCalled.foo).to.equal("random");
   });
+
+  it("should maintain published params even if they are undefined", function() {
+    var obj = {
+        var0: false,
+        var1: false,
+        var2: false
+    }
+    var myCallback = function(eventName, param0, param1, param2) {
+        obj.var0 = param0;
+        obj.var1 = param1;
+        obj.var2 = param2;
+    };
+    mb.subscribe("foo", 'test', myCallback);
+    mb.publish("foo", "arg0", "arg1", "arg2");
+    expect(obj.var0).to.equal("arg0");
+    expect(obj.var1).to.equal("arg1");
+    expect(obj.var2).to.equal("arg2");
+    mb.publish("foo", undefined, "newArg1", "newArg2");
+    expect(obj.var0).to.equal(undefined);
+    expect(obj.var1).to.equal("newArg1");
+    expect(obj.var2).to.equal("newArg2");
+    mb.publish("foo", true, null, true);
+    expect(obj.var0).to.equal(true);
+    expect(obj.var1).to.equal(null);
+    expect(obj.var2).to.equal(true);
+  });
 });
