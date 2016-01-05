@@ -883,6 +883,21 @@
       REPORT_DISCOVERY_IMPRESSION: "reportDiscoveryImpression",
       REPORT_DISCOVERY_CLICK: "reportDiscoveryClick",
 
+      /**
+       * The UI layer has finished its initial render. The handler is called with an object
+       * of the following structure:
+       *
+       * <ul>
+       *   <li>videoWrapperClass: The class name of the element containing the UI layer</li>
+       *   <li>pluginsClass: The class name of the element into which the plugins content should be inserted</li>
+       * </ul>
+       *
+       * If the UI layer doesn't require any special handling, the values for these two keys will be null.
+       *
+       * @event OO.EVENTS#UI_READY
+       */
+      UI_READY: "uiReady",
+
       __end_marker : true
     };
 
