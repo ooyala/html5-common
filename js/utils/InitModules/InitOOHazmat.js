@@ -1,6 +1,10 @@
 require("./InitOOUnderscore.js");
 
-if (!window.Hazmat)
+if ((!OO.HM) && (typeof window === 'undefined' || typeof window._ === 'undefined'))
+{
+  OO.HM = require('hazmat').create();
+}
+else if (!window.Hazmat)
 {
   require('hazmat');
 }
