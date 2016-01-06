@@ -1360,8 +1360,11 @@
          * @type {string}
          */
         OTHER: "other"
-      }
+      },
 
+      PLUGINS: {
+        BITMOVIN_KEY: 'f7d2ad6cfa3a99181f35cbcfa42efa8a'
+      }
     };
 
     OO.CSS = {
