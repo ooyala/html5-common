@@ -1314,12 +1314,22 @@
         CLOSED_CAPTIONS: "closedCaptions",
 
         /**
-         * @description <code>OO.VIDEO.FEATURE.VIDEO_OBJECT_OPEN ('videoObjectOpen')</code>:
-         *   The video object is accessible and can be found by the player via the DOM element id.
-         * @constant OO.VIDEO.FEATURE.VIDEO_OBJECT_OPEN
+         * @description <code>OO.VIDEO.FEATURE.VIDEO_OBJECT_SHARING_GIVE ('videoObjectSharingGive')</code>:
+         *   The video object is accessible and can be found by the player via the DOM element id.  Other
+         *   modules can use this video object if required.
+         * @constant OO.VIDEO.FEATURE.VIDEO_OBJECT_SHARING_GIVE
          * @type {string}
          */
-        VIDEO_OBJECT_OPEN: "videoObjectOpen"
+        VIDEO_OBJECT_SHARING_GIVE: "videoObjectSharingGive",
+
+        /**
+         * @description <code>OO.VIDEO.FEATURE.VIDEO_OBJECT_SHARING_TAKE ('videoObjectSharingTake')</code>:
+         *   The video object used can be created external from this video plugin.  This plugin will use the
+         *   existing video element as its own.
+         * @constant OO.VIDEO.FEATURE.VIDEO_OBJECT_SHARING_TAKE
+         * @type {string}
+         */
+        VIDEO_OBJECT_SHARING_TAKE: "videoObjectSharingTake"
       },
 
       /**
