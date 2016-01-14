@@ -24,6 +24,8 @@
 
       // add a random ID for debug
       this.MbId = OO.getRandomString();
+
+      this.debug = false;
     };
 
     _.extend(OO.MessageBus.prototype,  {
@@ -81,6 +83,11 @@
           console.error("MB: addDependent called on message bus from subscriber " + subscriber + " with no event name given.");
           return;
         }
+
+        if (this.debug) {
+          OO.log("MB DEBUG: \'" + eventName + "\' depends on \'" + dependentEvent + "\'. Added by \'" + subscriber + "\'");
+        }
+
         this._dependentList[eventName] = this._dependentList[eventName] || [];
         this._dependentList[eventName].push(dependentEvent);
         this._blockList[dependentEvent] = this._blockList[dependentEvent] || [];
@@ -97,9 +104,15 @@
           args.shift(); origParams.shift();
 
           var newArgs = onMergeParams && onMergeParams.apply(this, [eventName, dependentEvent, origParams, args]) || origParams;
+          newArgs = [e].concat(newArgs);
           delete this.blockedEvent[e];
           this.blockedParams[e] = [];
-          this._publish.apply(this, [e].concat(newArgs));
+
+          if (this.debug) {
+            OO.log("MB DEBUG: unblocking \'" + e + "\' because of \'" + dependentEvent + "\' with args ", newArgs);
+          }
+
+          this._publish.apply(this, newArgs);
 
         }, this);
 
@@ -117,6 +130,11 @@
           console.warn("MB: removeDependent called on message bus with no event name given.");
           return;
         }
+
+        if (this.debug) {
+          OO.log("MB DEBUG: \'" + source + "\' no longer depends on \'" + target + "\'");
+        }
+
         this._clearDependent(source, target);
       },
 
@@ -134,8 +152,13 @@
           console.error("MB: publish called on message bus with no event name given.");
           return;
         }
+
         var args = OO.safeClone(_.flatten(arguments));
         this._publishingQueue.push(args);
+
+        if (this.debug) {
+          OO.log("MB DEBUG: queueing \'" + arguments[0] + "\' w\/ args", args);
+        }
 
         if(!this._dispatching) {
           this._dispatching = true;
@@ -167,6 +190,10 @@
         }
 
         if (this._noDependency(eventName)) {
+          if (this.debug) {
+            OO.log("MB DEBUG: publishing \'" + eventName + "\' w\/ args ", args);
+          }
+
           this._emitter.trigger.apply(this._emitter, args);
           _.each(this._blockList[eventName], function(e) {
             this._clearDependent(e, eventName);
@@ -175,8 +202,11 @@
           }, this);
           delete this._blockList[eventName];
         } else {
-           this.blockedEvent[eventName] = 1;
-           this.blockedParams[eventName] = args;
+          if (this.debug) {
+            OO.log("MB DEBUG: blocking \'" + eventName + "\' because of \'" + this._dependentList ? this._dependentList[eventName] : "[null]"  + "\'");
+          }
+          this.blockedEvent[eventName] = 1;
+          this.blockedParams[eventName] = args;
         }
       },
 
@@ -286,9 +316,67 @@
       _clearDependent: function(source, target) {
         var depEvents = this._dependentList[source];
         this._dependentList[source] = OO._.filter(depEvents, function(e){ return e !== target; }, this);
+      },
+
+      /////////////////////
+      //// DEBUG TOOLS ////
+      /////////////////////
+
+      /**
+       * Start debugging the message bus messages. It will display when dependents are added,
+       * when they are removed, when messages get blocked, when messages are queued
+       * and when they actually get published.
+       *
+       * This is mainly intended to be used in the console when debugging.
+       * @private
+       * @return {string} Message that states debugging has started. (Mostly for console output)
+       */
+      startDebug: function() {
+        this.debug = true;
+        return "MB DEBUGGING STARTED";
+      },
+
+      /**
+       * Stop debugging the message bus messages.
+       *
+       * This is mainly intended to be used in the console when debugging.
+       * @private
+       * @return {string} Message that states debugging has stopped. (Mostly for console output)
+       */
+      stopDebug: function() {
+        this.debug = false;
+        return "MB DEBUGGING STOPPED";
+      },
+
+      /**
+       * Return a test formatted string of the dependent messages and which ones are
+       * currently blocked.
+       * @private
+       * @return {string} Formatted string of dependent messages and which ones are blocked.
+       */
+      listDependencies: function() {
+        var output = "------------------------------------\n" +
+                     "[blocked] Message --> Dependency\n" +
+                     "------------------------------------\n"
+        var index;
+        if (this._dependentList) {
+          for (var eventName in this._dependentList) {
+            if (this._dependentList[eventName]) {
+              for (index = 0; index < this._dependentList[eventName].length; index++) {
+                if (this.blockedEvent[eventName] == 1) {
+                  output += "[blocked]";
+                }
+
+                output += eventName + " --> " + this._dependentList[eventName] + "\n";
+              }
+            }
+          }
+        }
+
+        output += "------------------------------------";
+        return output;
       }
 
     });
 
   }(OO,OO._));
-
