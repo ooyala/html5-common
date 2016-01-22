@@ -1,3 +1,6 @@
+require("./emitter.js");
+require("../utils/utils.js");
+
   (function(OO,_) {
 	/**
 	 * @classdesc Represents the Ooyala V3 Player Message Bus. Use message bus events to subscribe to or publish player events from video to ad playback.
