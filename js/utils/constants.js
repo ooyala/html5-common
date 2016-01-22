@@ -334,6 +334,10 @@
 
       /**
        * The player has finished seeking the main video to the requested position.
+       * The handler is called with the following arguments:
+       * <ul>
+       *   <li>The current time of the video after seeking.</li>
+       * </ul>
        *
        * <h5>Compatibility: </h5>
        * <p style="text-indent: 1em;">HTML5</p>
@@ -738,6 +742,7 @@
        * The handler is called with the following arguments:
        * <ul>
        *   <li>The id of the video that has seeked (as defined by the module that controls it).</li>
+       *   <li>The current time of the video after seeking.</li>
        * </ul>
        * @event OO.EVENTS#VC_SEEKED
        */
