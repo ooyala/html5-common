@@ -234,12 +234,6 @@
       return paradigm;
     }());
 
-    OO.supportMultiVideo = (function() {
-      // short cut for Android non-chrome browser.
-      if (OO.isAndroid && !OO.isChrome) { return false; }
-      return !OO.isIos && !OO.os.match(/Android [23]/);
-    }());
-
     /**
      * Determines if a single video element should be used.<br/>
      * <ul><li>Use single video element on iOS, all versions</li>
@@ -253,48 +247,6 @@
       var iosRequireSingleElement = OO.isIos;
       var androidRequireSingleElement = OO.isAndroid && (!OO.isAndroid4Plus || OO.chromeMajorVersion < 40);
       return iosRequireSingleElement || androidRequireSingleElement;
-    }());
-
-    OO.supportedVideoTypes = (function() {
-      // tweak to force MP4 playback
-      if (!!OO.tweaks["html5-force-mp4"]) {
-        return { mp4:true };
-      }
-
-      // (PBW-1969) Special case since Windows user-agent includes 'like iPhone'
-      if (!!OO.isWinPhone) {
-        return { mp4:true };
-      }
-
-      // Sony OperaTV based supports HLS but doesn't properly report it so we are forcing it here
-      if(window.navigator.userAgent.match(/SonyCEBrowser/)) {
-        return { m3u8:true };
-      }
-
-      // The android is a special case because of it's crappy HLS support
-      if(!!OO.isAndroid) {
-        if (OO.tweaks["android-enable-hls"] && OO.isAndroid4Plus) {
-          return { m3u8:true, mp4:true }; // Allow HLS despite our best intentions (PBK-125)
-        }
-        return { mp4:true };
-      }
-
-      // Smart TV hack, neither Samsung/LG plays hls correctly for their 2012 models.
-      if (OO.isSmartTV) {
-        return { mp4:true };
-      }
-
-      var video = document.createElement('video');
-      if (typeof video.canPlayType !== "function") {
-        return {};
-      }
-      return {
-        m3u8: (!!video.canPlayType("application/vnd.apple.mpegurl") ||
-               !!video.canPlayType("application/x-mpegURL")) &&
-               !OO.isRimDevice && (!OO.isMacOs || OO.isMacOsLionOrLater),
-        mp4: !!video.canPlayType("video/mp4"),
-        webm: !!video.canPlayType("video/webm")
-      };
     }());
 
     // TODO(jj): need to make this more comprehensive
