@@ -691,6 +691,12 @@
        * The handler is called with the following arguments:
        * <ul>
        *   <li>The id of the video to pause (as defined by the module that controls it).</li>
+       *   <li>Optional string indicating the reason for the pause.  Supported values include:
+       *     <ul>
+       *       <li>"transition" indicates that a pause was triggered because a video is going into or out of focus.</li>
+       *       <li>null or undefined for all other cases.</li>
+       *     </ul>
+       *   </li>
        * </ul>
        * @event OO.EVENTS#VC_PAUSE
        */
