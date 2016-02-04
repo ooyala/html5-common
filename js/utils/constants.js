@@ -56,8 +56,6 @@
       * The handler is called with the query string parameters.
       * The DOM has been created at this point, and plugins may make changes or additions to the DOM.<br/><br/>
       *
-      * <h5>Compatibility: </h5>
-      * <p style="text-indent: 1em;">HTML5, Flash</p>
       *
       * @event OO.EVENTS#PLAYER_CREATED
       */
@@ -74,8 +72,6 @@
        *     <li>The ID (embed code) of the asset, with options.</li>
        *   </ul>
        *
-       * <h5>Compatibility: </h5>
-       * <p style="text-indent: 1em;">HTML5, Flash</p>
        *
        * @event OO.EVENTS#SET_EMBED_CODE
        */
@@ -88,8 +84,6 @@
        *    <li>The options JSON object.</li>
        * </ul>
        *
-       * <h5>Compatibility: </h5>
-       * <p style="text-indent: 1em;">HTML5, Flash</p>
        *
        * @event OO.EVENTS#EMBED_CODE_CHANGED
        */
@@ -102,8 +96,6 @@
        * <a href="http://support.ooyala.com/developers/documentation/concepts/device_registration.html" target="target">Device Registration</a>.
        * The handler is called with a new value for the authorization token.<br/><br/>
        *
-       * <h5>Compatibility: </h5>
-       * <p style="text-indent: 1em;">Flash</p>
        *
        * @event OO.EVENTS#AUTH_TOKEN_CHANGED
        */
@@ -123,8 +115,6 @@
        * they watch video. Incognito modes will track a user for a single session, but once the browser is closed the GUID is erased.</p>
        * <p>For more information, see <b>unique user</b> <a href="http://support.ooyala.com/users/users/documentation/reference/glossary.html" target="target">Glossary</a>.</p>
        *
-       * <h5>Compatibility: </h5>
-       * <p style="text-indent: 1em;">HTML5</p>
        *
        * @event OO.EVENTS#GUID_SET
        */
@@ -137,8 +127,6 @@
       /**
        * A content tree was fetched. The handler is called with a JSON object that represents the content data for the current asset.<br/><br/>
        *
-       * <h5>Compatibility: </h5>
-       * <p style="text-indent: 1em;">HTML5, Flash</p>
        *
        * <h5>Analytics:</h5>
        * <p style="text-indent: 1em;">Records a <code>display</code> event. For more information see
@@ -157,8 +145,6 @@
        * metadata specific to 3rd party plugins. This is typically used for ad and anlytics plugins, but can be used
        * wherever you need specific logic based on the asset type.<br/><br/>
        *
-       * <h5>Compatibility: </h5>
-       * <p style="text-indent: 1em;">HTML5, Flash</p>
        *
        * @event OO.EVENTS#METADATA_FETCHED
        */
@@ -171,8 +157,6 @@
        * <p>For more information see
        * <a href="http://support.ooyala.com/developers/documentation/concepts/encodingsettings_videobitrate.html" target="target">Video Bit Rate</a>.</p>
        *
-       * <h5>Compatibility: </h5>
-       * <p style="text-indent: 1em;">HTML5</p>
        *
        * @event OO.EVENTS#AUTHORIZATION_FETCHED
        */
@@ -190,8 +174,6 @@
        * such as play, seek, and so on. The default UI shows the <b>Play</b> button,
        * displaying the non-clickable spinner before this point. <br/><br/>
        *
-       * <h5>Compatibility: </h5>
-       * <p style="text-indent: 1em;">HTML5, Flash</p>
        *
        * @event OO.EVENTS#PLAYBACK_READY
        */
@@ -200,8 +182,6 @@
       /**
        * Play has been called for the first time. <br/><br/>
        *
-       * <h5>Compatibility: </h5>
-       * <p style="text-indent: 1em;">HTML5</p>
        *
        * @event OO.EVENTS#INITIAL_PLAY
        */
@@ -223,8 +203,6 @@
        *   <li>The id of the video (as defined by the module that controls it).</li>
        * </ul>
        *
-       * <h5>Compatibility: </h5>
-       * <p style="text-indent: 1em;">HTML5, Flash</p>
        *
        * <h5>Analytics:</h5>
        * <p style="text-indent: 1em;">The first event is <code>video start</code>. Other instances of the event feed the <code>% completed data points</code>.</p>
@@ -242,8 +220,6 @@
        *   <li>The id of the video that is buffering (as defined by the module that controls it).</li>
        * </ul><br/><br/>
        *
-       * <h5>Compatibility: </h5>
-       * <p style="text-indent: 1em;">HTML5, Flash</p>
        *
        * @event OO.EVENTS#BUFFERING
        */
@@ -257,8 +233,6 @@
        *   <li>The id of the video that has buffered (as defined by the module that controls it).</li>
        * </ul><br/><br/>
        *
-       * <h5>Compatibility: </h5>
-       * <p style="text-indent: 1em;">HTML5</p>
        *
        * @event OO.EVENTS#BUFFERED
        */
@@ -276,8 +250,6 @@
        * </ul>
        * <br/><br/>
        *
-       * <h5>Compatibility: </h5>
-       * <p style="text-indent: 1em;">HTML5</p>
        *
        * @event OO.EVENTS#DOWNLOADING
        */
@@ -293,8 +265,6 @@
        *   </ul>
        * <p>For more information see
        * <a href="http://support.ooyala.com/developers/documentation/concepts/encodingsettings_videobitrate.html" target="target">Video Bit Rate</a>.</p>
-       * <h5>Compatibility: </h5>
-       * <p style="text-indent: 1em;">Flash</p>
        *
        * @event OO.EVENTS#BITRATE_INFO_AVAILABLE
        */
@@ -307,8 +277,6 @@
        * <p>For more information see
        * <a href="http://support.ooyala.com/developers/documentation/concepts/encodingsettings_videobitrate.html" target="target">Video Bit Rate</a>.</p>
        *
-       * <h5>Compatibility: </h5>
-       * <p style="text-indent: 1em;">Flash</p>
        *
        * @event OO.EVENTS#BITRATE_CHANGED
        */
@@ -325,8 +293,6 @@
        * A request to perform a seek has occurred. The playhead is requested to move to
        * a specific location, specified in milliseconds. The handler is called with the position to which to seek.<br/><br/>
        *
-       * <h5>Compatibility: </h5>
-       * <p style="text-indent: 1em;">HTML5</p>
        *
        * @event OO.EVENTS#SEEK
        */
@@ -339,8 +305,6 @@
        *   <li>The current time of the video after seeking.</li>
        * </ul>
        *
-       * <h5>Compatibility: </h5>
-       * <p style="text-indent: 1em;">HTML5</p>
        *
        * @event OO.EVENTS#SEEKED
        */
@@ -349,8 +313,6 @@
       /**
        * A playback request has been made. <br/><br/>
        *
-       * <h5>Compatibility: </h5>
-       * <p style="text-indent: 1em;">HTML5, Flash</p>
        *
        * @event OO.EVENTS#PLAY
        */
@@ -362,8 +324,6 @@
       /**
        * A player pause has been requested. <br/><br/>
        *
-       * <h5>Compatibility: </h5>
-       * <p style="text-indent: 1em;">HTML5, Flash</p>
        *
        * @event OO.EVENTS#PAUSE
        */
@@ -372,8 +332,6 @@
       /**
        * The player was paused. <br/><br/>
        *
-       * <h5>Compatibility: </h5>
-       * <p style="text-indent: 1em;">HTML5, Flash</p>
        *
        * @event OO.EVENTS#PAUSED
        */
@@ -382,17 +340,10 @@
       /**
        * The video and asset were played. The handler is called with the arguments that were passed.<br/><br/>
        *
-       * <h5>Compatibility: </h5>
-       * <p style="text-indent: 1em;">Flash</p>
        *
        * @event OO.EVENTS#PLAYED
        */
       PLAYED: 'played',
-
-      TOGGLE_SHARE_PANEL: 'toggleSharePanel',
-      SHARE_PANEL_CLICKED: 'sharePanelClicked',
-      TOGGLE_INFO_PANEL: 'toggleInfoPanel',
-      INFO_PANEL_CLICKED: 'infoPanelClicked',
 
       DISPLAY_CUE_POINTS: 'displayCuePoints',
       INSERT_CUE_POINT: 'insertCuePoint',
@@ -403,8 +354,6 @@
        * The handler is called with <code>true</code> if the full screen setting will be enabled,
        * and is called with <code>false</code> if the full screen setting will be disabled.
        *
-       * <h5>Compatibility: </h5>
-       * <p style="text-indent: 1em;">HTML5</p>
        *
        * @event OO.EVENTS#WILL_CHANGE_FULLSCREEN
        */
@@ -422,8 +371,6 @@
        *   <li>The id of the video that has entered fullscreen (as defined by the module that controls it).
        * </ul>
        *
-       * <h5>Compatibility: </h5>
-       * <p style="text-indent: 1em;">HTML5, Flash</p>
        *
        * @event OO.EVENTS#FULLSCREEN_CHANGED
        */
@@ -437,8 +384,6 @@
        *     <li>The height of the player.</li>
        *   </ul>
        *
-       * <h5>Compatibility: </h5>
-       * <p style="text-indent: 1em;">HTML5</p>
        *
        * @event OO.EVENTS#SIZE_CHANGED
        */
@@ -453,8 +398,6 @@
        *        If null or undefined, all video elements volume will be changed</li>
        * </ul>
        *
-       * <h5>Compatibility: </h5>
-       * <p style="text-indent: 1em;">HTML5, Flash</p>
        *
        * @event OO.EVENTS#CHANGE_VOLUME
        */
@@ -463,8 +406,6 @@
       /**
        * The volume has changed. The handler is called with the current volume, which has a value between 0 and 1, inclusive.<br/><br/>
        *
-       * <h5>Compatibility: </h5>
-       * <p style="text-indent: 1em;">HTML5, Flash</p>
        *
        * @event OO.EVENTS#VOLUME_CHANGED
        */
@@ -473,8 +414,6 @@
       /**
        * Controls are shown.<br/><br/>
        *
-       * <h5>Compatibility: </h5>
-       * <p style="text-indent: 1em;">HTML5</p>
        *
        * @event OO.EVENTS#CONTROLS_SHOWN
        */
@@ -483,22 +422,16 @@
       /**
        * Controls are hidden.<br/><br/>
        *
-       * <h5>Compatibility: </h5>
-       * <p style="text-indent: 1em;">HTML5</p>
        *
        * @event OO.EVENTS#CONTROLS_HIDDEN
        */
       CONTROLS_HIDDEN: 'controlsHidden',
       END_SCREEN_SHOWN: 'endScreenShown',
 
-      PLAYER_CLICKED: 'playerClicked',
-
       /**
        * An error has occurred. The handler is called with a JSON object that always includes an error code field,
        * and may also include other error-specific fields.<br/><br/>
        *
-       * <h5>Compatibility: </h5>
-       * <p style="text-indent: 1em;">HTML5, Flash</p>
        *
        * @event OO.EVENTS#ERROR
        */
@@ -510,8 +443,6 @@
        * Any plugin that creates or has initialized any long-living logic should listen to this event and clean up that logic.
        * <br/><br/>
        *
-       * <h5>Compatibility: </h5>
-       * <p style="text-indent: 1em;">HTML5, Flash</p>
        *
        * @event OO.EVENTS#DESTROY
        */
@@ -772,8 +703,6 @@
        *     <li>The ID of the ad.</li>
        *   </ul>
        *
-       * <h5>Compatibility: </h5>
-       * <p style="text-indent: 1em;">HTML5, Flash</p>
        *
        * <h5>Analytics:</h5>
        * <p style="text-indent: 1em;"Triggers an <b>Ad Analytics</b> <code>AD_IMPRESSION</code> event.</p>
@@ -792,8 +721,6 @@
        *     <li>The ID of the item to play.</li>
        *   </ul>
        *
-       * <h5>Compatibility: </h5>
-       * <p style="text-indent: 1em;">Flash</p>
        *
        * @event OO.EVENTS#ADS_PLAYED
        */
@@ -804,8 +731,6 @@
       /**
        * This event is triggered when an error has occurred with an ad. <br/><br/>
        *
-       * <h5>Compatibility: </h5>
-       * <p style="text-indent: 1em;">HTML5</p>
        *
        * @event OO.EVENTS#ADS_ERROR
        */
@@ -814,8 +739,6 @@
       /**
        * This event is triggered when an ad has been clicked. <br/><br/>
        *
-       * <h5>Compatibility: </h5>
-       * <p style="text-indent: 1em;">HTML5</p>
        *
        * @event OO.EVENTS#ADS_CLICKED
        */
@@ -835,8 +758,6 @@
        *     <li>The ID of a single companion ad.</li>
        *   </ul>
        *
-       * <h5>Compatibility: </h5>
-       * <p style="text-indent: 1em;">HTML5</p>
        *
        * <h5>Analytics:</h5>
        * <p style="text-indent: 1em;"Triggers an <b>Ad Analytics</b> <code>AD_IMPRESSION</code> event.</p>
@@ -877,8 +798,6 @@
        * To prevent such false errors, listen to this event and ignore any errors raised after such actions have occurred.
        * <br/><br/>
        *
-       * <h5>Compatibility: </h5>
-       * <p style="text-indent: 1em;">HTML5</p>
        *
        * @event OO.EVENTS#PAGE_UNLOAD_REQUESTED
        */

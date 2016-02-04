@@ -264,7 +264,6 @@
 
       /**
        * Subscribe to an event published to the message bus.
-       * <br/><br/><h5>Compatibility: </h5><p style="text-indent: 1em;">HTML5, Flash</p><br/>
        *
        * @method subscribe
        * @memberOf OO.MessageBus.prototype
@@ -287,7 +286,6 @@
 
       /**
        * Unsubscribes from an event published to the message bus.
-       * <br/><br/><h5>Compatibility: </h5><p style="text-indent: 1em;">HTML5, Flash</p><br/>
        *
        * @method unsubscribe
        * @memberOf OO.MessageBus.prototype
