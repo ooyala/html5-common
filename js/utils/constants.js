@@ -256,21 +256,45 @@
       DOWNLOADING:  'downloading', // player is downloading content (could be playing while downloading)
 
       /**
-       * Lists the available bitrate information. The handler is called with an object containing the entire SAS response, and includes:
+       * Lists the available bitrate information. The handler is called with an array containing the available streams, each stream includes:
        *   <ul>
-       *     <li>The bitrate qualities.</li>
-       *     <li>The bitrates.</li>
-       *     <li>The target bitrate's quality.</li>
-       *     <li>The target bitrate.</li>
+       *     <li>The bitrate in bits per second. (number|string)</li>
+       *     <li>The vertical resolution of the stream. (number)</li>
+       *     <li>The horizontal resolution of the stream. (number)</li>
        *   </ul>
+       * If The video plugin supports automatic ABR, one stream will have a bitrate value of "auto".
+       *
        * <p>For more information see
        * <a href="http://support.ooyala.com/developers/documentation/concepts/encodingsettings_videobitrate.html" target="target">Video Bit Rate</a>.</p>
-       *
        * @event OO.EVENTS#BITRATE_INFO_AVAILABLE
+       * @public
        */
       BITRATE_INFO_AVAILABLE: 'bitrateInfoAvailable',
+
+      /**
+       * A request to set a specific stream bitrate has occurred.
+       * The method is published with an object representing the stream to switch to. This will
+       * be one of the stream objects published in BITRATE_INFO_AVAILABLE. <br/><br/>
+       *
+       * @event OO.EVENTS#SET_TARGET_BITRATE
+       */
       SET_TARGET_BITRATE: 'setTargetBitrate',
-      SET_TARGET_BITRATE_QUALITY: 'setTargetBitrateQuality',
+
+      /**
+       * The current playing bitrate has changed. The handler is called with the stream object which includes:
+       *   <ul>
+       *     <li>The bitrate in bits per second. (number|string)</li>
+       *     <li>The vertical resolution of the stream. (number)</li>
+       *     <li>The horizontal resolution of the stream. (number)</li>
+       *   </ul>
+       * If the player is using automatic ABR, it should publish a stream object with the bitrate set to "auto".
+       *
+       * <p>For more information see
+       * <a href="http://support.ooyala.com/developers/documentation/concepts/encodingsettings_videobitrate.html" target="target">Video Bit Rate</a>.</p>
+       * @event OO.EVENTS#BITRATE_CHANGED
+       * @public
+       */
+      BITRATE_CHANGED: 'bitrateChanged',
 
       /**
        * The currently playing bitrate has changed. The handler is called with the video bitrate.
