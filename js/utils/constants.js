@@ -256,7 +256,7 @@
       DOWNLOADING:  'downloading', // player is downloading content (could be playing while downloading)
 
       /**
-       * Lists the available bitrate information. The handler is called with an array containing the available streams, each stream includes:
+       * Lists the available bitrate information. The handler is called with an array containing the available streams, each object includes:
        *   <ul>
        *     <li>The bitrate in bits per second. (number|string)</li>
        *     <li>The vertical resolution of the stream. (number)</li>
@@ -274,7 +274,13 @@
       /**
        * A request to set a specific stream bitrate has occurred.
        * The method is published with an object representing the stream to switch to. This will
-       * be one of the stream objects published in BITRATE_INFO_AVAILABLE. <br/><br/>
+       * be one of the stream objects published in BITRATE_INFO_AVAILABLE. Each object includes:
+       *   <ul>
+       *     <li>The bitrate in bits per second. (number|string)</li>
+       *     <li>The vertical resolution of the stream. (number)</li>
+       *     <li>The horizontal resolution of the stream. (number)</li>
+       *   </ul>
+       * <br/><br/>
        *
        * @event OO.EVENTS#SET_TARGET_BITRATE
        */
@@ -293,16 +299,6 @@
        * <a href="http://support.ooyala.com/developers/documentation/concepts/encodingsettings_videobitrate.html" target="target">Video Bit Rate</a>.</p>
        * @event OO.EVENTS#BITRATE_CHANGED
        * @public
-       */
-      BITRATE_CHANGED: 'bitrateChanged',
-
-      /**
-       * The currently playing bitrate has changed. The handler is called with the video bitrate.
-       * <p>For more information see
-       * <a href="http://support.ooyala.com/developers/documentation/concepts/encodingsettings_videobitrate.html" target="target">Video Bit Rate</a>.</p>
-       *
-       *
-       * @event OO.EVENTS#BITRATE_CHANGED
        */
       BITRATE_CHANGED: 'bitrateChanged',
 
