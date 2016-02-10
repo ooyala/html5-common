@@ -1283,7 +1283,19 @@
          * @constant OO.VIDEO.FEATURE.VIDEO_OBJECT_SHARING_TAKE
          * @type {string}
          */
-        VIDEO_OBJECT_SHARING_TAKE: "videoObjectSharingTake"
+        VIDEO_OBJECT_SHARING_TAKE: "videoObjectSharingTake",
+
+        /**
+         * @description <code>OO.VIDEO.FEATURE.BITRATE_CONTROL ('bitrateControl')</code>:
+         *   The video object allows the playing bitrate to be selected via the SET_TARGET_BITRATE event.
+         *   The video controller must publish BITRATE_INFO_AVAILABLE with a list of bitrate objects that can be selected.
+         *   The video controller must publish BITRATE_CHANGED events with the bitrate object that was switched to.
+         *   A bitrate object should at minimum contain height, width, and bitrate properties. Height and width
+         *   should be the vertical and horizontal resoluton of the stream and bitrate should be in bits per second.
+         * @constant OO.VIDEO.FEATURE.BITRATE_CONTROL
+         * @type {string}
+         */
+        BITRATE_CONTROL: "bitrateControl"
       },
 
       /**
