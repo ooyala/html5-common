@@ -258,9 +258,9 @@
       /**
        * Lists the available bitrate information. The handler is called with an array containing the available streams, each object includes:
        *   <ul>
-       *     <li>The bitrate in bits per second. (number|string)</li>
-       *     <li>The vertical resolution of the stream. (number)</li>
-       *     <li>The horizontal resolution of the stream. (number)</li>
+       *     <li>bitrate: The bitrate in bits per second. (number|string)</li>
+       *     <li>height: The vertical resolution of the stream. (number)</li>
+       *     <li>width: The horizontal resolution of the stream. (number)</li>
        *   </ul>
        * If The video plugin supports automatic ABR, one stream will have a bitrate value of "auto".
        *
@@ -276,9 +276,9 @@
        * The method is published with an object representing the stream to switch to. This will
        * be one of the stream objects published in BITRATE_INFO_AVAILABLE. Each object includes:
        *   <ul>
-       *     <li>The bitrate in bits per second. (number|string)</li>
-       *     <li>The vertical resolution of the stream. (number)</li>
-       *     <li>The horizontal resolution of the stream. (number)</li>
+       *     <li>bitrate: The bitrate in bits per second. (number|string)</li>
+       *     <li>height: The vertical resolution of the stream. (number)</li>
+       *     <li>width: The horizontal resolution of the stream. (number)</li>
        *   </ul>
        * <br/><br/>
        *
@@ -289,9 +289,9 @@
       /**
        * The current playing bitrate has changed. The handler is called with the stream object which includes:
        *   <ul>
-       *     <li>The bitrate in bits per second. (number|string)</li>
-       *     <li>The vertical resolution of the stream. (number)</li>
-       *     <li>The horizontal resolution of the stream. (number)</li>
+       *     <li>bitrate: The bitrate in bits per second. (number|string)</li>
+       *     <li>height: The vertical resolution of the stream. (number)</li>
+       *     <li>width: The horizontal resolution of the stream. (number)</li>
        *   </ul>
        * If the player is using automatic ABR, it should publish a stream object with the bitrate set to "auto".
        *
