@@ -741,6 +741,30 @@
       WILL_RESUME_ADS: 'willResumeAds',
 
       /**
+       * This event is triggered to indicate that a non-linear ad will be played.  The handler is called with:
+       *   <ul>
+       *     <li>An object representing the ad.  For a definition, see class 'Ad' from the ad manager framework.</li>
+       *   </ul>
+       *
+       * @event OO.EVENTS#WILL_PLAY_NONLINEAR_AD
+       */
+      WILL_PLAY_NONLINEAR_AD: 'willPlayNonlinearAd',
+
+      /**
+       * A non-linear ad will play now.  The handler is called with:
+       *   <ul>
+       *     <li>An object containing the following fields:</li>
+       *     <ul>
+       *       <li>ad: An object representing the ad.  For a definition, see class 'Ad' from the ad manager framework.</li>
+       *       <li>url: [optional] The url of the nonlinear ad.</li>
+       *     </ul>
+       *   </ul>
+       *
+       * @event OO.EVENTS#WILL_PLAY_NONLINEAR_AD
+       */
+      PLAY_NONLINEAR_AD: 'playNonlinearAd',
+
+      /**
        * A set of ads have been played. Depending on the context, the handler is called with:
        *   <ul>
        *     <li>The duration of the ad.</li>
