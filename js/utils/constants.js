@@ -760,7 +760,7 @@
        *     </ul>
        *   </ul>
        *
-       * @event OO.EVENTS#WILL_PLAY_NONLINEAR_AD
+       * @event OO.EVENTS#PLAY_NONLINEAR_AD
        */
       PLAY_NONLINEAR_AD: 'playNonlinearAd',
 
