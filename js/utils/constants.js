@@ -765,6 +765,14 @@
       PLAY_NONLINEAR_AD: 'playNonlinearAd',
 
       /**
+      * A nonlinear ad was loaded in the UI.
+      *
+      *
+      * @event OO.EVENTS#NONLINEAR_AD_DISPLAYED
+      */
+      OO.EVENTS.NONLINEAR_AD_DISPLAYED = 'nonlinearAdDisplayed',
+
+      /**
        * A set of ads have been played. Depending on the context, the handler is called with:
        *   <ul>
        *     <li>The duration of the ad.</li>
