@@ -770,7 +770,7 @@
       *
       * @event OO.EVENTS#NONLINEAR_AD_DISPLAYED
       */
-      OO.EVENTS.NONLINEAR_AD_DISPLAYED = 'nonlinearAdDisplayed',
+      NONLINEAR_AD_DISPLAYED: 'nonlinearAdDisplayed',
 
       /**
        * A set of ads have been played. Depending on the context, the handler is called with:
