@@ -846,6 +846,17 @@
       // This event contains the information AMC need to know to place the overlay in the correct position.
       OVERLAY_RENDERING: "overlayRendering",
 
+      /**
+       * Event for signaling Ad Controls (Scrubber bar and Control bar) rendering:
+       *   <ul>
+       *     <li>Boolean parameter, 'false' to not show ad controls, 'true' to show ad controls based on skin config</li>
+       *   </ul>
+       *
+       *
+       * @event OO.EVENTS#SHOW_AD_CONTROLS
+       */
+      SHOW_AD_CONTROLS: "showAdControls",
+
       // Window published beforeUnload event. It's still user cancellable.
       /**
        * The window, document, and associated resources are being unloaded.
