@@ -847,7 +847,7 @@
       OVERLAY_RENDERING: "overlayRendering",
 
       /**
-       * Event for UI to know whether to render Ad Marquee or not:
+       * Event for signaling Ad Marquee rendering:
        *   <ul>
        *     <li>Boolean parameter, 'false' to not show ad marquee, 'true' to show ad marquee based on skin config</li>
        *   </ul>
