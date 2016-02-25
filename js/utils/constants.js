@@ -846,6 +846,17 @@
       // This event contains the information AMC need to know to place the overlay in the correct position.
       OVERLAY_RENDERING: "overlayRendering",
 
+      /**
+       * Event for signaling Ad Marquee rendering:
+       *   <ul>
+       *     <li>Boolean parameter, 'false' to not show ad marquee, 'true' to show ad marquee based on skin config</li>
+       *   </ul>
+       *
+       *
+       * @event OO.EVENTS#SHOW_AD_MARQUEE
+       */
+      SHOW_AD_MARQUEE: "showAdMarquee",
+
       // Window published beforeUnload event. It's still user cancellable.
       /**
        * The window, document, and associated resources are being unloaded.
