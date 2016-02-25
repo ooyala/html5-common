@@ -306,6 +306,22 @@
       SET_CLOSED_CAPTIONS_LANGUAGE: 'setClosedCaptionsLanguage',
       CLOSED_CAPTION_CUE_CHANGED: 'closedCaptionCueChanged',
 
+      /**
+       * Raised when asset dimensions become available.
+       *
+       * Provide the following arguments:
+       * <ul>
+       *   <li>width
+       *   </li>
+       *   <li>height
+       *   </li>
+       * </ul>
+       *
+       * @event OO.EVENTS#ASSET_DIMENSION
+       * @private
+       */
+      ASSET_DIMENSION: 'assetDimension',
+
       SCRUBBING: 'scrubbing',
       SCRUBBED: 'scrubbed',
 
