@@ -309,16 +309,18 @@
       /**
        * Raised when asset dimensions become available.
        *
-       * Provide the following arguments:
+       * Provide the following arguments in an object:
        * <ul>
-       *   <li>width
+       *   <li>width: the width of the asset (number)
        *   </li>
-       *   <li>height
+       *   <li>height: the height of the asset (number)
+       *   </li>
+       *   <li>videoId: the id of the video (string)
        *   </li>
        * </ul>
        *
        * @event OO.EVENTS#ASSET_DIMENSION
-       * @private
+       * @public
        */
       ASSET_DIMENSION: 'assetDimension',
 
