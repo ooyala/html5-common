@@ -306,6 +306,24 @@
       SET_CLOSED_CAPTIONS_LANGUAGE: 'setClosedCaptionsLanguage',
       CLOSED_CAPTION_CUE_CHANGED: 'closedCaptionCueChanged',
 
+      /**
+       * Raised when asset dimensions become available.
+       *
+       * Provide the following arguments in an object:
+       * <ul>
+       *   <li>width: the width of the asset (number)
+       *   </li>
+       *   <li>height: the height of the asset (number)
+       *   </li>
+       *   <li>videoId: the id of the video (string)
+       *   </li>
+       * </ul>
+       *
+       * @event OO.EVENTS#ASSET_DIMENSION
+       * @public
+       */
+      ASSET_DIMENSION: 'assetDimension',
+
       SCRUBBING: 'scrubbing',
       SCRUBBED: 'scrubbed',
 
