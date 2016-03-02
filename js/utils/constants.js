@@ -306,6 +306,24 @@
       SET_CLOSED_CAPTIONS_LANGUAGE: 'setClosedCaptionsLanguage',
       CLOSED_CAPTION_CUE_CHANGED: 'closedCaptionCueChanged',
 
+      /**
+       * Raised when asset dimensions become available.
+       *
+       * Provide the following arguments in an object:
+       * <ul>
+       *   <li>width: the width of the asset (number)
+       *   </li>
+       *   <li>height: the height of the asset (number)
+       *   </li>
+       *   <li>videoId: the id of the video (string)
+       *   </li>
+       * </ul>
+       *
+       * @event OO.EVENTS#ASSET_DIMENSION
+       * @public
+       */
+      ASSET_DIMENSION: 'assetDimension',
+
       SCRUBBING: 'scrubbing',
       SCRUBBED: 'scrubbed',
 
@@ -856,6 +874,17 @@
        * @event OO.EVENTS#SHOW_AD_CONTROLS
        */
       SHOW_AD_CONTROLS: "showAdControls",
+
+      /**
+       * Event for signaling Ad Marquee rendering:
+       *   <ul>
+       *     <li>Boolean parameter, 'false' to not show ad marquee, 'true' to show ad marquee based on skin config</li>
+       *   </ul>
+       *
+       *
+       * @event OO.EVENTS#SHOW_AD_MARQUEE
+       */
+      SHOW_AD_MARQUEE: "showAdMarquee",
 
       // Window published beforeUnload event. It's still user cancellable.
       /**
