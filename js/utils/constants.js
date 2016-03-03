@@ -865,6 +865,17 @@
       OVERLAY_RENDERING: "overlayRendering",
 
       /**
+       * Event for signaling Ad Controls (Scrubber bar and Control bar) rendering:
+       *   <ul>
+       *     <li>Boolean parameter, 'false' to not show ad controls, 'true' to show ad controls based on skin config</li>
+       *   </ul>
+       *
+       *
+       * @event OO.EVENTS#SHOW_AD_CONTROLS
+       */
+      SHOW_AD_CONTROLS: "showAdControls",
+
+      /**
        * Event for signaling Ad Marquee rendering:
        *   <ul>
        *     <li>Boolean parameter, 'false' to not show ad marquee, 'true' to show ad marquee based on skin config</li>
