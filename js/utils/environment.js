@@ -120,6 +120,10 @@
       return !!window.navigator.userAgent.match(/MSIE/) || !!window.navigator.userAgent.match(/Trident/);
     }());
 
+    OO.isEdge = (function(){
+      return !!window.navigator.userAgent.match(/Edge/);
+    }())
+
     OO.isIE11Plus = (function(){
       // check if IE
       if (!window.navigator.userAgent.match(/Trident/)) {
