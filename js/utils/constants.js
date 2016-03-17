@@ -494,6 +494,13 @@
 
       // Video Controller action events
 
+      /*
+       * Denotes that the video controller is ready for playback to be triggered.
+       * @event OO.EVENTS#VC_READY
+       * @public
+       */
+      VC_READY: 'videoControllerReady',
+
       /**
        * Commands the video controller to create a video element.
        * It should be given the following arguments:
