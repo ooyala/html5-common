@@ -1424,6 +1424,8 @@
     OO.CSS = {
       VISIBLE_POSITION : "0px",
       INVISIBLE_POSITION : "-100000px",
+      VISIBLE_DISPLAY : "block",
+      INVISIBLE_DISPLAY : "none",
       VIDEO_Z_INDEX: 10000,
       SUPER_Z_INDEX: 20000,
       ALICE_SKIN_Z_INDEX: 11000,
