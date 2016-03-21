@@ -10,7 +10,7 @@
     };
 
     OO.isPublisherConfigured = function() {
-      return OO.playerParams.pcode && OO.playerParams.playerBrandingId;
+      return !!(OO.playerParams.pcode && OO.playerParams.playerBrandingId);
     };
 
     // process tweaks
@@ -38,8 +38,8 @@
     OO.playerCount = 0;
 
     // Check environment to see if this is prod
-    OO.isProd = OO.playerParams.environment &&
-                OO.playerParams.environment.match(/^prod/i);
+    OO.isProd = !!(OO.playerParams.environment &&
+                   OO.playerParams.environment.match(/^prod/i));
 
     // Environment invariant.
     OO.platform = window.navigator.platform;
@@ -56,24 +56,24 @@
     }());
 
     OO.isWindows = (function() {
-      return OO.platform.match(/Win/);
+      return !!OO.platform.match(/Win/);
     }());
 
     OO.isIos = (function() {
-      return OO.platform.match(/iPhone/) || OO.platform.match(/iPad/) || OO.platform.match(/iPod/);
+      return !!OO.platform.match(/iPhone|iPad|iPod/);
     }());
 
     OO.isIphone = (function() {
-      return OO.platform.match(/iPhone/) || OO.platform.match(/iPod/);
+      return !!OO.platform.match(/iPhone|iPod/);
     }());
 
     OO.isIpad = (function() {
-      return OO.platform.match(/iPad/);
+      return !!OO.platform.match(/iPad/);
     }());
 
     OO.iosMajorVersion = (function() {
       try {
-        if (window.navigator.userAgent.match(/(iPad|iPhone|iPod)/)) {
+        if (OO.isIos) {
           return parseInt(window.navigator.userAgent.match(/OS (\d+)/)[1], 10);
         } else {
           return null;
@@ -84,15 +84,20 @@
     }());
 
     OO.isAndroid = (function() {
-      return OO.os.match(/Android/);
+      return OO.os.match(/Android/) && !OO.os.match(/Windows Phone/);
     }());
 
     OO.isAndroid4Plus = (function() {
-      return OO.isAndroid && !OO.os.match(/Android [23]/);
+      var version = OO.os.match(/Android [\d\.]*;/);
+      if (version && version.length > 0) {
+        version = parseInt(version[0].substring(version[0].indexOf(' ') + 1,
+                           version[0].search('[\.\;]')));
+      }
+      return OO.isAndroid && version >= 4;
     }());
 
     OO.isRimDevice = (function() {
-      return OO.os.match(/BlackBerry/) ||  OO.os.match(/PlayBook/);
+      return !!(OO.os.match(/BlackBerry/) || OO.os.match(/PlayBook/));
     }());
 
     OO.isFirefox = (function() {
@@ -105,7 +110,8 @@
 
     OO.isSafari = (function () {
       return (!!window.navigator.userAgent.match(/AppleWebKit/) &&
-              !window.navigator.userAgent.match(/Chrome/)) ;
+              !window.navigator.userAgent.match(/Chrome/) &&
+              !window.navigator.userAgent.match(/like iPhone/));
     }());
 
     OO.chromeMajorVersion = (function () {
@@ -122,7 +128,7 @@
 
     OO.isEdge = (function(){
       return !!window.navigator.userAgent.match(/Edge/);
-    }())
+    }());
 
     OO.isIE11Plus = (function(){
       // check if IE
@@ -146,7 +152,7 @@
     }());
 
     OO.isMacOs = (function() {
-      return !OO.isIos && !!OO.os.match(/Mac/);
+      return !OO.isIos && !!OO.os.match(/Mac/) && !window.navigator.userAgent.match(/like iPhone/);
     }());
 
     OO.isMacOsLionOrLater = (function() {
