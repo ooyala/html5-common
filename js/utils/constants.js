@@ -1446,13 +1446,13 @@
 
       SEEK_TO_END_LIMIT: 4,
 
-      __end_marker : true,
-
       CLOSED_CAPTIONS: {
         SHOWING: 2,
         HIDDEN: 1,
         DISABLED: 0
-      }
+      },
+
+      __end_marker : true
     };
 
   }(OO,OO._));
