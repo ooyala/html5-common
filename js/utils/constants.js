@@ -1269,12 +1269,28 @@
         WEBM: "webm",
 
         /**
-         * @description <code>OO.VIDEO.ENCODING.AKAMAI_HD3 ('akamai_hd3')</code>:
-         *   An encoding type for akamai hd3 streams.
-         * @constant OO.VIDEO.ENCODING.AKAMAI_HD3
+         * @description <code>OO.VIDEO.ENCODING.AKAMAI_HD_VOD ('akamai_hd_vod')</code>:
+         *   An encoding type for akamai hd vod streams.
+         * @constant OO.VIDEO.ENCODING.AKAMAI_HD_VOD
          * @type {string}
          */
-        AKAMAI_HD3: "akamai_hd3",
+        AKAMAI_HD_VOD: "akamai_hd_vod",
+
+        /**
+         * @description <code>OO.VIDEO.ENCODING.AKAMAI_HD2_VOD_HLS ('akamai_hd2_vod_hls')</code>:
+         *   An encoding type for akamai hd2 vod hls streams.
+         * @constant OO.VIDEO.ENCODING.AKAMAI_HD2_VOD_HLS
+         * @type {string}
+         */
+        AKAMAI_HD2_VOD_HLS: "akamai_hd2_vod_hls",
+
+        /**
+         * @description <code>OO.VIDEO.ENCODING.AKAMAI_HD2_VOD_HDS ('akamai_hd2_vod_hds')</code>:
+         *   An encoding type for akamai hd2 vod hds streams.
+         * @constant OO.VIDEO.ENCODING.AKAMAI_HD2_VOD_HDS
+         * @type {string}
+         */
+        AKAMAI_HD2_VOD_HDS: "akamai_hd2_vod_hds",
 
         /**
          * @description <code>OO.VIDEO.ENCODING.FAXS_HLS ('faxs_hls')</code>:
