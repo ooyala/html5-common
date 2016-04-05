@@ -1446,9 +1446,33 @@
 
       SEEK_TO_END_LIMIT: 4,
 
+      /**
+       * @description <code>OO.CONSTANTS.CLOSED_CAPTIONS</code>:
+       *   An object containing the possible modes for the closed caption text tracks.
+       * @constant OO.CONSTANTS.CLOSED_CAPTIONS
+       * @type {object}
+       */
       CLOSED_CAPTIONS: {
+        /**
+         * @description <code>OO.CONSTANTS.CLOSED_CAPTIONS.SHOWING ('showing')</code>:
+         *   Closed caption text track mode for showing closed captions.
+         * @constant OO.CONSTANTS.CLOSED_CAPTIONS.SHOWING
+         * @type {string}
+         */
         SHOWING: "showing",
+        /**
+         * @description <code>OO.CONSTANTS.CLOSED_CAPTIONS.HIDDEN ('hidden')</code>:
+         *   Closed caption text track mode for hiding closed captions.
+         * @constant OO.CONSTANTS.CLOSED_CAPTIONS.HIDDEN
+         * @type {string}
+         */
         HIDDEN: "hidden",
+        /**
+         * @description <code>OO.CONSTANTS.CLOSED_CAPTIONS.DISABLED ('disabled')</code>:
+         *   Closed caption text track mode for disabling closed captions.
+         * @constant OO.CONSTANTS.CLOSED_CAPTIONS.DISABLED
+         * @type {string}
+         */
         DISABLED: "disabled"
       },
 
