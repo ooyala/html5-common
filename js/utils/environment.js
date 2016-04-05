@@ -84,7 +84,7 @@
     }());
 
     OO.isAndroid = (function() {
-      return OO.os.match(/Android/) && !OO.os.match(/Windows Phone/);
+      return !!(OO.os.match(/Android/) && !OO.os.match(/Windows Phone/));
     }());
 
     OO.isAndroid4Plus = (function() {
@@ -105,7 +105,7 @@
     }());
 
     OO.isChrome = (function () {
-      return !!window.navigator.userAgent.match(/Chrome/);
+      return (!!window.navigator.userAgent.match(/Chrome/) && !window.navigator.userAgent.match(/Edge/));
     }());
 
     OO.isSafari = (function () {
