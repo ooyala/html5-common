@@ -1447,9 +1447,9 @@
       SEEK_TO_END_LIMIT: 4,
 
       CLOSED_CAPTIONS: {
-        SHOWING: 2,
-        HIDDEN: 1,
-        DISABLED: 0
+        SHOWING: "showing",
+        HIDDEN: "hidden",
+        DISABLED: "disabled"
       },
 
       __end_marker : true
