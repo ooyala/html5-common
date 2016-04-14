@@ -740,8 +740,22 @@
        * Commands the video controller to prepare all video elements for playback.  This event should be
        * called on a click event and used to enable api-control on html5-based video elements.
        * @event OO.EVENTS#VC_PRIME_VIDEOS
+       * @public
        */
       VC_PRIME_VIDEOS: 'videoPrimeVideos',
+
+      /**
+       * Notifies the player of tags (such as ID3) encountered during video playback.
+       * The handler is called with the following arguments:
+       * <ul>
+       *   <li>The id of the video that has paused (as defined by the module that controls it). (string)</li>
+       *   <li>The type of metadata tag found, such as ID3. (string)</li>
+       *   <li>The metadata. (string|object)</li>
+       * </ul>
+       * @event OO.EVENTS#VC_TAG_FOUND
+       * @public
+       */
+      VC_TAG_FOUND: 'videoTagFound',
 
       WILL_FETCH_ADS: 'willFetchAds',
       DISABLE_SEEKING: 'disableSeeking',
