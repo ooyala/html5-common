@@ -7,7 +7,7 @@
 	/**
 	 * @description The Ooyala Player run-time states apply to an Ooyala player while it is running. These states apply equally to both HTML5 and Flash players.
 	 * State changes occur either through user interaction (for example, the user clickes the PLAY button), or programmatically via API calls. For more information,
-	 * see <a href="http://support.ooyala.com/developers/documentation/api/player_v3_api_events.html" target="target">Player Message Bus Events</a>.
+	 * see <a href="http://support.ooyala.com/developers/documentation/api/pbv4_api_events.html" target="target">Player Message Bus Events</a>.
 	 * @summary Represents the Ooyala Player run-time states.
 	 * @namespace OO.STATE
 	 */
@@ -44,7 +44,7 @@
     /**
      * @description The Ooyala Player events are default events that are published by the event bus.Your modules can subscribe to any and all of these events.
      * Use message bus events to subscribe to or publish player events from video to ad playback. For more information,
-     * see <a href="http://support.ooyala.com/developers/documentation/api/player_v3_api_events.html" target="target">Player Message Bus Events</a>.
+     * see <a href="http://support.ooyala.com/developers/documentation/api/pbv4_api_events.html" target="target">Player Message Bus Events</a>.
      * @summary Represents the Ooyala Player events.
      * @namespace OO.EVENTS
      */
@@ -90,8 +90,7 @@
       EMBED_CODE_CHANGED : 'embedCodeChanged',
 
       /**
-       * An <code>AUTH_TOKEN_CHANGED</code> event is triggered when an authorization token is issued by the
-       * <a href="http://support.ooyala.com/developers/documentation/concepts/player_v3_authorization_api.html" target="target">Player Authorization API</a>.<br/>
+       * An <code>AUTH_TOKEN_CHANGED</code> event is triggered when an authorization token is issued by the Player Authorization API.<br/>
        * For example, in device registration, an authorization token is issued, as described in
        * <a href="http://support.ooyala.com/developers/documentation/concepts/device_registration.html" target="target">Device Registration</a>.
        * The handler is called with a new value for the authorization token.<br/><br/>
