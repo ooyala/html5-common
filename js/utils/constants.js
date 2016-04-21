@@ -1282,6 +1282,22 @@
         WEBM: "webm",
 
         /**
+         * @description <code>OO.VIDEO.ENCODING.HLS_DRM ('hls_drm')</code>:
+         *   An encoding type for drm HLS streams.
+         * @constant OO.VIDEO.ENCODING.HLS_DRM
+         * @type {string}
+         */
+        HLS_DRM: "hls_drm",
+
+        /**
+         * @description <code>OO.VIDEO.ENCODING.DASH_DRM ('dash_drm')</code>:
+         *   An encoding type for drm dash streams.
+         * @constant OO.VIDEO.ENCODING.DASH_DRM
+         * @type {string}
+         */
+        DASH_DRM: "dash_drm",
+
+        /**
          * @description <code>OO.VIDEO.ENCODING.AKAMAI_HD_VOD ('akamai_hd_vod')</code>:
          *   An encoding type for akamai hd vod streams.
          * @constant OO.VIDEO.ENCODING.AKAMAI_HD_VOD
