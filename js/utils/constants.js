@@ -1210,6 +1210,28 @@
        */
       ENCODING: {
         /**
+         * @description Represents DRM support for the encoding types.
+         * @summary Represents the <code>OO.VIDEO.ENCODING.DRM</code> encoding types.
+         * @namespace OO.VIDEO.ENCODING.DRM
+         */
+        DRM : {
+          /**
+           * @description <code>OO.VIDEO.ENCODING.DRM.HLS ('hls_drm')</code>:
+           *   An encoding type for drm HLS streams.
+           * @constant OO.VIDEO.ENCODING.DRM.HLS
+           * @type {string}
+           */
+          HLS: "hls_drm",
+
+          /**
+           * @description <code>OO.VIDEO.ENCODING.DRM.DASH ('dash_drm')</code>:
+           *   An encoding type for drm dash streams.
+           * @constant OO.VIDEO.ENCODING.DRM.DASH
+           * @type {string}
+           */
+          DASH: "dash_drm",
+        },
+        /**
          * @description <code>OO.VIDEO.ENCODING.AUDIO ('audio')</code>:
          *   An encoding type for non-drm audio streams.
          * @constant OO.VIDEO.ENCODING.AUDIO
@@ -1280,22 +1302,6 @@
          * @type {string}
          */
         WEBM: "webm",
-
-        /**
-         * @description <code>OO.VIDEO.ENCODING.HLS_DRM ('hls_drm')</code>:
-         *   An encoding type for drm HLS streams.
-         * @constant OO.VIDEO.ENCODING.HLS_DRM
-         * @type {string}
-         */
-        HLS_DRM: "hls_drm",
-
-        /**
-         * @description <code>OO.VIDEO.ENCODING.DASH_DRM ('dash_drm')</code>:
-         *   An encoding type for drm dash streams.
-         * @constant OO.VIDEO.ENCODING.DASH_DRM
-         * @type {string}
-         */
-        DASH_DRM: "dash_drm",
 
         /**
          * @description <code>OO.VIDEO.ENCODING.AKAMAI_HD_VOD ('akamai_hd_vod')</code>:
