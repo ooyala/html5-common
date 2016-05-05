@@ -22,10 +22,10 @@
       OO.playerParams.analytics_ssl_server = parameters.analytics_ssl_server || OO.playerParams.analytics_ssl_server || null;
       OO.playerParams.analytics_server = parameters.analytics_server || OO.playerParams.analytics_server || null;
 
-      updateEnvironment();
+      updateServerHost();
     };
 
-    var updateEnvironment = function () {
+    var updateServerHost = function () {
       OO.SERVER =
       {
         API: OO.isSSL ? OO.playerParams.api_ssl_server || "https://player.ooyala.com" :
@@ -334,7 +334,7 @@
 
     OO.isSSL = document.location.protocol == "https:";
 
-    updateEnvironment();
+    updateServerHost();
 
     // returns true iff environment-specific feature is required to run in current environment
     OO.requiredInEnvironment = OO.featureEnabled = function(feature) {
