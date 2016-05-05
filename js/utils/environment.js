@@ -4,14 +4,38 @@
 
     // Init publisher's OO.playerParams via player parameter object
     OO.configurePublisher = function(parameters) {
-      OO.playerParams.pcode = OO.playerParams.pcode || parameters.pcode || '';
-      OO.playerParams.playerBrandingId = OO.playerParams.playerBrandingId || parameters.playerBrandingId || '';
-      OO.playerParams.debug = OO.playerParams.debug || parameters.debug || '';
+      OO.playerParams.pcode = parameters.pcode || OO.playerParams.pcode || '';
+      OO.playerParams.playerBrandingId = parameters.playerBrandingId || OO.playerParams.playerBrandingId || '';
+      OO.playerParams.debug = parameters.debug || OO.playerParams.debug || '';
     };
 
     OO.isPublisherConfigured = function() {
       return !!(OO.playerParams.pcode && OO.playerParams.playerBrandingId);
     };
+
+    // Set API end point environment
+    OO.setServerHost = function(parameters) {
+      OO.playerParams.api_ssl_server = parameters.api_ssl_server || OO.playerParams.api_ssl_server || null;
+      OO.playerParams.api_server = parameters.api_server || OO.playerParams.api_server || null;
+      OO.playerParams.auth_ssl_server = parameters.auth_ssl_server || OO.playerParams.auth_ssl_server || null;
+      OO.playerParams.auth_server = parameters.auth_server || OO.playerParams.auth_server || null;
+      OO.playerParams.analytics_ssl_server = parameters.analytics_ssl_server || OO.playerParams.analytics_ssl_server || null;
+      OO.playerParams.analytics_server = parameters.analytics_server || OO.playerParams.analytics_server || null;
+
+      updateEnvironment();
+    };
+
+    var updateEnvironment = function () {
+      OO.SERVER =
+      {
+        API: OO.isSSL ? OO.playerParams.api_ssl_server || "https://player.ooyala.com" :
+                        OO.playerParams.api_server || "http://player.ooyala.com",
+        AUTH: OO.isSSL ? OO.playerParams.auth_ssl_server || "https://player.ooyala.com/sas" :
+                        OO.playerParams.auth_server || "http://player.ooyala.com/sas",
+        ANALYTICS: OO.isSSL ? OO.playerParams.analytics_ssl_server || "https://player.ooyala.com" :
+                              OO.playerParams.analytics_server || "http://player.ooyala.com"
+      };
+    }
 
     // process tweaks
     // tweaks is optional. Hazmat takes care of this but throws an undesirable warning.
@@ -310,21 +334,7 @@
 
     OO.isSSL = document.location.protocol == "https:";
 
-    OO.SERVER =
-    {
-      API: OO.isSSL ? OO.playerParams.api_ssl_server || "https://player.ooyala.com" :
-                      OO.playerParams.api_server || "http://player.ooyala.com",
-      AUTH: OO.isSSL ? OO.playerParams.auth_ssl_server || "https://player.ooyala.com/sas" :
-                      OO.playerParams.auth_server || "http://player.ooyala.com/sas",
-      ANALYTICS: OO.isSSL ? OO.playerParams.analytics_ssl_server || "https://player.ooyala.com" :
-                            OO.playerParams.analytics_server || "http://player.ooyala.com",
-      HASTUR: OO.isSSL ? OO.playerParams.hastur_ssl_server ||
-                         (OO.isProd ? "https://l.ooyala.com/player_events" :
-                                      "https://l-staging.ooyala.com/player_events") :
-                         OO.playerParams.hastur_server ||
-                         (OO.isProd ? "http://l.ooyala.com/player_events" :
-                                      "http://l-staging.ooyala.com/player_events")
-    };
+    updateEnvironment();
 
     // returns true iff environment-specific feature is required to run in current environment
     OO.requiredInEnvironment = OO.featureEnabled = function(feature) {
