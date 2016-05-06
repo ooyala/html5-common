@@ -506,7 +506,22 @@
        * <ul>
        *   <li>videoId (string)
        *   </li>
-       *   <li>object of streams denoted by encoding type (object)
+       *   <li>streams (object) containing:
+       *     <ul>
+       *       <li>Encoding type (string) as key defined in OO.VIDEO.ENCODINGS
+       *       </li>
+       *       <li>Key-value pair (object) as value containing:
+       *         <ul>
+       *           <li>url (string): Url of the stream</li>
+       *           <li>drm (object): Denoted by type of DRM with data as value object containing:
+       *             <ul>
+       *               <li>Type of DRM (string) as key (ex. "widevine", "fairplay", "playready")</li>
+       *               <li>DRM specific data (object) as value</li>
+       *             </ul>
+       *           </li>
+       *         </ul>
+       *       </li>
+       *     </ul>
        *   </li>
        *   <li>parentContainer of the element. This is a jquery element. (object)
        *   </li>
