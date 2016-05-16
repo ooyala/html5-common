@@ -90,6 +90,94 @@
       EMBED_CODE_CHANGED : 'embedCodeChanged',
 
       /**
+       * An attempt has been made to set a new asset.
+       * If you are developing a plugin, reset the internal state since the player is switching to a new asset.
+       * Depending on the context, the handler is called with:
+       *   <ul>
+       *     <li>The asset Object</li>
+       *     <li>The asset Object, with options.</li>
+       *   </ul>
+       *
+       * <h5>Compatibility: </h5>
+       * <p style="text-indent: 1em;">HTML5, Flash</p>
+       *
+       * @event OO.EVENTS#SET_ASSET
+       */
+      SET_ASSET: 'setAsset',
+
+      /**
+       * A new asset has been specified to for playback and has basic passed validation.
+       * The handler will be called with an object representing the new asset.
+       * The object will have the following structure:
+       *   <ul>
+       *     <li>{
+       *           Content:
+       *           <ul>
+       *                 <li>title: String,</li>
+       *                 <li>description: String,</li>
+       *                 <li>duration: Number,</li>
+       *                 <li>posterImages: Array,</li>
+       *                 <li>streams: Array,</li>
+       *                 <li>captions: Array</li>
+       *           </ul>
+       *     }</li>
+       *
+       *   </ul>
+       *
+       * <h5>Compatibility: </h5>
+       * <p style="text-indent: 1em;">HTML5, Flash</p>
+       *
+       * @event OO.EVENTS#ASSET_CHANGED
+       */
+      ASSET_CHANGED: 'assetChanged',
+
+      /**
+       * An attempt has been made to update current asset for cms-less player.
+       * The handler is called with:
+       *   <ul>
+       *     <li>The asset Object, with optional fields populated</li>
+       *   </ul>
+       *
+       *
+       * @event OO.EVENTS#UPDATE_ASSET
+       * @public
+       */
+      UPDATE_ASSET: 'updateAsset',
+
+      /**
+       * New asset parameters were specified for playback and have passed basic validation.
+       * The handler will be called with an object representing the new parameters.
+       * The object will have the following structure:
+       *   <ul> {
+       *     <li> id: String </li>
+       *     <li> content:
+       *           <ul>
+       *                 <li>title: String,</li>
+       *                 <li>description: String,</li>
+       *                 <li>duration: Number,</li>
+       *                 <li>posterImages: Array,</li>
+       *                 <li>streams: Array,</li>
+       *                 <li>captions: Array</li>
+       *           </ul>
+       *     </li>
+       *     <li> relatedVideos:
+       *           <ul>
+       *                 <li>title: String,</li>
+       *                 <li>description: String,</li>
+       *                 <li>thumbnailUrl: String,</li>
+       *                 <li>asset: Object</li>
+       *           </ul>
+       *     </li>
+       *   }</ul>
+       *
+       * <h5>Compatibility: </h5>
+       * <p style="text-indent: 1em;">HTML5, Flash</p>
+       *
+       * @event OO.EVENTS#ASSET_UPDATED
+       */
+      ASSET_UPDATED: 'assetUpdated',
+
+      /**
        * An <code>AUTH_TOKEN_CHANGED</code> event is triggered when an authorization token is issued by the Player Authorization API.<br/>
        * For example, in device registration, an authorization token is issued, as described in
        * <a href="http://support.ooyala.com/developers/documentation/concepts/device_registration.html" target="target">Device Registration</a>.
