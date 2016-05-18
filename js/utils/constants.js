@@ -237,6 +237,27 @@
        */
       METADATA_FETCHED: 'metadataFetched',
 
+      /**
+       * The thumbnail metadata needed for thumbnail previews while seeking has been fetched and will be
+       * passed through to the event handlers subscribing to this event.
+       * Thumbnail metadata will have the following structure:
+       * {
+          data: {
+            available_time_slices: [10],  //times that have thumbnails available
+            available_widths: [100],       //widths of thumbnails available
+            thumbnails: {
+                  10: {100: {url: http://test.com, height: 100, width: 100}}
+            }
+          }
+        }
+       * <br/><br/>
+       *
+       *
+       * @event OO.EVENTS#THUMBNAILS_FETCHED
+       * @public
+       */
+      THUMBNAILS_FETCHED: 'thumbnailsFetched',
+
       WILL_FETCH_AUTHORIZATION: 'willFetchAuthorization',
 
       /**
