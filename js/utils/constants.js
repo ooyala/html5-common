@@ -40,6 +40,20 @@
       __end_marker : true
     };
 
+    // Ad Types
+    /**
+     * @description The known ad types that Ooyala Player supports.
+     * @summary Represents the supported Ooyala ad types.
+     * @namespace OO.STATE
+     */
+    OO.ADTYPE =
+    {
+      LINEAR_OVERLAY: "linearOverlay",
+      NONLINEAR_OVERLAY: "nonlinearOverlay",
+      LINEAR_VIDEO: "linearVideo",
+      COMPANION: "companion"
+    };
+
     // All Events Constants
     /**
      * @description The Ooyala Player events are default events that are published by the event bus.Your modules can subscribe to any and all of these events.
