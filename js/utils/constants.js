@@ -636,10 +636,10 @@
        *   </li>
        *   <li>optional params object (object) containing:
        *     <ul>
-       *       <li>closedCaptions: The possible closed captions available on this video. (object)</li>
-       *       <li>crossorigin: The crossorigin attribute value to set on the video. (string)</li>
-       *       <li>technology: The core video technology required (string) (ex. OO.VIDEO.TECHNOLOGY.HTML5)</li>
-       *       <li>features: The video plugin features required (string) (ex. OO.VIDEO.FEATURE.CLOSED_CAPTIONS)</li>
+       *       <li><code>closedCaptions</code>: The possible closed captions available on this video. (object)</li>
+       *       <li><code>crossorigin</code>: The crossorigin attribute value to set on the video. (string)</li>
+       *       <li><code>technology</code>: The core video technology required (string) (ex. OO.VIDEO.TECHNOLOGY.HTML5)</li>
+       *       <li><code>features</code>: The video plugin features required (string) (ex. OO.VIDEO.FEATURE.CLOSED_CAPTIONS)</li>
        *     </ul>
        *   </li>
        * </ul>
@@ -653,11 +653,11 @@
        * <ul>
        *   <li>Object containing:
        *     <ul>
-       *       <li>videoId: The id of the video as defined by the module that controls it.</li>
-       *       <li>encodings: The encoding types supported by the new video element.</li>
-       *       <li>parent: The parent element of the video element.</li>
-       *       <li>domId: The DOM id of the video element.</li>
-       *       <li>videoElement: The video element or its wrapper as created by the video plugin.</li>
+       *       <li><code>videoId</code>: The id of the video as defined by the module that controls it.</li>
+       *       <li><code>encodings</code>: The encoding types supported by the new video element.</li>
+       *       <li><code>parent</code>: The DOM id of the parent element of the video element.</li>
+       *       <li><code>domId</code>: The DOM id of the video element.</li>
+       *       <li><code>plugin</code>: The name of the video plugin used to create the video element.</li>
        *     </ul>
        *   </li>
        * </ul>
