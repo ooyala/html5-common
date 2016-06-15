@@ -648,6 +648,18 @@
       VC_CREATE_VIDEO_ELEMENT: 'videoControllerCreateVideoElement',
 
       /**
+       * A message to be interpreted by the Video Controller to update the URL of the stream for an element.
+       * The handler is called with the following arguments:
+       * <ul>
+       *   <li>The name of the element who's URL is being altered</li>
+       *   <li>The new url to be used</li>
+       * </ul>
+       * @event OO.EVENTS#VC_UPDATE_ELEMENT_STREAM
+       * @public
+       */
+      VC_UPDATE_ELEMENT_STREAM: 'videoControllerUpdateElementStream',
+
+      /**
        * The Video Controller has created the desired video element, as denoted by id (string).
        * The handler is called with the following arguments:
        * <ul>
