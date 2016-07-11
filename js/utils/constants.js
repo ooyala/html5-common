@@ -1465,6 +1465,14 @@
         AKAMAI_HD2_VOD_HDS: "akamai_hd2_vod_hds",
 
         /**
+         * @description <code>OO.VIDEO.ENCODING.AKAMAI_HD2_HDS ('akamai_hd2_hds')</code>:
+         *   An encoding type for akamai hd2 live/remote hds streams.
+         * @constant OO.VIDEO.ENCODING.AKAMAI_HD2_HDS
+         * @type {string}
+         */
+        AKAMAI_HD2_HDS: "akamai_hd2_hds",
+
+        /**
          * @description <code>OO.VIDEO.ENCODING.FAXS_HLS ('faxs_hls')</code>:
          *   An encoding type for adobe faxs streams.
          * @constant OO.VIDEO.ENCODING.FAXS_HLS
