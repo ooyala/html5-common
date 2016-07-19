@@ -205,11 +205,13 @@
        *
        * @event OO.EVENTS#GUID_SET
        */
-      GUID_SET : 'guidSet',
+      GUID_SET: 'guidSet',
 
       WILL_FETCH_PLAYER_XML: 'willFetchPlayerXml',
       PLAYER_XML_FETCHED: 'playerXmlFetched',
       WILL_FETCH_CONTENT_TREE: 'willFetchContentTree',
+
+      SAVE_PLAYER_SETTINGS: 'savePlayerSettings',
 
       /**
        * A content tree was fetched. The handler is called with a JSON object that represents the content data for the current asset.<br/><br/>
@@ -1671,6 +1673,8 @@
          */
         DISABLED: "disabled"
       },
+
+      OOYALA_PLAYER_SETTINGS_KEY: 'ooyala_player_settings',
 
       __end_marker : true
     };
