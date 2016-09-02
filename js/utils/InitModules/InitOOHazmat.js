@@ -7,9 +7,7 @@ var hazmatConfig = {};
 // so we need to use a global var instead
 if (window && !window.debugHazmat) {
   hazmatConfig = {
-    fail: function() { return; },
-    warn: function() { return; },
-    log: function() { return; }
+    warn: function() { return; }
   };
 }
 
