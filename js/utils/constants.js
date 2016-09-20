@@ -1404,11 +1404,19 @@
 
         /**
          * @description <code>OO.VIDEO.ENCODING.IMA ('ima')</code>:
-         *   A string that repsents a video stream that is controlled and configured directly by IMA.
+         *   A string that represents a video stream that is controlled and configured directly by IMA.
          * @constant OO.VIDEO.ENCODING.IMA
          * @type {string}
          */
         IMA: "ima",
+
+        /**
+         * @description <code>OO.VIDEO.ENCODING.PULSE ('pulse')</code>:
+         *   A string that represents a video stream that is controlled and configured directly by Pulse.
+         * @constant OO.VIDEO.ENCODING.PULSE
+         * @type {string}
+         */
+        PULSE: "pulse",
 
         /**
          * @description <code>OO.VIDEO.ENCODING.MP4 ('mp4')</code>:
