@@ -412,6 +412,19 @@
        */
       BITRATE_CHANGED: 'bitrateChanged',
 
+      /**
+       * Lists available audio tracks. Returns an array containing objects of all available audio tracks.
+       * <p>For more information see
+       * <a href="https://bitmovin.com/files/player-documentation/5.2.0/module-API.html#getAvailableAudio">Bitmovin API | getAvailableAudio()</a>.
+       * </p>
+       *
+       * @event OO.EVENTS#MULTI_AUDIO_INFO_AVAILABLE
+       */
+      MULTI_AUDIO_INFO_AVAILABLE: 'multiAudioInfoAvailable',
+      SET_TARGET_AUDIO: 'setTargetAudio',
+      AUDIO_CHANGED: 'audioChanged',
+      SEND_AUDIO_CHANGE: 'receiveAudioChangeEvent',
+
       CLOSED_CAPTIONS_INFO_AVAILABLE: 'closedCaptionsInfoAvailable',
       SET_CLOSED_CAPTIONS_LANGUAGE: 'setClosedCaptionsLanguage',
       CLOSED_CAPTION_CUE_CHANGED: 'closedCaptionCueChanged',
@@ -1566,8 +1579,19 @@
          * @constant OO.VIDEO.FEATURE.BITRATE_CONTROL
          * @type {string}
          */
-        BITRATE_CONTROL: "bitrateControl"
-      },
+        BITRATE_CONTROL: "bitrateControl",
+
+       /**
+        * @description <code>OO.VIDEO.FEATURE.AUDIO_CONTROL ('audioControl')</code>:
+        *   The video object allows the playing audio to be selected via the SET_TARGET_AUDIO event.
+        *   The video controller must publish MULTI_AUDIO_INFO_AVAILABLE with a list of audio tracks that can be selected.
+        *   The video controller must publish AUDIO_CHANGED events with the audio track that was switched to.
+        *   A audio object should at minimum contain id, lang, and label properties.
+        * @constant OO.VIDEO.FEATURE.AUDIO_CONTROL
+        * @type {string}
+        */
+       AUDIO_CONTROL: "audioControl"
+       },
 
       /**
        * @description Represents the <code>OO.VIDEO.TECHNOLOGY</code> core video technology.
