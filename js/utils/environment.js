@@ -186,6 +186,18 @@
       return (parseInt(macOs[1],10) >= 10 && parseInt(macOs[2],10) >= 7);
     }());
 
+    OO.macOsSafariVersion = (function() {
+      try {
+        if (OO.isMacOs && OO.isSafari) {
+          return parseInt(window.navigator.userAgent.match(/Version\/(\d+)/)[1], 10);
+        } else {
+          return null;
+        }
+      } catch(err) {
+        return null;
+      }
+    }());
+
     OO.isKindleHD = (function(){
       return !!OO.os.match(/Silk\/2/);
     }());
