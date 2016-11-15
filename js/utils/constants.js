@@ -1070,6 +1070,13 @@
       REPORT_DISCOVERY_CLICK: "reportDiscoveryClick",
 
       /**
+       * Denotes that the playlist plugin is ready and has configured the playlist Pod(s).
+       * @event OO.EVENTS#PLAYLISTS_READY
+       * @public
+       */
+      PLAYLISTS_READY: 'playlistReady',
+
+      /**
        * The UI layer has finished its initial render. The handler is called with an object
        * of the following structure:
        *
