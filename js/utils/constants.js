@@ -1434,6 +1434,14 @@
         MP4: "mp4",
 
         /**
+         * @description <code>OO.VIDEO.ENCODING.YOUTUBE ('youtube')</code>:
+         *   An encoding type for non-drm youtube streams.
+         * @constant OO.VIDEO.ENCODING.YOUTUBE
+         * @type {string}
+         */
+        YOUTUBE:"youtube",
+        
+        /**
          * @description <code>OO.VIDEO.ENCODING.RTMP ('rtmp')</code>:
          *   An encoding type for non-drm rtmp streams.
          * @constant OO.VIDEO.ENCODING.RTMP
