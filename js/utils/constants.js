@@ -240,6 +240,15 @@
       METADATA_FETCHED: 'metadataFetched',
 
       /**
+       * The skin metadata, which is set in Backlot, has been retrieved.
+       * The handler is called with the JSON object containing metadata set in Backlot for the current asset.
+       * This is used by the skin plug-in to deep merge with the embedded skin config.<br/><br/>
+       *
+       * @event OO.EVENTS#SKIN_METADATA_FETCHED
+       */
+      SKIN_METADATA_FETCHED: 'skinMetadataFetched',
+
+      /**
        * The thumbnail metadata needed for thumbnail previews while seeking has been fetched and will be
        * passed through to the event handlers subscribing to this event.
        * Thumbnail metadata will have the following structure:
