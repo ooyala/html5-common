@@ -241,7 +241,7 @@
 
       /**
        * The skin metadata, which is set in Backlot, has been retrieved.
-       * The handler is called with the JSON object containing metadata set in backlot for the current asset.
+       * The handler is called with the JSON object containing metadata set in Backlot for the current asset.
        * This is used by the skin plug-in to deep merge with the embedded skin config.<br/><br/>
        *
        * @event OO.EVENTS#SKIN_METADATA_FETCHED
