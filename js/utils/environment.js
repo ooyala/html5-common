@@ -284,7 +284,7 @@
      * Determines if a single video element should be used.<br/>
      * <ul><li>Use single video element on iOS, all versions</li>
      *     <li>Use single video element on Android, all versions</li></ul>
-     * 01/11/17 Previous JDDoc for Android - to be removed once fix is confirmed and there is no regression:<br />
+     * 01/11/17 Previous JSDoc for Android - to be removed once fix is confirmed and there is no regression:<br />
      * <ul><li>Use single video element on Android < v4.0</li>
      *     <li>Use single video element on Android with Chrome < v40<br/>
      *       (note, it might work on earlier versions but don't know which ones! Does not work on v18)</li></ul>
