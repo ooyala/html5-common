@@ -240,6 +240,15 @@
       METADATA_FETCHED: 'metadataFetched',
 
       /**
+       * The skin metadata, which is set in Backlot, has been retrieved.
+       * The handler is called with the JSON object containing metadata set in Backlot for the current asset.
+       * This is used by the skin plug-in to deep merge with the embedded skin config.<br/><br/>
+       *
+       * @event OO.EVENTS#SKIN_METADATA_FETCHED
+       */
+      SKIN_METADATA_FETCHED: 'skinMetadataFetched',
+
+      /**
        * The thumbnail metadata needed for thumbnail previews while seeking has been fetched and will be
        * passed through to the event handlers subscribing to this event.
        * Thumbnail metadata will have the following structure:
@@ -1083,6 +1092,13 @@
       REPORT_DISCOVERY_CLICK: "reportDiscoveryClick",
 
       /**
+       * Denotes that the playlist plugin is ready and has configured the playlist Pod(s).
+       * @event OO.EVENTS#PLAYLISTS_READY
+       * @public
+       */
+      PLAYLISTS_READY: 'playlistReady',
+
+      /**
        * The UI layer has finished its initial render. The handler is called with an object
        * of the following structure:
        *
@@ -1417,11 +1433,19 @@
 
         /**
          * @description <code>OO.VIDEO.ENCODING.IMA ('ima')</code>:
-         *   A string that repsents a video stream that is controlled and configured directly by IMA.
+         *   A string that represents a video stream that is controlled and configured directly by IMA.
          * @constant OO.VIDEO.ENCODING.IMA
          * @type {string}
          */
         IMA: "ima",
+
+        /**
+         * @description <code>OO.VIDEO.ENCODING.PULSE ('pulse')</code>:
+         *   A string that represents a video stream that is controlled and configured directly by Pulse.
+         * @constant OO.VIDEO.ENCODING.PULSE
+         * @type {string}
+         */
+        PULSE: "pulse",
 
         /**
          * @description <code>OO.VIDEO.ENCODING.MP4 ('mp4')</code>:
@@ -1431,6 +1455,14 @@
          */
         MP4: "mp4",
 
+        /**
+         * @description <code>OO.VIDEO.ENCODING.YOUTUBE ('youtube')</code>:
+         *   An encoding type for non-drm youtube streams.
+         * @constant OO.VIDEO.ENCODING.YOUTUBE
+         * @type {string}
+         */
+        YOUTUBE:"youtube",
+        
         /**
          * @description <code>OO.VIDEO.ENCODING.RTMP ('rtmp')</code>:
          *   An encoding type for non-drm rtmp streams.
