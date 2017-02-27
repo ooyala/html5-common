@@ -78,6 +78,21 @@
       SET_EMBED_CODE : 'setEmbedCode',
 
       /**
+       * An attempt has been made to set the embed code by Ooyala Ads.
+       * If you are developing a plugin, reset the internal state since the player is switching to a new asset.
+       * Depending on the context, the handler is called with:
+       *   <ul>
+       *     <li>The ID (embed code) of the asset.</li>
+       *     <li>The ID (embed code) of the asset, with options.</li>
+       *   </ul>
+       *
+       *
+       * @event OO.EVENTS#SET_EMBED_CODE_AFTER_OOYALA_AD
+       * @private
+       */
+      SET_EMBED_CODE_AFTER_OOYALA_AD : 'setEmbedCodeAfterOoyalaAd',
+
+      /**
        * The player's embed code has changed. The handler is called with two parameters:
        * <ul>
        *    <li>The ID (embed code) of the asset.</li>
