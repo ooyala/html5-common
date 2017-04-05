@@ -202,6 +202,10 @@
       return !!OO.os.match(/Silk\/2/);
     }());
 
+    OO.supportMSE = (function() {
+      return 'MediaSource' in window || 'WebKitMediaSource' in window || 'mozMediaSource' in window || 'msMediaSource' in window;
+    });
+
     OO.supportAds = (function() {
       // We are disabling ads for Android 2/3 device, the reason is that main video is not resuming after
       // ads finish. Util we can figure out a work around, we will keep ads disabled.
