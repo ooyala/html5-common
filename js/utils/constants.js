@@ -1107,9 +1107,9 @@
        *   </ul>
        *
        *
-       * @event OO.EVENTS#SESSION_ID_CHANGED
+       * @event OO.EVENTS#SESSION_ID_SET
        */
-      SESSION_ID_CHANGED: "sessionIdChanged",
+      SESSION_ID_SET: "sessionIdSet",
 
       /**
        * An attempt has been made to set content session id. This will get sent out when new asset is loaded.
