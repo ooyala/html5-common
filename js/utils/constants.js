@@ -1101,6 +1101,39 @@
       PLAYLISTS_READY: 'playlistReady',
 
       /**
+       * An attempt has been made to set session id. This will remain same until the player is destroyed.
+       *   <ul>
+       *     <li>The ID (session id) of the player.</li>
+       *   </ul>
+       *
+       *
+       * @event OO.EVENTS#SESSION_ID_CHANGED
+       */
+      SESSION_ID_CHANGED: "sessionIdChanged",
+
+      /**
+       * An attempt has been made to set content session id. This will get sent out when new asset is loaded.
+       *   <ul>
+       *     <li>The ID (content session id) of the asset about to be played.</li>
+       *   </ul>
+       *
+       *
+       * @event OO.EVENTS#CONTENT_SESSION_ID_CHANGED
+       */
+      CONTENT_SESSION_ID_CHANGED: "contentSessionIdChanged",
+
+      /**
+       * An attempt has been made to set ad break session id. This will get sent out with every new ad break.
+       *   <ul>
+       *     <li>The ID (ad break session) of the ad break.</li>
+       *   </ul>
+       *
+       *
+       * @event OO.EVENTS#AD_BREAK_SESSION_ID_CHANGED
+       */
+      AD_BREAK_SESSION_ID_CHANGED: "adBreakSessionIdChanged",
+
+      /**
        * The UI layer has finished its initial render. The handler is called with an object
        * of the following structure:
        *
