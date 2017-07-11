@@ -374,4 +374,32 @@
       return (OO.locale || document.documentElement.lang || navigator.language ||
               navigator.userLanguage || "en").substr(0,2).toUpperCase();
     };
+
+    OO.ENVIRONMENT = {
+      isWindows: OO.isWindows,
+      isIos: OO.isIos,
+      isIphone: OO.isIphone,
+      isIpad: OO.isIpad,
+      iosMajorVersion: OO.iosMajorVersion,
+      isAndroid: OO.isAndroid,
+      isAndroid4Plus: OO.isAndroid4Plus,
+      isRimDevice: OO.isRimDevice,
+      isFirefox: OO.isFirefox,
+      isChrome: OO.isChrome,
+      isSafari: OO.isSafari,
+      chromeMajorVersion: OO.chromeMajorVersion,
+      isIE: OO.isIE,
+      isEdge: OO.isEdge,
+      isIE11Plus: OO.isIE11Plus,
+      isWinPhone: OO.isWinPhone,
+      isSmartTV: OO.isSmartTV,
+      isMacOs: OO.isMacOs,
+      isMacOsLionOrLater: OO.isMacOsLionOrLater,
+      macOsSafariVersion: OO.macOsSafariVersion,
+      isKindleHD: OO.isKindleHD,
+      supportMSE: OO.supportMSE,
+      getLocale: OO.getLocale,
+      setLocale: OO.setLocale,
+      requiresSingleVideoElement: OO.requiresSingleVideoElement
+    };
   }(OO, OO._, OO.HM));

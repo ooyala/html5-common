@@ -173,7 +173,7 @@
       if (typeof value === 'string')
         return (value.toLowerCase().indexOf("true") > -1 || value.toLowerCase().indexOf("yes") > -1);
       return !!value;
-    }
+    };
 
     OO.regexEscape = function(value) {
       var specials = /[<>()\[\]{}]/g;
@@ -190,7 +190,7 @@
                                     OO.regexEscape(placeHolder) + ")", 'gi');
           url = url.replace(regexSearchVal, replaceValue);
         }, this);
-      }
+      };
 
       // replace the timestamp and referrer_url placeholders
       placeHolderReplace(OO.TEMPLATES.RANDOM_PLACE_HOLDER, ts);
@@ -296,6 +296,17 @@
       } catch (err) {
         OO.log(err);
       }
+    };
+
+    OO.UTILS = {
+      localStorage: OO.localStorage,
+      getRandomString: OO.getRandomString,
+      decode64: OO.decode64,
+      loadScriptOnce: OO.loadScriptOnce,
+      pixelPing: OO.pixelPing,
+      pixelPings: OO.pixelPings,
+      timeStringToSeconds: OO.timeStringToSeconds,
+      getNormalizedTagUrl: OO.getNormalizedTagUrl
     };
 
     OO.JSON = window.JSON;
