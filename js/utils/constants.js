@@ -1068,6 +1068,15 @@
        */
       SHOW_AD_MARQUEE: "showAdMarquee",
 
+      /**
+       * An ad plugin will publish this event whenever the ad SDK throws an ad event. Typical ad evernts are
+       * impressions, clicks, quartiles, etc. <br/><br/>
+       *
+       * @event OO.EVENTS#SDK_AD_EVENT
+       * @private
+       */
+      SDK_AD_EVENT: "sdkAdEvent",
+
       // Window published beforeUnload event. It's still user cancellable.
       /**
        * The window, document, and associated resources are being unloaded.
