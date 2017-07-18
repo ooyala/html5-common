@@ -1069,7 +1069,7 @@
       SHOW_AD_MARQUEE: "showAdMarquee",
 
       /**
-       * An ad plugin will publish this event whenever the ad SDK throws an ad event. Typical ad evernts are
+       * An ad plugin will publish this event whenever the ad SDK throws an ad event. Typical ad events are
        * impressions, clicks, quartiles, etc. <br/><br/>
        *
        * @event OO.EVENTS#SDK_AD_EVENT
