@@ -1683,7 +1683,7 @@
 
     OO.TEMPLATES = {
       RANDOM_PLACE_HOLDER: ['[place_random_number_here]', '<now>', '[timestamp]', '<rand-num>', '[cache_buster]', '[random]'],
-      REFERAK_PLACE_HOLDER: ['[referrer_url]', '[LR_URL]'],
+      REFERAK_PLACE_HOLDER: ['[referrer_url]', '[LR_URL]', '[description_url]'],
       EMBED_CODE_PLACE_HOLDER: ['[oo_embedcode]'],
       MESSAGE : '\
                   <table width="100%" height="100%" bgcolor="black" style="padding-left:55px; padding-right:55px; \
