@@ -918,6 +918,13 @@
        */
       VC_TAG_FOUND: 'videoTagFound',
 
+      /**
+       * This event is triggered when an ad sdk has been loaded successfully. <br/><br/>
+       *
+       * @event OO.EVENTS#AD_SDK_LOADED
+       */
+      AD_SDK_LOADED: 'adSdkLoaded',
+
       WILL_FETCH_ADS: 'willFetchAds',
       DISABLE_SEEKING: 'disableSeeking',
       ENABLE_SEEKING: 'enableSeeking',
