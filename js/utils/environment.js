@@ -217,7 +217,8 @@
     }());
 
     OO.allowAutoPlay = (function() {
-      return !OO.isIos && !OO.isAndroid;
+      console.log("env-html5-video-allowautoplay =",OO.isIos && !OO.isAndroid);
+	return OO.isIos && !OO.isAndroid;
     }());
 
     OO.supportTouch = (function() {
