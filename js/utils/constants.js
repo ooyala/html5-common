@@ -932,6 +932,7 @@
        * <ul>
        *   <li>The ad plugin that failed to load.</li>
        *   <li>The error message associated with the load failure.</li>
+       *   <li>If the ad was blocked or not.</li>
        * </ul>
        * @event OO.EVENTS#AD_SDK_LOAD_FAILED
        */
@@ -942,10 +943,11 @@
        * <ul>
        *   <li>The ad plugin.</li>
        *   <li>The time the ad was scheduled to play.</li>
+       *   <li>If preloading is enabled or not.</li>
        * </ul>
-       * @event OO.EVENTS#ADS_REQUEST
+       * @event OO.EVENTS#AD_REQUEST
        */
-      ADS_REQUEST: 'adsRequest',
+      AD_REQUEST: 'adRequest',
 
       /**
        * This event is triggered upon receiving a successful response for an ad request.        
@@ -956,24 +958,80 @@
        *   <li>The ad type.</li>
        *   <li>The ad request response time.</li>
        *   <li>If the response is a playlist or not.</li>
+       *   <li>Time from initial play to ad request success</li>
        * </ul>
-       * @event OO.EVENTS#ADS_REQUEST_SUCCESS
+       * @event OO.EVENTS#AD_REQUEST_SUCCESS
        */
-      ADS_REQUEST_SUCCESS: 'adsRequestSuccess',
+      AD_REQUEST_SUCCESS: 'adRequestSuccess',
 
       /**
-       * This event is triggered upon receiving an error or empty response for an ad request.        
+       * This event is triggered upon receiving an error for an ad request.        
        * <ul>
        *   <li>The ad plugin.</li>
        *   <li>The time the ad was scheduled to play.</li>
        *   <li>The final ad tag after macro substitution</li>
-       *   <li>The error code or message.</li>
+       *   <li>The error code.</li>
+       *   <li>The error message.</li>
        *   <li>If there was a request timeout or not.</li>
        *   <li>If the ad was blocked or not.</li>
        * </ul>
-       * @event OO.EVENTS#ADS_REQUEST_ERROR
+       * @event OO.EVENTS#AD_REQUEST_ERROR
        */
-      ADS_REQUEST_ERROR: 'adsRequestError',
+      AD_REQUEST_ERROR: 'adRequestError',
+
+
+      /**
+       * This event is triggered upon receiving an empty response for an ad request.        
+       * <ul>
+       *   <li>The ad plugin.</li>
+       *   <li>The time the ad was scheduled to play.</li>
+       *   <li>The final ad tag after macro substitution</li>
+       *   <li>The error code.</li>
+       *   <li>The error message.</li>
+       * </ul>
+       * @event OO.EVENTS#AD_REQUEST_EMPTY
+       */
+      AD_REQUEST_EMPTY: 'adRequestEmpty',
+
+      /**
+       * This event is triggered upon when an error occurs trying to play an ad.        
+       * <ul>
+       *   <li>The ad plugin.</li>
+       *   <li>The time the ad was scheduled to play.</li>
+       *   <li>The final ad tag after macro substitution</li>
+       *   <li>The list of alll.</li>
+       *   <li>The error code.</li>
+       *   <li>The error message.</li>
+       *   <li>The media file URL.</li>
+       * </ul>
+       * @event OO.EVENTS#AD_PLAYBACK_ERROR
+       */
+      AD_PLAYBACK_ERROR: 'adPlaybackError',
+
+      /**
+       * This event is triggered when there is an failure to load the ad sdk.        
+       * <ul>
+       *   <li>The ad plugin that failed to load.</li>
+       *   <li>The time the ad was scheduled to play.</li>
+       *   <li>The ad load time - time between ad request success and first frame started.</li>
+       *   <li>The ad protocol VAST/VPAID.</li>
+       *   <li>The ad type (Linear/NonLinear) (Overlay/Video).</li>
+       *   <li>The ad fallback position.</li>
+       * </ul>
+       * @event OO.EVENTS#AD_IMPRESSION
+       */
+      AD_IMPRESSION: 'adImpression',
+
+      /**
+       * This event is triggered when there is an failure to load the ad sdk.        
+       * <ul>
+       *   <li>The ad plugin that failed to load.</li>
+       *   <li>The time passed since the ad impression.</li>
+       *   <li>If the ad was skipped or not.</li>
+       * </ul>
+       * @event OO.EVENTS#AD_COMPLETED
+       */
+      AD_COMPLETED: 'adCompleted',
 
       WILL_FETCH_ADS: 'willFetchAds',
       DISABLE_SEEKING: 'disableSeeking',
