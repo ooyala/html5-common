@@ -1014,7 +1014,7 @@
        * </ul>
        * @event OO.EVENTS#AD_SDK_IMPRESSION
        */
-      AD_IMPRESSION: 'adSdkImpression',
+      AD_SDK_IMPRESSION: 'adSdkImpression',
 
       /**
        * This event is triggered when an ad has completed playback.        
