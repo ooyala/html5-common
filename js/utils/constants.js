@@ -933,7 +933,6 @@
        *   <li>The ad plugin that failed to load.</li>
        *   <li>The player core version.</li>
        *   <li>The error message associated with the load failure.</li>
-       *   <li>If the ad was blocked or not.</li>
        * </ul>
        * @event OO.EVENTS#AD_SDK_LOAD_FAILED
        */
@@ -944,7 +943,6 @@
        * <ul>
        *   <li>The ad plugin.</li>
        *   <li>The time the ad was scheduled to play.</li>
-       *   <li>If preloading is enabled or not.</li>
        * </ul>
        * @event OO.EVENTS#AD_REQUEST
        */
@@ -955,10 +953,7 @@
        * <ul>
        *   <li>The ad plugin.</li>
        *   <li>The time the ad was scheduled to play.</li>
-       *   <li>Number of ads returned.</li>
-       *   <li>The ad protocol (VAST/VPAID).</li>
        *   <li>The ad request response time.</li>
-       *   <li>If the response is a playlist or not.</li>
        *   <li>Time from initial play to ad request success</li>
        * </ul>
        * @event OO.EVENTS#AD_REQUEST_SUCCESS
@@ -974,7 +969,6 @@
        *   <li>The error code.</li>
        *   <li>The error message.</li>
        *   <li>If there was a request timeout or not.</li>
-       *   <li>If the ad was blocked or not.</li>
        * </ul>
        * @event OO.EVENTS#AD_REQUEST_ERROR
        */
@@ -1010,21 +1004,20 @@
       AD_PLAYBACK_ERROR: 'adPlaybackError',
 
       /**
-       * This event is triggered when there is an failure to load the ad sdk.        
+       * This event is triggered when the ad plugin sdk records an impression event.        
        * <ul>
        *   <li>The ad plugin that failed to load.</li>
        *   <li>The time the ad was scheduled to play.</li>
        *   <li>The ad load time - time between ad request success and first frame started.</li>
        *   <li>The ad protocol (VAST/VPAID).</li>
        *   <li>The ad type (Linear/NonLinear) (Overlay/Video).</li>
-       *   <li>The ad fallback position.</li>
        * </ul>
-       * @event OO.EVENTS#AD_IMPRESSION
+       * @event OO.EVENTS#AD_SDK_IMPRESSION
        */
-      AD_IMPRESSION: 'adImpression',
+      AD_IMPRESSION: 'adSdkImpression',
 
       /**
-       * This event is triggered when there is an failure to load the ad sdk.        
+       * This event is triggered when an ad has completed playback.        
        * <ul>
        *   <li>The ad plugin that failed to load.</li>
        *   <li>The time passed since the ad impression.</li>
