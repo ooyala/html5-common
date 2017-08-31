@@ -1735,7 +1735,14 @@
          * @constant OO.CONSTANTS.CLOSED_CAPTIONS.DISABLED
          * @type {string}
          */
-        DISABLED: "disabled"
+        DISABLED: "disabled",
+        /**
+         * @description <code>OO.CONSTANTS.CLOSED_CAPTIONS.NONE ('none')</code>:
+         *   Closed caption text track mode for disabling closed captions by setting none as a language.
+         * @constant OO.CONSTANTS.CLOSED_CAPTIONS.NONE
+         * @type {string}
+         */
+        NONE: "none"
       },
 
       OOYALA_PLAYER_SETTINGS_KEY: 'ooyala_player_settings',
