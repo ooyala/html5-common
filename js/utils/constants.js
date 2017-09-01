@@ -1006,11 +1006,11 @@
       /**
        * This event is triggered when the ad plugin sdk records an impression event.        
        * <ul>
-       *   <li>The ad plugin that failed to load.</li>
+       *   <li>The ad plugin.</li>
        *   <li>The time the ad was scheduled to play.</li>
        *   <li>The ad load time - time between ad request success and first frame started.</li>
-       *   <li>The ad protocol (VAST/VPAID).</li>
-       *   <li>The ad type (Linear/NonLinear) (Overlay/Video).</li>
+       *   <li>The ad protocol: VAST or VPAID.</li>
+       *   <li>The ad type: linearVideo, linearOverlay, nonLinearVideo, nonLinearOverlay.</li>
        * </ul>
        * @event OO.EVENTS#AD_SDK_IMPRESSION
        */
@@ -1019,7 +1019,7 @@
       /**
        * This event is triggered when an ad has completed playback.        
        * <ul>
-       *   <li>The ad plugin that failed to load.</li>
+       *   <li>The ad plugin.</li>
        *   <li>The time passed since the ad impression.</li>
        *   <li>If the ad was skipped or not.</li>
        * </ul>
