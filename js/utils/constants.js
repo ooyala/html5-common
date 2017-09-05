@@ -919,7 +919,7 @@
       VC_TAG_FOUND: 'videoTagFound',
 
       /**
-       * This event is triggered when an ad sdk has been loaded successfully. the handler is called with:
+       * This event is triggered when an ad sdk has been loaded successfully. The handler is called with:
        * <ul>
        *   <li>The ad plugin loaded.</li>
        * </ul>
@@ -928,7 +928,8 @@
       AD_SDK_LOADED: 'adSdkLoaded',
 
       /**
-       * This event is triggered when there is an failure to load the ad sdk.        
+       * This event is triggered when there is an failure to load the ad sdk.       
+       * The handler is called with the following arguments: 
        * <ul>
        *   <li>The ad plugin that failed to load.</li>
        *   <li>The player core version.</li>
@@ -940,6 +941,7 @@
 
       /**
        * This event is triggered whenever an ad is requested. 
+       * The handler is called with the following arguments:
        * <ul>
        *   <li>The ad plugin.</li>
        *   <li>The time the ad was scheduled to play.</li>
@@ -949,7 +951,8 @@
       AD_REQUEST: 'adRequest',
 
       /**
-       * This event is triggered upon receiving a successful response for an ad request.        
+       * This event is triggered upon receiving a successful response for an ad request. 
+       * The handler is called with the following arguments:       
        * <ul>
        *   <li>The ad plugin.</li>
        *   <li>The time the ad was scheduled to play.</li>
@@ -961,7 +964,8 @@
       AD_REQUEST_SUCCESS: 'adRequestSuccess',
 
       /**
-       * This event is triggered upon receiving an error for an ad request.        
+       * This event is triggered upon receiving an error for an ad request.       
+       * The handler is called with the following arguments: 
        * <ul>
        *   <li>The ad plugin.</li>
        *   <li>The time the ad was scheduled to play.</li>
@@ -976,7 +980,8 @@
 
 
       /**
-       * This event is triggered upon receiving an empty response for an ad request.        
+       * This event is triggered upon receiving an empty response for an ad request.
+       * The handler is called with the following arguments:        
        * <ul>
        *   <li>The ad plugin.</li>
        *   <li>The time the ad was scheduled to play.</li>
@@ -989,7 +994,8 @@
       AD_REQUEST_EMPTY: 'adRequestEmpty',
 
       /**
-       * This event is triggered upon when an error occurs trying to play an ad.        
+       * This event is triggered upon when an error occurs trying to play an ad.
+       * The handler is called with the following arguments:        
        * <ul>
        *   <li>The ad plugin.</li>
        *   <li>The time the ad was scheduled to play.</li>
@@ -1004,7 +1010,8 @@
       AD_PLAYBACK_ERROR: 'adPlaybackError',
 
       /**
-       * This event is triggered when the ad plugin sdk records an impression event.        
+       * This event is triggered when the ad plugin sdk records an impression event.
+       * The handler is called with the following arguments:        
        * <ul>
        *   <li>The ad plugin.</li>
        *   <li>The time the ad was scheduled to play.</li>
@@ -1017,7 +1024,8 @@
       AD_SDK_IMPRESSION: 'adSdkImpression',
 
       /**
-       * This event is triggered when an ad has completed playback.        
+       * This event is triggered when an ad has completed playback.
+       * The handler is called with the following arguments:        
        * <ul>
        *   <li>The ad plugin.</li>
        *   <li>The time passed since the ad impression.</li>
