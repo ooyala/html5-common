@@ -918,6 +918,123 @@
        */
       VC_TAG_FOUND: 'videoTagFound',
 
+      /**
+       * This event is triggered when an ad sdk has been loaded successfully. The handler is called with:
+       * <ul>
+       *   <li>The ad plugin loaded.</li>
+       * </ul>
+       * @event OO.EVENTS#AD_SDK_LOADED
+       */
+      AD_SDK_LOADED: 'adSdkLoaded',
+
+      /**
+       * This event is triggered when there is an failure to load the ad sdk.       
+       * The handler is called with the following arguments: 
+       * <ul>
+       *   <li>The ad plugin that failed to load.</li>
+       *   <li>The player core version.</li>
+       *   <li>The error message associated with the load failure.</li>
+       * </ul>
+       * @event OO.EVENTS#AD_SDK_LOAD_FAILED
+       */
+      AD_SDK_LOAD_FAILED: 'adSdkLoadFailed',
+
+      /**
+       * This event is triggered whenever an ad is requested. 
+       * The handler is called with the following arguments:
+       * <ul>
+       *   <li>The ad plugin.</li>
+       *   <li>The time the ad was scheduled to play.</li>
+       * </ul>
+       * @event OO.EVENTS#AD_REQUEST
+       */
+      AD_REQUEST: 'adRequest',
+
+      /**
+       * This event is triggered upon receiving a successful response for an ad request. 
+       * The handler is called with the following arguments:       
+       * <ul>
+       *   <li>The ad plugin.</li>
+       *   <li>The time the ad was scheduled to play.</li>
+       *   <li>The ad request response time.</li>
+       *   <li>Time from initial play to ad request success</li>
+       * </ul>
+       * @event OO.EVENTS#AD_REQUEST_SUCCESS
+       */
+      AD_REQUEST_SUCCESS: 'adRequestSuccess',
+
+      /**
+       * This event is triggered upon receiving an error for an ad request.       
+       * The handler is called with the following arguments: 
+       * <ul>
+       *   <li>The ad plugin.</li>
+       *   <li>The time the ad was scheduled to play.</li>
+       *   <li>The final ad tag after macro substitution</li>
+       *   <li>The error code.</li>
+       *   <li>The error message.</li>
+       *   <li>If there was a request timeout or not.</li>
+       * </ul>
+       * @event OO.EVENTS#AD_REQUEST_ERROR
+       */
+      AD_REQUEST_ERROR: 'adRequestError',
+
+
+      /**
+       * This event is triggered upon receiving an empty response for an ad request.
+       * The handler is called with the following arguments:        
+       * <ul>
+       *   <li>The ad plugin.</li>
+       *   <li>The time the ad was scheduled to play.</li>
+       *   <li>The final ad tag after macro substitution</li>
+       *   <li>The error code.</li>
+       *   <li>The error message.</li>
+       * </ul>
+       * @event OO.EVENTS#AD_REQUEST_EMPTY
+       */
+      AD_REQUEST_EMPTY: 'adRequestEmpty',
+
+      /**
+       * This event is triggered upon when an error occurs trying to play an ad.
+       * The handler is called with the following arguments:        
+       * <ul>
+       *   <li>The ad plugin.</li>
+       *   <li>The time the ad was scheduled to play.</li>
+       *   <li>The final ad tag after macro substitution</li>
+       *   <li>The list of all video plugins.</li>
+       *   <li>The error code.</li>
+       *   <li>The error message.</li>
+       *   <li>The media file URL.</li>
+       * </ul>
+       * @event OO.EVENTS#AD_PLAYBACK_ERROR
+       */
+      AD_PLAYBACK_ERROR: 'adPlaybackError',
+
+      /**
+       * This event is triggered when the ad plugin sdk records an impression event.
+       * The handler is called with the following arguments:        
+       * <ul>
+       *   <li>The ad plugin.</li>
+       *   <li>The time the ad was scheduled to play.</li>
+       *   <li>The ad load time - time between ad request success and first frame started.</li>
+       *   <li>The ad protocol: VAST or VPAID.</li>
+       *   <li>The ad type: linearVideo, linearOverlay, nonLinearVideo, nonLinearOverlay.</li>
+       * </ul>
+       * @event OO.EVENTS#AD_SDK_IMPRESSION
+       */
+      AD_SDK_IMPRESSION: 'adSdkImpression',
+
+      /**
+       * This event is triggered when an ad has completed playback.
+       * The handler is called with the following arguments:        
+       * <ul>
+       *   <li>The ad plugin.</li>
+       *   <li>The time passed since the ad impression.</li>
+       *   <li>If the ad was skipped or not.</li>
+       * </ul>
+       * @event OO.EVENTS#AD_COMPLETED
+       */
+      AD_COMPLETED: 'adCompleted',
+
       WILL_FETCH_ADS: 'willFetchAds',
       DISABLE_SEEKING: 'disableSeeking',
       ENABLE_SEEKING: 'enableSeeking',
