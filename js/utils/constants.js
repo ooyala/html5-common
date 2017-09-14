@@ -608,6 +608,97 @@
        * @event OO.EVENTS#ERROR
        */
       ERROR: 'error',
+      
+      /**
+       * An api related error has occurred. The handler is called with the following arguments:
+       * <ul>
+       *   <li>The error code.</li>
+       *   <li>The error message.</li>
+       *   <li>The url requested.</li>
+       * </ul>
+       *
+       *
+       * @event OO.EVENTS#API_ERROR
+       * @public
+       */
+      API_ERROR: 'apiError',
+
+      /**
+       * Event containing the bitrate used at the start of playback. The handler is called with the following arguments:
+       * <ul>
+       *   <li>The bitrate in kbps.</li>
+       * </ul>
+       *
+       *
+       * @event OO.EVENTS#BITRATE_INITIAL
+       * @public
+       */
+      BITRATE_INITIAL: 'bitrateInitial',
+
+      /**
+       * Event containing the bitrate used five seconds into playback. The handler is called with the following arguments:
+       * <ul>
+       *   <li>The bitrate in kbps.</li>
+       * </ul>
+       *
+       *
+       * @event OO.EVENTS#BITRATE_FIVE_SEC
+       * @public
+       */
+      BITRATE_FIVE_SEC: 'bitrateFiveSec',
+
+      /**
+       * Event containing the bitrate used thirty seconds into playback. The handler is called with the following arguments:
+       * <ul>
+       *   <li>The bitrate in kbps.</li>
+       * </ul>
+       *
+       *
+       * @event OO.EVENTS#BITRATE_STABLE
+       * @public
+       */
+      BITRATE_STABLE: 'bitrateStable',
+
+      /**
+       * A playback error has occurred before the video start. The handler is called with the following arguments:
+       * <ul>
+       *   <li>The error code.</li>
+       *   <li>The error message.</li>
+       *   <li>The la url if DRM used.</li>
+       * </ul>
+       *
+       *
+       * @event OO.EVENTS#PLAYBACK_START_ERROR
+       * @public
+       */
+      PLAYBACK_START_ERROR: 'playbackStartError',
+
+      /**
+       * A playback error has occurred midstream. The handler is called with the following arguments:
+       * <ul>
+       *   <li>The error code.</li>
+       *   <li>The error message.</li>
+       *   <li>The playhead position.</li>
+       * </ul>
+       *
+       *
+       * @event OO.EVENTS#PLAYBACK_MIDSTREAM_ERROR
+       * @public
+       */
+      PLAYBACK_MIDSTREAM_ERROR: 'playbackMidstreamError',
+
+      /**
+       * The video plugin has sent an error message. The handler is called with the following arguments:
+       * <ul>
+       *   <li>The error code.</li>
+       *   <li>The error message.</li>
+       * </ul>
+       *
+       *
+       * @event OO.EVENTS#VC_PLUGIN_ERROR
+       * @public
+       */
+      VC_PLUGIN_ERROR: 'videoPluginError',
 
       /**
        * The player is currently being destroyed, and anything created by your module must also be deleted.
