@@ -686,6 +686,21 @@
        * @public
        */
       PLAYBACK_MIDSTREAM_ERROR: 'playbackMidstreamError',
+ 
+      /**
+       * A plugin has been loaded successfully. The handler is called with the following arguments:
+       * <ul>
+       *   <li>The player core version.</li>
+       *   <li>The plugin type: ad, video, analytics, playtest, skin.</li>
+       *   <li>The plugin name.</li>
+       *   <li>The time it took to load the plugin.</li>
+       * </ul>
+       *
+       *
+       * @event OO.EVENTS#PLAYBACK_MIDSTREAM_ERROR
+       * @public
+       */
+      PLUGIN_LOADED: 'pluginLoaded',
 
       /**
        * The video plugin has sent an error message. The handler is called with the following arguments:
