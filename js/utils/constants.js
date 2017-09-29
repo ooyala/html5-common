@@ -351,6 +351,7 @@
        * The handler is called with the following arguments:
        * <ul>
        *   <li>The url of the video that is buffering.</li>
+       *   <li>The playhead position.</li>
        *   <li>The id of the video that is buffering (as defined by the module that controls it).</li>
        * </ul><br/><br/>
        *
@@ -1025,6 +1026,27 @@
       VC_TAG_FOUND: 'videoTagFound',
 
       /**
+       * Notifies the player that the initial playback of content has started.
+       * <ul>
+       *   <li>The time since the initial play request was made (number)</li>
+       *   <li>Boolean parameter. True if video was autoplayed, false otherwise (boolean)</li>
+       *   <li>Boolean parameter. True if the video had an ad play before it started.
+       *       This includes midrolls that play before content due to an initial playhead time > 0. 
+       *       False otherwise  (number)</li>(boolean)</li>
+       *   <li>The initial position of the playhead upon playback start. (number)</li>
+       *   <li>The video plugin used for playback (string)</li>
+       *   <li>The browser technology used - HTML5, Flash, Mixed, or Other (string)</li>
+       *   <li>The stream encoding type, i.e. MP4, HLS, Dash, etc. (string)</li>
+       *   <li>The URL of the content being played (string)</li>
+       *   <li>The DRM being used, none if there is no DRM (string)</li>
+       *   <li>Boolean parameter. True if a live stream is playing. False if VOD.(boolean)</li>
+       * </ul>
+       * @event OO.EVENTS#INITIAL_PLAY_STARTING
+       * @public
+       */
+      INITIAL_PLAY_STARTING: 'initialPlayStarting',
+
+      /**
        * This event is triggered when an ad sdk has been loaded successfully. The handler is called with:
        * <ul>
        *   <li>The ad plugin loaded.</li>
@@ -1598,6 +1620,14 @@
       ANALYTICS: _.template('<%=server%>/reporter.js'),
       THUMBNAILS: _.template('<%=server%>/api/v1/thumbnail_images/<%=embedCode%>'),
       __end_marker : true
+    };
+
+    OO.PLUGINS = {
+      ADS: "ads",
+      VIDEO: "video",
+      ANALYTICS: "analytics",
+      PLAYLIST: "playlist",
+      SKIN: "skin"
     };
 
     OO.VIDEO = {
