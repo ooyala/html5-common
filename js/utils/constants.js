@@ -351,6 +351,7 @@
        * The handler is called with the following arguments:
        * <ul>
        *   <li>The url of the video that is buffering.</li>
+       *   <li>The playhead position.</li>
        *   <li>The id of the video that is buffering (as defined by the module that controls it).</li>
        * </ul><br/><br/>
        *
@@ -608,6 +609,112 @@
        * @event OO.EVENTS#ERROR
        */
       ERROR: 'error',
+      
+      /**
+       * An api related error has occurred. The handler is called with the following arguments:
+       * <ul>
+       *   <li>The error code.</li>
+       *   <li>The error message.</li>
+       *   <li>The url requested.</li>
+       * </ul>
+       *
+       *
+       * @event OO.EVENTS#API_ERROR
+       * @public
+       */
+      API_ERROR: 'apiError',
+
+      /**
+       * Event containing the bitrate used at the start of playback. The handler is called with the following arguments:
+       * <ul>
+       *   <li>The bitrate in kbps.</li>
+       * </ul>
+       *
+       *
+       * @event OO.EVENTS#BITRATE_INITIAL
+       * @public
+       */
+      BITRATE_INITIAL: 'bitrateInitial',
+
+      /**
+       * Event containing the bitrate used five seconds into playback. The handler is called with the following arguments:
+       * <ul>
+       *   <li>The bitrate in kbps.</li>
+       * </ul>
+       *
+       *
+       * @event OO.EVENTS#BITRATE_FIVE_SEC
+       * @public
+       */
+      BITRATE_FIVE_SEC: 'bitrateFiveSec',
+
+      /**
+       * Event containing the bitrate used thirty seconds into playback. The handler is called with the following arguments:
+       * <ul>
+       *   <li>The bitrate in kbps.</li>
+       * </ul>
+       *
+       *
+       * @event OO.EVENTS#BITRATE_STABLE
+       * @public
+       */
+      BITRATE_STABLE: 'bitrateStable',
+
+      /**
+       * A playback error has occurred before the video start. The handler is called with the following arguments:
+       * <ul>
+       *   <li>The error code.</li>
+       *   <li>The error message.</li>
+       *   <li>The la url if DRM used.</li>
+       * </ul>
+       *
+       *
+       * @event OO.EVENTS#PLAYBACK_START_ERROR
+       * @public
+       */
+      PLAYBACK_START_ERROR: 'playbackStartError',
+
+      /**
+       * A playback error has occurred midstream. The handler is called with the following arguments:
+       * <ul>
+       *   <li>The error code.</li>
+       *   <li>The error message.</li>
+       *   <li>The playhead position.</li>
+       * </ul>
+       *
+       *
+       * @event OO.EVENTS#PLAYBACK_MIDSTREAM_ERROR
+       * @public
+       */
+      PLAYBACK_MIDSTREAM_ERROR: 'playbackMidstreamError',
+ 
+      /**
+       * A plugin has been loaded successfully. The handler is called with the following arguments:
+       * <ul>
+       *   <li>The player core version.</li>
+       *   <li>The plugin type: ad, video, analytics, playtest, skin.</li>
+       *   <li>The plugin name.</li>
+       *   <li>The time it took to load the plugin.</li>
+       * </ul>
+       *
+       *
+       * @event OO.EVENTS#PLAYBACK_MIDSTREAM_ERROR
+       * @public
+       */
+      PLUGIN_LOADED: 'pluginLoaded',
+
+      /**
+       * The video plugin has sent an error message. The handler is called with the following arguments:
+       * <ul>
+       *   <li>The error code.</li>
+       *   <li>The error message.</li>
+       * </ul>
+       *
+       *
+       * @event OO.EVENTS#VC_PLUGIN_ERROR
+       * @public
+       */
+      VC_PLUGIN_ERROR: 'videoPluginError',
 
       /**
        * The player is currently being destroyed, and anything created by your module must also be deleted.
@@ -917,6 +1024,27 @@
        * @public
        */
       VC_TAG_FOUND: 'videoTagFound',
+
+      /**
+       * Notifies the player that the initial playback of content has started.
+       * <ul>
+       *   <li>The time since the initial play request was made (number)</li>
+       *   <li>Boolean parameter. True if video was autoplayed, false otherwise (boolean)</li>
+       *   <li>Boolean parameter. True if the video had an ad play before it started.
+       *       This includes midrolls that play before content due to an initial playhead time > 0. 
+       *       False otherwise  (number)</li>(boolean)</li>
+       *   <li>The initial position of the playhead upon playback start. (number)</li>
+       *   <li>The video plugin used for playback (string)</li>
+       *   <li>The browser technology used - HTML5, Flash, Mixed, or Other (string)</li>
+       *   <li>The stream encoding type, i.e. MP4, HLS, Dash, etc. (string)</li>
+       *   <li>The URL of the content being played (string)</li>
+       *   <li>The DRM being used, none if there is no DRM (string)</li>
+       *   <li>Boolean parameter. True if a live stream is playing. False if VOD.(boolean)</li>
+       * </ul>
+       * @event OO.EVENTS#INITIAL_PLAY_STARTING
+       * @public
+       */
+      INITIAL_PLAY_STARTING: 'initialPlayStarting',
 
       /**
        * This event is triggered when an ad sdk has been loaded successfully. The handler is called with:
@@ -1492,6 +1620,14 @@
       ANALYTICS: _.template('<%=server%>/reporter.js'),
       THUMBNAILS: _.template('<%=server%>/api/v1/thumbnail_images/<%=embedCode%>'),
       __end_marker : true
+    };
+
+    OO.PLUGINS = {
+      ADS: "ads",
+      VIDEO: "video",
+      ANALYTICS: "analytics",
+      PLAYLIST: "playlist",
+      SKIN: "skin"
     };
 
     OO.VIDEO = {
