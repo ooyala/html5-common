@@ -315,9 +315,15 @@
 
       /**
        * Play has been called for the first time. <br/><br/>
+       * The handler is called with the following arguments:
+       * <ul>
+       *   <li>The unix timestamp of the initial playtime</li>
+       *   <li>True if the playback request was the result of an autoplay, false or undefined otherwise</li>
+       * </ul>
        *
        *
        * @event OO.EVENTS#INITIAL_PLAY
+       * @public
        */
       INITIAL_PLAY: "initialPlay", // when play is called for the very first time ( in start screen )
 
