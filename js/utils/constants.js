@@ -591,30 +591,32 @@
       VOLUME_CHANGED: 'volumeChanged',
 
       /**
-       * A request to mute has been made.
+       * A request to change the mute state has been made.
        * The handler is called with the following arguments:
        * <ul>
+       *   <li>The desired mute state of the video element.</li>
        *   <li>The id of the video on which to mute (as defined by the module that controls it).
        *        If null or undefined, all video elements volume will be changed</li>
        * </ul>
        *
        *
-       * @event OO.EVENTS#MUTE
+       * @event OO.EVENTS#CHANGE_MUTE_STATE
        */
-      MUTE: 'mute',
+      CHANGE_MUTE_STATE: 'changeMuteState',
 
       /**
-       * A request to unmute has been made.
+       * The mute state has changed.
        * The handler is called with the following arguments:
        * <ul>
-       *   <li>The id of the video on which to unmute (as defined by the module that controls it).
+       *   <li>The current mute state of the video element.</li>
+       *   <li>The id of the video on which to mute (as defined by the module that controls it).
        *        If null or undefined, all video elements volume will be changed</li>
        * </ul>
        *
        *
-       * @event OO.EVENTS#UNMUTE
+       * @event OO.EVENTS#MUTE_STATE_CHANGED
        */
-      UNMUTE: 'unmute',
+      MUTE_STATE_CHANGED: 'muteStateChanged',
 
       /**
        * Controls are shown.<br/><br/>
