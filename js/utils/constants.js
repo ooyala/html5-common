@@ -315,9 +315,15 @@
 
       /**
        * Play has been called for the first time. <br/><br/>
+       * The handler is called with the following arguments:
+       * <ul>
+       *   <li>The unix timestamp of the initial playtime</li>
+       *   <li>True if the playback request was the result of an autoplay, false or undefined otherwise</li>
+       * </ul>
        *
        *
        * @event OO.EVENTS#INITIAL_PLAY
+       * @public
        */
       INITIAL_PLAY: "initialPlay", // when play is called for the very first time ( in start screen )
 
@@ -583,6 +589,35 @@
        * @event OO.EVENTS#VOLUME_CHANGED
        */
       VOLUME_CHANGED: 'volumeChanged',
+
+      /**
+       * A request to change the mute state has been made.
+       * The handler is called with the following arguments:
+       * <ul>
+       *   <li>The desired mute state of the video element.</li>
+       *   <li>The id of the video on which to mute (as defined by the module that controls it).
+       *        If null or undefined, all video elements volume will be changed</li>
+       * </ul>
+       *
+       *
+       * @event OO.EVENTS#CHANGE_MUTE_STATE
+       * @public
+       */
+      CHANGE_MUTE_STATE: 'changeMuteState',
+
+      /**
+       * The mute state has changed.
+       * The handler is called with the following arguments:
+       * <ul>
+       *   <li>The current mute state of the video element.</li>
+       *   <li>The id of the video that was muted (as defined by the module that controls it).</li>
+       * </ul>
+       *
+       *
+       * @event OO.EVENTS#MUTE_STATE_CHANGED
+       * @public
+       */
+      MUTE_STATE_CHANGED: 'muteStateChanged',
 
       /**
        * Controls are shown.<br/><br/>
