@@ -601,6 +601,7 @@
        *
        *
        * @event OO.EVENTS#CHANGE_MUTE_STATE
+       * @public
        */
       CHANGE_MUTE_STATE: 'changeMuteState',
 
@@ -609,12 +610,12 @@
        * The handler is called with the following arguments:
        * <ul>
        *   <li>The current mute state of the video element.</li>
-       *   <li>The id of the video on which to mute (as defined by the module that controls it).
-       *        If null or undefined, all video elements volume will be changed</li>
+       *   <li>The id of the video that was muted (as defined by the module that controls it).</li>
        * </ul>
        *
        *
        * @event OO.EVENTS#MUTE_STATE_CHANGED
+       * @public
        */
       MUTE_STATE_CHANGED: 'muteStateChanged',
 
