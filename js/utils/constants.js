@@ -1101,7 +1101,7 @@
       PLAYLISTS_READY: 'playlistReady',
 
       /**
-       * It shows that type of a video was changed, and now we need to clear video type value
+       * It shows that a type of a video was changed
        * @event OO.EVENTS#VIDEO_TYPE_CHANGED
        * @public
        */
