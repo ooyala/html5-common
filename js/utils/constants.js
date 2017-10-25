@@ -1390,6 +1390,13 @@
       PLAYLISTS_READY: 'playlistReady',
 
       /**
+       * It shows that a type of a video was changed
+       * @event OO.EVENTS#VIDEO_TYPE_CHANGED
+       * @public
+       */
+      VIDEO_TYPE_CHANGED: "videoTypeChanged",
+
+      /**
        * The UI layer has finished its initial render. The handler is called with an object
        * of the following structure:
        *
