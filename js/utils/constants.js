@@ -597,6 +597,8 @@
        *   <li>The desired mute state of the video element.</li>
        *   <li>The id of the video on which to mute (as defined by the module that controls it).
        *        If null or undefined, all video elements volume will be changed</li>
+       *   <li>Whether or not the request was from a user action. True if it was from a user action,
+       *        false otherwise.</li>
        * </ul>
        *
        *
@@ -611,6 +613,8 @@
        * <ul>
        *   <li>The current mute state of the video element.</li>
        *   <li>The id of the video that was muted (as defined by the module that controls it).</li>
+       *   <li>Whether or not the mute state was changed for muted autoplay. True if it was
+       *        done for muted autoplay, false or undefined otherwise.</li>
        * </ul>
        *
        *
@@ -926,6 +930,17 @@
        * @event OO.EVENTS#VC_PLAY
        */
       VC_PLAY: 'videoPlay',
+
+      /**
+        * Notifies the video element to play.
+        * The handler is called with the following arguments:
+        * <ul>
+        *   <li>The id of the video to play (as defined by the module that controls it).</li>
+        * </ul>
+        * @event OO.EVENTS#PLAY_VIDEO_ELEMENT
+        * @private
+        */
+      PLAY_VIDEO_ELEMENT: 'playVideoElement',
 
       /**
        * The video element has detected a command to play and will begin playback.
