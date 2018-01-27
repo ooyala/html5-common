@@ -1,13 +1,14 @@
 require("./InitOO.js");
 
-if (!window.$)
-{
+if ($ !== undefined) {
+  $.noConflict();
+}
+if (!(jQuery && $)) {
+  window.jQuery = require('jquery');
   window.$ = require('jquery');
 }
 
-$ = window.$.noConflict(true);
-
-if (!OO.$)
-{
-  OO.$ = $;
+if (!(OO.jQuery && OO.$)) {
+  OO.jQuery = window.jQuery;
+  OO.$ = window.$;
 }
