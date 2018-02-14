@@ -298,6 +298,31 @@
       }
     };
 
+    /**
+     * Converts a value to a number or returns null if it can't be converted or is not a finite value.
+     * @public
+     * @method OO#ensureNumber
+     * @param {*} value The value to convert.
+     * @param {*} defaultValue A default value to return when the input is not a valid number.
+     * @return {Number} The Number equivalent of value if it can be converted and is finite.
+     * When value doesn't meet the criteria the function will return either defaultValue (if provided) or null.
+     */
+    OO.ensureNumber = function(value, defaultValue) {
+      var number;
+      if (value === null || _.isArray(value)) {
+        value = NaN;
+      }
+      if (_.isNumber(value)) {
+        number = value;
+      } else {
+        number = Number(value);
+      }
+      if (!isFinite(number)) {
+        return (typeof defaultValue === 'undefined') ? null : defaultValue;
+      }
+      return number;
+    };
+
     OO.JSON = window.JSON;
 
   }(OO, OO._, OO.$));
