@@ -756,6 +756,27 @@
       VC_PLUGIN_ERROR: 'videoPluginError',
 
       /**
+       * Notifies the player that the initial playback of content has started.
+       * <ul>
+       *   <li>The time since the initial play request was made (number)</li>
+       *   <li>Boolean parameter. True if video was autoplayed, false otherwise (boolean)</li>
+       *   <li>Boolean parameter. True if the video had an ad play before it started.
+       *       This includes midrolls that play before content due to an initial playhead time > 0. 
+       *       False otherwise  (number)</li>(boolean)</li>
+       *   <li>The initial position of the playhead upon playback start. (number)</li>
+       *   <li>The video plugin used for playback (string)</li>
+       *   <li>The browser technology used - HTML5, Flash, Mixed, or Other (string)</li>
+       *   <li>The stream encoding type, i.e. MP4, HLS, Dash, etc. (string)</li>
+       *   <li>The URL of the content being played (string)</li>
+       *   <li>The DRM being used, none if there is no DRM (string)</li>
+       *   <li>Boolean parameter. True if a live stream is playing. False if VOD.(boolean)</li>
+       * </ul>
+       * @event OO.EVENTS#INITIAL_PLAY_STARTING
+       * @public
+       */
+      INITIAL_PLAY_STARTING: 'initialPlayStarting',
+
+      /**
        * The player is currently being destroyed, and anything created by your module must also be deleted.
        * After the destruction is complete, there is nothing left to send an event.
        * Any plugin that creates or has initialized any long-living logic should listen to this event and clean up that logic.
@@ -1396,7 +1417,24 @@
       // DiscoveryApi publishes these, OoyalaAnalytics listens for them and propagates to reporter.js
       REPORT_DISCOVERY_IMPRESSION: "reportDiscoveryImpression",
       REPORT_DISCOVERY_CLICK: "reportDiscoveryClick",
+      
+      // These discovery events are propagated to the iq plugin
+      DISCOVERY_API: {
+        /**
+         * Represents the discovery display event
+         * @event OO.EVENTS.DISCOVERY_API#SEND_DISPLAY_EVENT
+         * @public
+        */
+        SEND_DISPLAY_EVENT: "sendDisplayEvent",
 
+        /**
+         * Represents the discovery click event
+         * @event OO.EVENTS.DISCOVERY_API#SEND_CLICK_EVENT
+         * @public
+        */
+        SEND_CLICK_EVENT: "sendClickEvent"
+      },
+      
       /**
        * Denotes that the playlist plugin is ready and has configured the playlist Pod(s).
        * @event OO.EVENTS#PLAYLISTS_READY
