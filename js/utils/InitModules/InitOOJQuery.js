@@ -4,8 +4,8 @@ if (typeof $ !== "undefined") {
   $.noConflict();
 }
 if (!(window.jQuery && window.$)) {
-  window.jQuery = require('jquery');
-  window.$ = require('jquery');
+  window.jQuery = require("jquery");
+  window.$ = require("jquery");
 }
 
 if (!(OO.jQuery && OO.$)) {
