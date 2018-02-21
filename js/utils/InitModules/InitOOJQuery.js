@@ -1,9 +1,9 @@
 require("./InitOO.js");
 
-if ($ !== undefined) {
+if (typeof $ !== "undefined") {
   $.noConflict();
 }
-if (!(jQuery && $)) {
+if (!(window.jQuery && window.$)) {
   window.jQuery = require('jquery');
   window.$ = require('jquery');
 }
