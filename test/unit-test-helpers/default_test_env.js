@@ -22,6 +22,8 @@ global.window = document.createWindow();
 // by node
 global.window.setTimeout = setTimeout;
 global.navigator = window.navigator;
+global.window.$ = require("jquery");
+OO.$ = global.window.$;
 
 global.expect = require('expect.js');
 
@@ -38,6 +40,5 @@ OO.log = console.log;
 // In a browser environment, all of the properties of "window" (like navigator) are in the global scope:
 OO._.extend(global, window);
 
-require(COMMON_SRC_ROOT + "utils/InitModules/InitOOJQuery.js"); //this needs to come after the extend(global, window) line above otherwise $ gets set to undefined.
 require(COMMON_SRC_ROOT + "utils/InitModules/InitOOHazmat.js");
 require(COMMON_SRC_ROOT + "utils/InitModules/InitOOPlayerParamsDefault.js");
