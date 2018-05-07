@@ -78,6 +78,19 @@
       SET_EMBED_CODE : 'setEmbedCode',
 
       /**
+       * HEVC playback availablility has been checked
+       * The handler is called with:
+       *   <ul>
+       *     <li>canPlayHevc (boolean) If HEVC can be played in the current environment.</li>
+       *   </ul>
+       *
+       *
+       * @event OO.EVENTS#HEVC_CHECKED
+       * @private
+       */
+      HEVC_CHECKED : 'hevcChecked',
+
+      /**
        * An attempt has been made to set the embed code by Ooyala Ads.
        * If you are developing a plugin, reset the internal state since the player is switching to a new asset.
        * Depending on the context, the handler is called with:
@@ -1702,6 +1715,46 @@
         * @type {string}
         */
         UNABLE_TO_CREATE_VIDEO_ELEMENT:'unable_to_create_video_element',
+      },
+
+      /**
+       * @namespace OO.ERROR.MEDIA
+       */
+      MEDIA: {
+
+        /**
+         * @description <code>OO.ERROR.MEDIA.MEDIA_ERR_ABORTED ('aborted')</code>:
+         * The fetching of the associated resource was aborted by the user's request.
+         * @constant OO.ERROR.MEDIA.MEDIA_ERR_ABORTED
+         * @type {string}
+         */
+        MEDIA_ERR_ABORTED: "aborted",
+
+        /**
+         * @description <code>OO.ERROR.MEDIA.MEDIA_ERR_NETWORK ('aborted')</code>:
+         * Some kind of network error occurred which prevented the media from being 
+         * successfully fetched, despite having previously been available.
+         * @constant OO.ERROR.MEDIA.MEDIA_ERR_NETWORK
+         * @type {string}
+         */
+        MEDIA_ERR_NETWORK: "network_error",
+
+        /**
+         * @description <code>OO.ERROR.MEDIA.MEDIA_ERR_DECODE ('aborted')</code>:
+         * Despite having previously been determined to be usable, an error occurred 
+         * while trying to decode the media resource, resulting in an error.
+         * @constant OO.ERROR.MEDIA.MEDIA_ERR_DECODE
+         * @type {string}
+         */
+        MEDIA_ERR_DECODE:  "decode_error",
+
+        /**
+         * @description <code>OO.ERROR.MEDIA.MEDIA_ERR_SRC_NOT_SUPPORTED ('aborted')</code>:
+         * The associated resource or media provider object has been found to be unsuitable.
+         * @constant OO.ERROR.MEDIA.MEDIA_ERR_SRC_NOT_SUPPORTED
+         * @type {string}
+         */
+        MEDIA_ERR_SRC_NOT_SUPPORTED: "unsupported_source"
       }
     };
 
@@ -2055,6 +2108,11 @@
       CONTROLS_BOTTOM_PADDING: 10,
 
       SEEK_TO_END_LIMIT: 4,
+
+      HEVC_CODEC: {
+        HEV1: "hev1",
+        HVC1: "hvc1"
+      },    
 
       /**
        * @description <code>OO.CONSTANTS.CLOSED_CAPTIONS</code>:
