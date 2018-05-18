@@ -120,6 +120,24 @@
       return OO.isAndroid && version >= 4;
     }());
 
+    /**
+     * Check if Android version > 4.3
+     * @returns {boolean} true if OS is not Android or Android version > 4.3 otherwise false
+     */
+    OO.isAndroid4_4Plus = (function() {
+      var isAndroid4_4Plus = true;
+      if (OO.isAndroid) {
+        var userAgent = OO.os.match(/Android [\d\.]*;/);
+        if (userAgent && userAgent.length) {
+          var userAgentLowerCase = userAgent[0].toLowerCase();
+          var version = userAgentLowerCase.match(/android\s([0-9\.]*)/)[1];
+          var android4_3 = 4.3;
+          isAndroid4_4Plus = parseFloat(version) > android4_3;
+        }
+      }
+      return isAndroid4_4Plus;
+    }());
+
     OO.isRimDevice = (function() {
       return !!(OO.os.match(/BlackBerry/) || OO.os.match(/PlayBook/));
     }());
