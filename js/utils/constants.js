@@ -347,6 +347,15 @@
       REPLAY : 'replay',
 
       /**
+       * The user is trying to set the playbackspeed of the main content.
+       * <ul>
+       *   <li>The desired speed</li>
+       * </ul>
+       * @event OO.EVENTS#SET_PLAYBACK_SPEED
+       */
+      SET_PLAYBACK_SPEED: "setPlaybackSpeed",
+
+      /**
        * The playhead time changed. The handler is called with the following arguments:
        * <ul>
        *   <li>The current time.</li>
@@ -2141,7 +2150,22 @@
          * @constant OO.CONSTANTS.CLOSED_CAPTIONS.DISABLED
          * @type {string}
          */
-        DISABLED: "disabled"
+        DISABLED: "disabled",
+
+        PLAYBACK_SPEED: {
+          /**
+           * The minimum allowed speed multiplier for a video playback.
+           * @constant OO.CONSTANTS.PLAYBACK_SPEED.MIN
+           * @type {Number}
+           */
+          MIN: 0.5,
+          /**
+           * @description The maximum allowed speed multiplier for a video playback.
+           * @constant OO.CONSTANTS.PLAYBACK_SPEED.MAX
+           * @type {Number}
+           */
+          MAX: 2.0
+        }
       },
 
       OOYALA_PLAYER_SETTINGS_KEY: 'ooyala_player_settings',
