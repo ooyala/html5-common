@@ -1779,6 +1779,30 @@
       __end_marker : true
     };
 
+    /**
+     * Defines all the possible tracking levels for analytics.
+     * @private
+     */
+    OO.TRACKING_LEVEL = {
+      /**
+       * Default tracking level. Full tracking enabled.
+       * @private
+       */
+      DEFAULT: 'default',
+      /**
+       * Anonymous mode. Tracking is enabled but a new GUID is created for each session.
+       * GUID not saved in local storage.
+       * @private
+       */
+      ANONYMOUS: 'anonymous',
+      /**
+       * Tracking completely disabled. IQ, Librato and Analytics plugins are not loaded.
+       * GUID not saved in local storage.
+       * @private
+       */
+      DISABLED: 'disabled'
+    };
+
     OO.PLUGINS = {
       ADS: "ads",
       VIDEO: "video",
