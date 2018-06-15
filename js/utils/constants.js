@@ -670,7 +670,7 @@
        * @event OO.EVENTS#ERROR
        */
       ERROR: 'error',
-      
+
       /**
        * An api related error has occurred. The handler is called with the following arguments:
        * <ul>
@@ -748,7 +748,7 @@
        * @public
        */
       PLAYBACK_MIDSTREAM_ERROR: 'playbackMidstreamError',
- 
+
       /**
        * A plugin has been loaded successfully. The handler is called with the following arguments:
        * <ul>
@@ -783,7 +783,7 @@
        *   <li>The time since the initial play request was made (number)</li>
        *   <li>Boolean parameter. True if video was autoplayed, false otherwise (boolean)</li>
        *   <li>Boolean parameter. True if the video had an ad play before it started.
-       *       This includes midrolls that play before content due to an initial playhead time > 0. 
+       *       This includes midrolls that play before content due to an initial playhead time > 0.
        *       False otherwise  (number)</li>(boolean)</li>
        *   <li>The initial position of the playhead upon playback start. (number)</li>
        *   <li>The video plugin used for playback (string)</li>
@@ -797,6 +797,47 @@
        * @public
        */
       INITIAL_PLAY_STARTING: 'initialPlayStarting',
+
+      /**
+       * Notifies the player that the user has requested to play the previous video.
+       * Depending on the plugin being used, this could either be the previous video in
+       * a playlist, or the previously played Discovery video recommendation.
+       *
+       * @event OO.EVENTS#REQUEST_PREVIOUS_VIDEO
+       * @public
+       */
+      REQUEST_PREVIOUS_VIDEO: 'requestPreviousVideo',
+
+      /**
+       * Notifies the player that the user has requested to play the next video.
+       * Depending on the plugin being used, this could either be the next video in
+       * a playlist, or the next Discovery video recommendation.
+       *
+       * @event OO.EVENTS#REQUEST_NEXT_VIDEO
+       * @public
+       */
+      REQUEST_NEXT_VIDEO: 'requestNextVideo',
+
+      /**
+       * Fired by either the Playlist or Discovery plugins after the position of the
+       * current video, relative to its siblings, has been determined. The main purpose
+       * of this event is to let the UI know whether or not there are previous or next
+       * videos that the user can navigate towards.<br/><br/>
+       *
+       * The handler is called with the following arguments:
+       * <ul>
+       *   <li>An object which contains the following properties:
+       *     <ul>
+       *       <li><code>hasPreviousVideos</code>: (boolean) True if there are videos before the current one, false otherwise</li>
+       *       <li><code>hasNextVideos</code>: (boolean) True if there are videos after the current one, false otherwise</li>
+       *     </ul>
+       *   </li>
+       * </ul>
+       *
+       * @event OO.EVENTS#POSITION_IN_PLAYLIST_DETERMINED
+       * @private
+       */
+      POSITION_IN_PLAYLIST_DETERMINED: 'positionInPlaylistDetermined',
 
       /**
        * The player is currently being destroyed, and anything created by your module must also be deleted.
@@ -1124,7 +1165,7 @@
        *   <li>The time since the initial play request was made (number)</li>
        *   <li>Boolean parameter. True if video was autoplayed, false otherwise (boolean)</li>
        *   <li>Boolean parameter. True if the video had an ad play before it started.
-       *       This includes midrolls that play before content due to an initial playhead time > 0. 
+       *       This includes midrolls that play before content due to an initial playhead time > 0.
        *       False otherwise  (number)</li>(boolean)</li>
        *   <li>The initial position of the playhead upon playback start. (number)</li>
        *   <li>The video plugin used for playback (string)</li>
@@ -1149,8 +1190,8 @@
       AD_SDK_LOADED: 'adSdkLoaded',
 
       /**
-       * This event is triggered when there is an failure to load the ad sdk.       
-       * The handler is called with the following arguments: 
+       * This event is triggered when there is an failure to load the ad sdk.
+       * The handler is called with the following arguments:
        * <ul>
        *   <li>The ad plugin that failed to load.</li>
        *   <li>The player core version.</li>
@@ -1161,7 +1202,7 @@
       AD_SDK_LOAD_FAILED: 'adSdkLoadFailed',
 
       /**
-       * This event is triggered whenever an ad is requested. 
+       * This event is triggered whenever an ad is requested.
        * The handler is called with the following arguments:
        * <ul>
        *   <li>The ad plugin.</li>
@@ -1172,8 +1213,8 @@
       AD_REQUEST: 'adRequest',
 
       /**
-       * This event is triggered upon receiving a successful response for an ad request. 
-       * The handler is called with the following arguments:       
+       * This event is triggered upon receiving a successful response for an ad request.
+       * The handler is called with the following arguments:
        * <ul>
        *   <li>The ad plugin.</li>
        *   <li>The time the ad was scheduled to play.</li>
@@ -1185,8 +1226,8 @@
       AD_REQUEST_SUCCESS: 'adRequestSuccess',
 
       /**
-       * This event is triggered upon receiving an error for an ad request.       
-       * The handler is called with the following arguments: 
+       * This event is triggered upon receiving an error for an ad request.
+       * The handler is called with the following arguments:
        * <ul>
        *   <li>The ad plugin.</li>
        *   <li>The time the ad was scheduled to play.</li>
@@ -1202,7 +1243,7 @@
 
       /**
        * This event is triggered upon receiving an empty response for an ad request.
-       * The handler is called with the following arguments:        
+       * The handler is called with the following arguments:
        * <ul>
        *   <li>The ad plugin.</li>
        *   <li>The time the ad was scheduled to play.</li>
@@ -1216,7 +1257,7 @@
 
       /**
        * This event is triggered upon when an error occurs trying to play an ad.
-       * The handler is called with the following arguments:        
+       * The handler is called with the following arguments:
        * <ul>
        *   <li>The ad plugin.</li>
        *   <li>The time the ad was scheduled to play.</li>
@@ -1232,7 +1273,7 @@
 
       /**
        * This event is triggered when the ad plugin sdk records an impression event.
-       * The handler is called with the following arguments:        
+       * The handler is called with the following arguments:
        * <ul>
        *   <li>The ad plugin.</li>
        *   <li>The time the ad was scheduled to play.</li>
@@ -1246,7 +1287,7 @@
 
       /**
        * This event is triggered when an ad has completed playback.
-       * The handler is called with the following arguments:        
+       * The handler is called with the following arguments:
        * <ul>
        *   <li>The ad plugin.</li>
        *   <li>The time passed since the ad impression.</li>
@@ -1439,7 +1480,7 @@
       // DiscoveryApi publishes these, OoyalaAnalytics listens for them and propagates to reporter.js
       REPORT_DISCOVERY_IMPRESSION: "reportDiscoveryImpression",
       REPORT_DISCOVERY_CLICK: "reportDiscoveryClick",
-      
+
       // These discovery events are propagated to the iq plugin
       DISCOVERY_API: {
         /**
@@ -1456,7 +1497,7 @@
         */
         SEND_CLICK_EVENT: "sendClickEvent"
       },
-      
+
       /**
        * Denotes that the playlist plugin is ready and has configured the playlist Pod(s).
        * @event OO.EVENTS#PLAYLISTS_READY
@@ -1741,7 +1782,7 @@
 
         /**
          * @description <code>OO.ERROR.MEDIA.MEDIA_ERR_NETWORK ('aborted')</code>:
-         * Some kind of network error occurred which prevented the media from being 
+         * Some kind of network error occurred which prevented the media from being
          * successfully fetched, despite having previously been available.
          * @constant OO.ERROR.MEDIA.MEDIA_ERR_NETWORK
          * @type {string}
@@ -1750,7 +1791,7 @@
 
         /**
          * @description <code>OO.ERROR.MEDIA.MEDIA_ERR_DECODE ('aborted')</code>:
-         * Despite having previously been determined to be usable, an error occurred 
+         * Despite having previously been determined to be usable, an error occurred
          * while trying to decode the media resource, resulting in an error.
          * @constant OO.ERROR.MEDIA.MEDIA_ERR_DECODE
          * @type {string}
@@ -1907,7 +1948,7 @@
          * @type {string}
          */
         YOUTUBE:"youtube",
-        
+
         /**
          * @description <code>OO.VIDEO.ENCODING.RTMP ('rtmp')</code>:
          *   An encoding type for non-drm rtmp streams.
@@ -2145,7 +2186,7 @@
       HEVC_CODEC: {
         HEV1: "hev1",
         HVC1: "hvc1"
-      },    
+      },
 
       /**
        * @description <code>OO.CONSTANTS.CLOSED_CAPTIONS</code>:
