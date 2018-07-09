@@ -465,8 +465,63 @@
        */
       BITRATE_CHANGED: 'bitrateChanged',
 
+      /**
+       * Lists the available closed caption information including languages and locale.
+       *
+       * Provide the following arguments:
+       * <ul>
+       *   <li>object containing:
+       *     <ul>
+       *       <li><code>languages</code>: (array) a list of available languages.</li>
+       *       <li><code>locale</code>: (object) contains language names by id. For example, <code>{en:"English", fr:"Français", sp:"Español"}</code>.</li>
+       *     </ul>
+       *   </li>
+       * </ul>
+       *
+       * @event OO.EVENTS#CLOSED_CAPTIONS_INFO_AVAILABLE
+       * @public
+       */
       CLOSED_CAPTIONS_INFO_AVAILABLE: 'closedCaptionsInfoAvailable',
+
+      /**
+       * Sets the closed captions language to use.  To remove captions, specify <code>"none"</code> as the language.
+       *
+       * Provide the following arguments:
+       * <ul>
+       *   <li>string specifying the language in which the captions appear.
+       *   </li>
+       * </ul>
+       *
+       * @event OO.EVENTS#SET_CLOSED_CAPTIONS_LANGUAGE
+       * @public
+       */
       SET_CLOSED_CAPTIONS_LANGUAGE: 'setClosedCaptionsLanguage',
+
+      /**
+       * Sent when the skin has chosen the language for the UI.
+       *
+       * Provide the following arguments:
+       * <ul>
+       *   <li>string specifying the language code of the UI.
+       *   </li>
+       * </ul>
+       * @event OO.EVENTS#SKIN_UI_LANGUAGE
+       * @private
+       */
+      SKIN_UI_LANGUAGE: 'SkinUiLanguage',
+
+      /**
+       * Raised when closed caption text is changed at a point in time.
+       *
+       * Provide the following arguments:
+       * <ul>
+       *   <li>TBD
+       *   </li>
+       * </ul>
+       *
+       * @event OO.EVENTS#CLOSED_CAPTION_CUE_CHANGED
+       * @private
+       */
       CLOSED_CAPTION_CUE_CHANGED: 'closedCaptionCueChanged',
 
       /**
