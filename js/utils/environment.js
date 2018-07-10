@@ -125,7 +125,7 @@
      * @returns {boolean} true if OS is not Android or Android version > 4.3 otherwise false
      */
     OO.isAndroid4_4Plus = (function() {
-      var isAndroid4_4Plus = true;
+      var isAndroid4_4Plus = false;
       if (OO.isAndroid) {
         var userAgent = OO.os.match(/Android [\d\.]*;/);
         if (userAgent && userAgent.length) {
