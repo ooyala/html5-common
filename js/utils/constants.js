@@ -508,7 +508,7 @@
        * @event OO.EVENTS#SKIN_UI_LANGUAGE
        * @private
        */
-      SKIN_UI_LANGUAGE: 'SkinUiLanguage',
+      SKIN_UI_LANGUAGE: 'skinUiLanguage',
 
       /**
        * Raised when closed caption text is changed at a point in time.
