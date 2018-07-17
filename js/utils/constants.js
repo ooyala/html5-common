@@ -356,6 +356,16 @@
       SET_PLAYBACK_SPEED: "setPlaybackSpeed",
 
       /**
+       * The playback speed changed. The handler is called with the following arguments:
+       * <ul>
+       *   <li>The id of the video whose playback speed changed.</li>
+       *   <li>The new playback speed that was set.</li>
+       * </ul>
+       * @event OO.EVENTS#PLAYBACK_SPEED_CHANGED
+       */
+      PLAYBACK_SPEED_CHANGED: "playbackSpeedChanged",
+
+      /**
        * The playhead time changed. The handler is called with the following arguments:
        * <ul>
        *   <li>The current time.</li>
