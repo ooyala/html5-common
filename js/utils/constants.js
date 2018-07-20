@@ -2280,25 +2280,25 @@
          * @constant OO.CONSTANTS.CLOSED_CAPTIONS.DISABLED
          * @type {string}
          */
-        DISABLED: "disabled",
-
-        PLAYBACK_SPEED: {
-          /**
-           * The minimum allowed speed multiplier for a video playback.
-           * @constant OO.CONSTANTS.PLAYBACK_SPEED.MIN
-           * @type {Number}
-           */
-          MIN: 0.5,
-          /**
-           * @description The maximum allowed speed multiplier for a video playback.
-           * @constant OO.CONSTANTS.PLAYBACK_SPEED.MAX
-           * @type {Number}
-           */
-          MAX: 2.0
-        }
+        DISABLED: "disabled"
       },
 
       OOYALA_PLAYER_SETTINGS_KEY: 'ooyala_player_settings',
+
+      PLAYBACK_SPEED: {
+        /**
+         * The minimum allowed speed multiplier for a video playback.
+         * @constant OO.CONSTANTS.PLAYBACK_SPEED.MIN
+         * @type {Number}
+         */
+        MIN: 0.5,
+        /**
+         * @description The maximum allowed speed multiplier for a video playback.
+         * @constant OO.CONSTANTS.PLAYBACK_SPEED.MAX
+         * @type {Number}
+         */
+        MAX: 2.0
+      },
 
       __end_marker : true
     };
