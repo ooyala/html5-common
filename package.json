@@ -19,7 +19,6 @@
     "hazmat": "*",
     "jsdom": "11.11.0",
     "mocha": "~5.2.0",
-    "requirejs": "2.3.5",
     "underscore": "1.9.1",
     "jquery": "3.3.1"
   },
