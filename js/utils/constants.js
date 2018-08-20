@@ -1958,6 +1958,22 @@
          */
         AUDIO: "audio",
 
+         /**
+         * @description <code>OO.VIDEO.ENCODING.OGG ('ogg')</code>:
+         *   An encoding type for non-drm ogg audio streams.
+         * @constant OO.VIDEO.ENCODING.OGG
+         * @type {string}
+         */
+        OGG: "ogg",
+
+        /**
+         * @description <code>OO.VIDEO.ENCODING.M4A ('m4a')</code>:
+         *   An encoding type for non-drm m4a audio streams.
+         * @constant OO.VIDEO.ENCODING.M4A
+         * @type {string}
+         */
+        M4A: "m4a",
+
         /**
          * @description <code>OO.VIDEO.ENCODING.DASH ('dash')</code>:
          *   An encoding type for non-drm dash streams (mpd extension).
