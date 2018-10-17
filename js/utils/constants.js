@@ -2272,6 +2272,29 @@
 
       SEEK_TO_END_LIMIT: 4,
 
+      /**
+       * @description <code>OO.CONSTANTS.PLAYER_TYPE</code>:
+       *   An object containing the possible modes in which the player can operate.
+       * @constant OO.CONSTANTS.PLAYER_TYPE
+       * @type {object}
+       */
+      PLAYER_TYPE: {
+        /**
+         * @description <code>OO.CONSTANTS.PLAYER_TYPE.VIDEO ('video')</code>:
+         *   The default player type (video player).
+         * @constant OO.CONSTANTS.PLAYER_TYPE.VIDEO
+         * @type {string}
+         */
+        VIDEO: 'video',
+        /**
+         * @description <code>OO.CONSTANTS.PLAYER_TYPE.AUDIO ('audio')</code>:
+         *   The audio-only player type.
+         * @constant OO.CONSTANTS.PLAYER_TYPE.AUDIO
+         * @type {string}
+         */
+        AUDIO: 'audio',
+      },
+
       HEVC_CODEC: {
         HEV1: "hev1",
         HVC1: "hvc1"

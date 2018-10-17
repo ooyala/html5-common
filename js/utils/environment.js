@@ -6,6 +6,7 @@
     OO.configurePublisher = function(parameters) {
       OO.playerParams.pcode = parameters.pcode || OO.playerParams.pcode || '';
       OO.playerParams.playerBrandingId = parameters.playerBrandingId || OO.playerParams.playerBrandingId || '';
+      OO.playerParams.playerType = parameters.playerType || OO.playerParams.playerType || OO.CONSTANTS.PLAYER_TYPE.VIDEO;
       OO.playerParams.debug = parameters.debug || OO.playerParams.debug || '';
     };
 
