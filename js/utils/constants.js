@@ -1975,12 +1975,12 @@
         M4A: "m4a",
 
         /**
-         * @description <code>OO.VIDEO.ENCODING.AUDIO_ONLY_HLS ('audio_only_hls')</code>:
+         * @description <code>OO.VIDEO.ENCODING.AUDIO_HLS ('audio_hls')</code>:
          *   An encoding type for non-drm audio only HLS streams.
-         * @constant OO.VIDEO.ENCODING.AUDIO_ONLY_HLS
+         * @constant OO.VIDEO.ENCODING.AUDIO_HLS
          * @type {string}
          */
-        AUDIO_ONLY_HLS: "audio_only_hls",
+        AUDIO_HLS: "audio_hls",
 
         /**
          * @description <code>OO.VIDEO.ENCODING.DASH ('dash')</code>:
