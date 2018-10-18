@@ -1975,9 +1975,9 @@
         M4A: "m4a",
 
         /**
-         * @description <code>OO.VIDEO.ENCODING.AUDIO_ONLY_HLS ('audio_only_hls')</code>:
+         * @description <code>OO.VIDEO.ENCODING.AUDIO_HLS ('audio_hls')</code>:
          *   An encoding type for non-drm audio only HLS streams.
-         * @constant OO.VIDEO.ENCODING.AUDIO_ONLY_HLS
+         * @constant OO.VIDEO.ENCODING.AUDIO_HLS
          * @type {string}
          */
         AUDIO_HLS: "audio_hls",
@@ -2287,12 +2287,12 @@
          */
         VIDEO: 'video',
         /**
-         * @description <code>OO.CONSTANTS.PLAYER_TYPE.AUDIO ('audio_only')</code>:
+         * @description <code>OO.CONSTANTS.PLAYER_TYPE.AUDIO ('audio')</code>:
          *   The audio-only player type.
          * @constant OO.CONSTANTS.PLAYER_TYPE.AUDIO
          * @type {string}
          */
-        AUDIO: 'audio_only',
+        AUDIO: 'audio',
       },
 
       HEVC_CODEC: {
