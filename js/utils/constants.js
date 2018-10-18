@@ -1980,7 +1980,7 @@
          * @constant OO.VIDEO.ENCODING.AUDIO_ONLY_HLS
          * @type {string}
          */
-        AUDIO_ONLY_HLS: "audio_only_hls",
+        AUDIO_HLS: "audio_hls",
 
         /**
          * @description <code>OO.VIDEO.ENCODING.DASH ('dash')</code>:
@@ -2287,12 +2287,12 @@
          */
         VIDEO: 'video',
         /**
-         * @description <code>OO.CONSTANTS.PLAYER_TYPE.AUDIO ('audio')</code>:
+         * @description <code>OO.CONSTANTS.PLAYER_TYPE.AUDIO ('audio_only')</code>:
          *   The audio-only player type.
          * @constant OO.CONSTANTS.PLAYER_TYPE.AUDIO
          * @type {string}
          */
-        AUDIO: 'audio',
+        AUDIO: 'audio_only',
       },
 
       HEVC_CODEC: {
