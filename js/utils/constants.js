@@ -1958,21 +1958,21 @@
          */
         AUDIO: "audio",
 
-         /**
-         * @description <code>OO.VIDEO.ENCODING.OGG ('ogg')</code>:
+        /**
+         * @description <code>OO.VIDEO.ENCODING.AUDIO_OGG ('audio_ogg')</code>:
          *   An encoding type for non-drm ogg audio streams.
-         * @constant OO.VIDEO.ENCODING.OGG
+         * @constant OO.VIDEO.ENCODING.AUDIO_OGG
          * @type {string}
          */
-        OGG: "ogg",
+        AUDIO_OGG: "audio_ogg",
 
         /**
-         * @description <code>OO.VIDEO.ENCODING.M4A ('m4a')</code>:
+         * @description <code>OO.VIDEO.ENCODING.AUDIO_M4A ('audio_m4a')</code>:
          *   An encoding type for non-drm m4a audio streams.
-         * @constant OO.VIDEO.ENCODING.M4A
+         * @constant OO.VIDEO.ENCODING.AUDIO_M4A
          * @type {string}
          */
-        M4A: "m4a",
+        AUDIO_M4A: "audio_m4a",
 
         /**
          * @description <code>OO.VIDEO.ENCODING.AUDIO_HLS ('audio_hls')</code>:
