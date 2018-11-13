@@ -2270,7 +2270,7 @@
 
       CONTROLS_BOTTOM_PADDING: 10,
 
-      SEEK_TO_END_LIMIT: 4,
+      SEEK_TO_END_LIMIT: 3,
 
       /**
        * @description <code>OO.CONSTANTS.PLAYER_TYPE</code>:
