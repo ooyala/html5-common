@@ -10,7 +10,11 @@
     "common"
   ],
   "scripts": {
-    "test": "make test"
+    "test": "make test",
+    "lint": "echo",
+    "build": "echo",
+    "start": "echo",
+    "analysis": "echo"
   },
   "repository": {
     "type": "git",
