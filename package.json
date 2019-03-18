@@ -10,7 +10,7 @@
     "common"
   ],
   "scripts": {
-    "test": "make test",
+    "test": "echo",
     "lint": "echo",
     "build": "echo",
     "start": "echo",
