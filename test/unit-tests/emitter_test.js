@@ -16,7 +16,7 @@ describe('emitter', function(){
     emitter = new OO.Emitter();
     called = false;
     args = null;
-    callback = function() { called = true; args = arguments;}
+    callback = function(...params) { called = true; args = params;}
   });
 
   afterEach(function(){
@@ -39,7 +39,7 @@ describe('emitter', function(){
   it('should trigger pass through param', function(){
     emitter.on("foo", 'test', callback);
     emitter.trigger("foo", { foo: 3});
-    expect(args).to.eql({ '0': 'foo', '1': { foo: 3 } });
+    expect(args).to.eql({'0': 'foo', '1': { foo: 3 } });
   });
 
   it('should not trigger callback if unregistered', function(){

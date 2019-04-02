@@ -51,11 +51,13 @@ describe('emitter', function(){
   });
 
   it("should pass multiple params for simple case", function() {
-    var callbackWithParams = function(eventName) { messageCalled[eventName] = arguments; }
+    var callbackWithParams = function(...args) { messageCalled[args[0]] = args; }
     mb.subscribe("foo", 'test', callbackWithParams);
     expect(messageCalled.foo).to.equal(false);
+
     mb.publish("foo", {foo2: 'hello'}, true);
     expect(messageCalled.foo).to.eql({'0':'foo', '1':{foo2: 'hello'}, '2':true});
+
     mb.publish("foo", {foo3: 'hello1'}, "hi");
     expect(messageCalled.foo).to.eql({'0':'foo', '1':{foo3: 'hello1'}, '2':"hi"});
   });
@@ -307,8 +309,8 @@ describe('emitter', function(){
     var foo1Params = null;
     var arg0 = null;
     var arg1 = null;
-    mb.subscribe("foo", 'test', function() { fooParams = arguments; });
-    mb.subscribe("foo1", 'test', function() { foo1Params = arguments; });
+    mb.subscribe("foo", 'test', function(...args) { fooParams = args; });
+    mb.subscribe("foo1", 'test', function(...args) { foo1Params = args; });
     var onMerge = function(e0, e1, e0s, e1s) { arg0 = e0s; arg1 = e1s; return ["mynewfoo"] };
     mb.addDependent("foo", "foo1", 'test', onMerge);
     mb.publish("foo", 'v0');
@@ -325,8 +327,8 @@ describe('emitter', function(){
     var foo1Params = null;
     var arg0 = null;
     var arg1 = null;
-    mb.subscribe("foo", 'test', function() { fooParams = arguments; });
-    mb.subscribe("foo1", 'test', function() { foo1Params = arguments; });
+    mb.subscribe("foo", 'test', function(...arg) { fooParams = arg; });
+    mb.subscribe("foo1", 'test', function(...arg) { foo1Params = arg; });
     var onMerge = function(e0, e1, e0s, e1s) { arg0 = e0s; arg1 = e1s; };
     mb.addDependent("foo", "foo1", 'test', onMerge);
     mb.publish("foo", 'v0');
@@ -343,8 +345,8 @@ describe('emitter', function(){
     var foo1Params = null;
     var arg0 = null;
     var arg1 = null;
-    mb.subscribe("foo", 'test', function() { fooParams = arguments; });
-    mb.subscribe("foo1", 'test', function() { foo1Params = arguments; });
+    mb.subscribe("foo", 'test', function(...arg) { fooParams = arg; });
+    mb.subscribe("foo1", 'test', function(...arg) { foo1Params = arg; });
     var onMerge = function(e0, e1, e0s, e1s) { arg0 = e0s; arg1 = e1s; return null; };
     mb.addDependent("foo", "foo1", 'test', onMerge);
     mb.publish("foo", 'v0');
@@ -359,8 +361,8 @@ describe('emitter', function(){
   it("should maintain original params when not giving merge function", function() {
     var fooParams = null;
     var foo1Params = null;
-    mb.subscribe("foo", 'test', function() { fooParams = arguments; });
-    mb.subscribe("foo1", 'test', function() { foo1Params = arguments; });
+    mb.subscribe("foo", 'test', function(...arg) { fooParams = arg; });
+    mb.subscribe("foo1", 'test', function(...arg) { foo1Params = arg; });
     mb.addDependent("foo", "foo1", 'test');
     mb.publish("foo", 'v0');
     mb.publish("foo1", 'v1');
@@ -371,8 +373,8 @@ describe('emitter', function(){
   it("should not affect params of subsequent unblocked events", function() {
     var fooParams = null;
     var foo1Params = null;
-    mb.subscribe("foo", 'test', function() { fooParams = arguments; });
-    mb.subscribe("foo1", 'test', function() { foo1Params = arguments; });
+    mb.subscribe("foo", 'test', function(...arg) { fooParams = arg; });
+    mb.subscribe("foo1", 'test', function(...arg) { foo1Params = arg; });
     var onMerge = function(e0, e1, e0s, e1s) { return ["mynewfoo"] };
     mb.addDependent("foo", "foo1", 'test', onMerge);
     mb.publish("foo", 'v0', 'v3');
@@ -416,9 +418,9 @@ describe('emitter', function(){
 
   it("should multiple dependent params", function() {
     var params = {};
-    var listener = function(event) {
-      messageCalled[event] = true;
-      params[event] = arguments;
+    var listener = function(...args) {
+      messageCalled[args[0]] = true;
+      params[args[0]] = args;
     };
     mb.subscribe("foo", 'test', listener);
     mb.subscribe("foo1", 'test', listener);
@@ -453,9 +455,9 @@ describe('emitter', function(){
 
   it("should multiple dependent params maintain original params", function() {
     var params = {};
-    var listener = function(event) {
-      messageCalled[event] = true;
-      params[event] = arguments;
+    var listener = function(...args) {
+      messageCalled[args[0]] = true;
+      params[args[0]] = args;
     };
     mb.subscribe("foo", 'test', listener);
     mb.addDependent("foo", "foo1", 'test');
