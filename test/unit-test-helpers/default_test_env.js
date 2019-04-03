@@ -12,11 +12,8 @@ global.TestHelper = {
     fileContents = require("fs").readFileSync(require.resolve(file_name), "utf8");
     require("vm").runInThisContext(fileContents);
   }
-}
+};
 
-// global.jsdom = require("jsdom");
-// global.document = jsdom.jsdom("<html><head></head><body>howdy</body></html>");
-// global.window = document.createWindow();
 global.jsdom = require('jsdom');
 
 const { JSDOM } = jsdom;
