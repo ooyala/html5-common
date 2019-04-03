@@ -10,7 +10,7 @@
     "common"
   ],
   "scripts": {
-    "test": "mocha test/unit-tests/*js --require test/unit-test-helpers/default_test_env.js --exit",
+    "test": "make test",
     "lint": "echo",
     "build": "echo",
     "start": "echo",
