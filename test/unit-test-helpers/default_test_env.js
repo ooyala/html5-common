@@ -12,11 +12,14 @@ global.TestHelper = {
     fileContents = require("fs").readFileSync(require.resolve(file_name), "utf8");
     require("vm").runInThisContext(fileContents);
   }
-}
+};
 
-global.jsdom = require("jsdom");
-global.document = jsdom.jsdom("<html><head></head><body>howdy</body></html>");
-global.window = document.createWindow();
+global.jsdom = require('jsdom');
+
+const { JSDOM } = jsdom;
+const dom = new JSDOM('<html><head></head><body>howdy</body></html>');
+global.window = dom.window;
+global.document = dom.window.document;
 
 // The function setTimeout from jsdom is not working, this overwrites the function with the function defined
 // by node
