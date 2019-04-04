@@ -57,10 +57,11 @@
 
       const add = function (e) {
         const from = (e.from instanceof Array) ? e.from : (e.from ? [e.from] : ['*']); // allow 'wildcard' transition if 'from' is not specified
-        let n;
+        let i = 0;
+        const ln = from.length;
         map[e.name] = map[e.name] || {};
-        for (n = 0; n < from.length; n++) {
-          map[e.name][from[n]] = e.to || from[n]; // allow no-op transition if 'to' is not specified
+        for (; i < ln; i++) {
+          map[e.name][from[i]] = e.to || from[i]; // allow no-op transition if 'to' is not specified
         }
       };
 
@@ -82,17 +83,17 @@
         map = {};
       };
 
-      const updateState = function (fsm, state) {
-        if (!fsm || state === '*') {
+      const updateState = function (fsmObj, state) {
+        if (!fsmObj || state === '*') {
           return;
         } // no op  for * state
-        if (fsm.debugTransitions) {
+        if (fsmObj.debugTransitions) {
           OO.log(`Transition ${moduleName || ''
-          }\n  OldState: ${fsm.currentState ? fsm.currentState : ''
+          }\n  OldState: ${fsmObj.currentState ? fsmObj.currentState : ''
           }\n  NewState: ${state || ''
           }\n  CausedBy: ${lastEvent || ''}`);
         }
-        fsm.currentState = state;
+        fsmObj.currentState = state;
       };
 
       fsm.canReceive = function (event) {
@@ -114,7 +115,6 @@
 
         const from = fsm.currentState;
         const to = map[event][from] || map[event]['*'] || from;
-        let n;
 
         // handle transition to same state
         if (from === to) {
