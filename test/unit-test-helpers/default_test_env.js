@@ -1,17 +1,20 @@
-//Assuming that this repo lives as a submodule at the root folder of other repos, this is the code location
-global.SRC_ROOT = "../../../js/";
-global.TEST_ROOT = "../../../test/";
+/* eslint-disable import/no-dynamic-require,global-require,require-jsdoc */
+// Assuming that this repo lives as a submodule at the root folder of other repos, this is the code location
+global.SRC_ROOT = '../../../js/';
+global.TEST_ROOT = '../../../test/';
 
-//path
+// path
 global.COMMON_SRC_ROOT = '../../js/';
 global.COMMON_TEST_ROOT = '../../test/';
-global.OO = { publicApi: {}, platform: 'MacIntel', os: {}, browser: { version:1, webkit:true }, TEST_TEST_TEST: true};
+global.OO = {
+  publicApi: {}, platform: 'MacIntel', os: {}, browser: { version: 1, webkit: true }, TEST_TEST_TEST: true,
+};
 
 global.TestHelper = {
-  runFileInThisContext: function(file_name) {
-    fileContents = require("fs").readFileSync(require.resolve(file_name), "utf8");
-    require("vm").runInThisContext(fileContents);
-  }
+  runFileInThisContext(fileName) {
+    const fileContents = require('fs').readFileSync(require.resolve(fileName), 'utf8');
+    require('vm').runInThisContext(fileContents);
+  },
 };
 
 global.jsdom = require('jsdom');
@@ -25,23 +28,25 @@ global.document = dom.window.document;
 // by node
 global.window.setTimeout = setTimeout;
 global.navigator = window.navigator;
-global.window.$ = require("jquery");
+global.window.$ = require('jquery');
+
 OO.$ = global.window.$;
 
 global.expect = require('expect.js');
 
 // a wrapper domparser simulating Mozilla DOMParser in the browser:
-window.DOMParser = function() {};
-require(COMMON_SRC_ROOT + "utils/InitModules/InitOOUnderscore.js");
+window.DOMParser = function () {};
+require(`${COMMON_SRC_ROOT}utils/InitModules/InitOOUnderscore.js`);
 
 OO._.extend(window.DOMParser.prototype, {
-  parseFromString: function(data, type) {
+  parseFromString(data) {
     return jsdom.jsdom(data, jsdom.level(3, 'core'));
-  }
+  },
 });
+// eslint-disable-next-line no-console
 OO.log = console.log;
 // In a browser environment, all of the properties of "window" (like navigator) are in the global scope:
 OO._.extend(global, window);
 
-require(COMMON_SRC_ROOT + "utils/InitModules/InitOOHazmat.js");
-require(COMMON_SRC_ROOT + "utils/InitModules/InitOOPlayerParamsDefault.js");
+require(`${COMMON_SRC_ROOT}utils/InitModules/InitOOHazmat.js`);
+require(`${COMMON_SRC_ROOT}utils/InitModules/InitOOPlayerParamsDefault.js`);

@@ -1,11 +1,9 @@
-require("./InitOO.js");
+require('./InitOO.js');
 
-if (!window._)
-{
+if (!window._) {
   window._ = require('underscore');
 }
 
-if (!OO._)
-{
+if (!OO._) {
   OO._ = window._.noConflict();
 }
