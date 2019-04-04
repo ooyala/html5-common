@@ -5,6 +5,17 @@ module.exports = {
   },
   extends: 'airbnb-base',
   globals: {
+    expect: 0,
+    OO: 0,
+    it: 0,
+    describe: 0,
+    $: 0,
+    after: 0,
+    before: 0,
+    beforeEach: 0,
+    afterEach: 0,
+    jsdom: 0,
+    COMMON_SRC_ROOT: 0,
   },
   parserOptions: {
     ecmaVersion: 2018,
@@ -53,7 +64,6 @@ module.exports = {
         "requireReturn": false
       }
     ],
-    "no-undef": "warn",
     "no-extend-native": "warn",
     "new-cap": "warn",
     "import/no-dynamic-require": "warn",

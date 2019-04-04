@@ -11,7 +11,7 @@ global.OO = {
 
 global.TestHelper = {
   runFileInThisContext(fileName) {
-    fileContents = require('fs').readFileSync(require.resolve(fileName), 'utf8');
+    const fileContents = require('fs').readFileSync(require.resolve(fileName), 'utf8');
     require('vm').runInThisContext(fileContents);
   },
 };
