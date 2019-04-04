@@ -86,7 +86,6 @@ module.exports = {
     "no-use-before-define": "warn",
     "guard-for-in": "warn",
     "no-nested-ternary": "warn",
-    "no-useless-concat": "warn",
     "no-restricted-syntax": "warn",
     "import/no-extraneous-dependencies": "warn",
   },

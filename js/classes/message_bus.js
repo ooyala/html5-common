@@ -209,7 +209,8 @@
         delete this._blockList[eventName];
       } else {
         if (this.debug) {
-          OO.log(`MB DEBUG: blocking \'${eventName}\' because of \'${this._dependentList}` ? this._dependentList[eventName] : '[null]' + '\'');
+          const foo = this._dependentList ? this._dependentList[eventName] : '[null]';
+          OO.log(`MB DEBUG: blocking \'${eventName}\' because of \'${foo}\'`);
         }
         this.blockedEvent[eventName] = 1;
         this.blockedParams[eventName] = args;
