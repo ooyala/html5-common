@@ -10,8 +10,8 @@ global.OO = {
 };
 
 global.TestHelper = {
-  runFileInThisContext(file_name) {
-    fileContents = require('fs').readFileSync(require.resolve(file_name), 'utf8');
+  runFileInThisContext(fileName) {
+    fileContents = require('fs').readFileSync(require.resolve(fileName), 'utf8');
     require('vm').runInThisContext(fileContents);
   },
 };

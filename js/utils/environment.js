@@ -125,17 +125,16 @@
      * @returns {boolean} true if OS is not Android or Android version > 4.3 otherwise false
      */
   OO.isAndroid4_4Plus = (function () {
-    let isAndroid4_4Plus = false;
     if (OO.isAndroid) {
       const userAgent = OO.os.match(/Android [\d\.]*;/);
       if (userAgent && userAgent.length) {
         const userAgentLowerCase = userAgent[0].toLowerCase();
         const version = userAgentLowerCase.match(/android\s([0-9\.]*)/)[1];
-        const android4_3 = 4.3;
-        isAndroid4_4Plus = parseFloat(version) > android4_3;
+        const ANDROID_V4_3 = 4.3;
+        return parseFloat(version) > ANDROID_V4_3;
       }
     }
-    return isAndroid4_4Plus;
+    return false;
   }());
 
   OO.isRimDevice = (function () {

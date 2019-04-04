@@ -62,7 +62,6 @@ module.exports = {
     "no-throw-literal": "warn",
     "prefer-rest-params": "warn",
     "global-require": "warn",
-    "camelcase": "warn",
     "no-prototype-builtins": "warn",
     "no-useless-escape": "warn",
     "no-bitwise": "warn",
