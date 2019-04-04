@@ -73,7 +73,6 @@ module.exports = {
     "no-underscore-dangle": "warn",
     "no-tabs": "warn",
     "vars-on-top": "warn",
-    "no-empty": "warn",
     "no-multi-str": "warn",
     "prefer-destructuring": "warn",
     "no-dupe-keys": "warn",

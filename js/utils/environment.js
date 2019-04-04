@@ -252,6 +252,7 @@
     try {
       domain = document.domain;
     } catch (e) {
+      // empty
     }
     if (!OO._.isEmpty(domain)) {
       return domain;
