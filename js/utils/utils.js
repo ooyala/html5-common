@@ -170,7 +170,9 @@
   // the (!!) trick only works to verify if a string isn't the empty string
   // therefore, we must use a special case for that
   OO.stringToBoolean = function (value) {
-    if (typeof value === 'string') { return (value.toLowerCase().indexOf('true') > -1 || value.toLowerCase().indexOf('yes') > -1); }
+    if (typeof value === 'string') {
+      return (value.toLowerCase().indexOf('true') > -1 || value.toLowerCase().indexOf('yes') > -1);
+    }
     return !!value;
   };
 

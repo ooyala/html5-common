@@ -11,7 +11,10 @@
     },
 
     off(eventName, subscriber, callback) {
-      this._subscribers[eventName] = _.reject(this._subscribers[eventName] || [], elem => (elem.callback == callback || callback === undefined) && elem.subscriber === subscriber);
+      this._subscribers[eventName] = _.reject(
+        this._subscribers[eventName] || [],
+        elem => (elem.callback == callback || callback === undefined) && elem.subscriber === subscriber,
+      );
     },
 
     trigger(eventName /* , args... */) {

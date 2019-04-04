@@ -7,7 +7,12 @@
       let cfg = OO.HM.safeObject('statemachine.create.cfg', _cfg);
       let initial = OO.HM.safeDomId('statemachine.create.cfg.initial', cfg.initial);
       let fsm = OO.HM.safeObject('statemachine.create.cfg.target', cfg.target, {});
-      let events = OO.HM.safeArrayOfElements('statemachine.create.cfg.events', cfg.events, element => OO.HM.safeObject('statemachine.create.cfg.events[]', element), []);
+      let events = OO.HM.safeArrayOfElements(
+        'statemachine.create.cfg.events',
+        cfg.events,
+        element => OO.HM.safeObject('statemachine.create.cfg.events[]', element),
+        [],
+      );
       let moduleName = OO.HM.safeString('statemachine.create.cfg.moduleName', cfg.moduleName, '');
       let mb = OO.HM.safeObject('statemachine.create.cfg.messageBus', cfg.messageBus);
 
@@ -78,7 +83,9 @@
       };
 
       const updateState = function (fsm, state) {
-        if (!fsm || state === '*') { return; } // no op  for * state
+        if (!fsm || state === '*') {
+          return;
+        } // no op  for * state
         if (fsm.debugTransitions) {
           OO.log(`Transition ${moduleName || ''
           }\n  OldState: ${fsm.currentState ? fsm.currentState : ''
@@ -88,7 +95,9 @@
         fsm.currentState = state;
       };
 
-      fsm.canReceive = function (event) { return map[event] && (map[event].hasOwnProperty(fsm.currentState) || map[event].hasOwnProperty('*')); };
+      fsm.canReceive = function (event) {
+        return map[event] && (map[event].hasOwnProperty(fsm.currentState) || map[event].hasOwnProperty('*'));
+      };
 
       fsm.receive = function (event/* ....arguments */) {
         // drop events not valid in current state
@@ -116,8 +125,12 @@
         updateState(fsm, to);
 
         let callbackResult = 'not_found';
-        if (to !== '*') { callbackResult = doCallback.apply(fsm, _.union([to], _.rest(arguments))); }
-        if (callbackResult === 'not_found') { callbackResult = doCallback.apply(fsm, arguments); }
+        if (to !== '*') {
+          callbackResult = doCallback.apply(fsm, _.union([to], _.rest(arguments)));
+        }
+        if (callbackResult === 'not_found') {
+          callbackResult = doCallback.apply(fsm, arguments);
+        }
 
         switch (callbackResult) {
           case 'not_found':
@@ -204,9 +217,9 @@
     },
 
     /**
-    * Disable debugging state transitions for a particular state machine. If
-    * multiple of the same state machine are active, all of them have debugging
-    * disabled.
+     * Disable debugging state transitions for a particular state machine. If
+     * multiple of the same state machine are active, all of them have debugging
+     * disabled.
      * @public
      * @method StateMachine#stopDebugTransitionsFor
      * @returns string Message stating whether debugging was succesfully stopped

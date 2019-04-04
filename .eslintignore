@@ -1,4 +1,5 @@
 node_modules
+utils
 build
 coverage
 tmp

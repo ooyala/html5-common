@@ -17,7 +17,8 @@
   OO.configurePublisher = function (parameters) {
     OO.playerParams.pcode = parameters.pcode || OO.playerParams.pcode || '';
     OO.playerParams.playerBrandingId = parameters.playerBrandingId || OO.playerParams.playerBrandingId || '';
-    OO.playerParams.playerType = parameters.playerType || OO.playerParams.playerType || OO.CONSTANTS.PLAYER_TYPE.VIDEO;
+    OO.playerParams.playerType = parameters.playerType
+      || OO.playerParams.playerType || OO.CONSTANTS.PLAYER_TYPE.VIDEO;
     OO.playerParams.debug = parameters.debug || OO.playerParams.debug || '';
   };
 
@@ -31,8 +32,10 @@
     OO.playerParams.api_server = parameters.api_server || OO.playerParams.api_server || null;
     OO.playerParams.auth_ssl_server = parameters.auth_ssl_server || OO.playerParams.auth_ssl_server || null;
     OO.playerParams.auth_server = parameters.auth_server || OO.playerParams.auth_server || null;
-    OO.playerParams.analytics_ssl_server = parameters.analytics_ssl_server || OO.playerParams.analytics_ssl_server || null;
-    OO.playerParams.analytics_server = parameters.analytics_server || OO.playerParams.analytics_server || null;
+    OO.playerParams.analytics_ssl_server = parameters.analytics_ssl_server
+      || OO.playerParams.analytics_ssl_server || null;
+    OO.playerParams.analytics_server = parameters.analytics_server
+      || OO.playerParams.analytics_server || null;
 
     updateServerHost();
   };
@@ -222,7 +225,8 @@
   }());
 
   OO.supportMSE = (function () {
-    return 'MediaSource' in window || 'WebKitMediaSource' in window || 'mozMediaSource' in window || 'msMediaSource' in window;
+    return 'MediaSource' in window || 'WebKitMediaSource'
+      in window || 'mozMediaSource' in window || 'msMediaSource' in window;
   }());
 
   OO.supportAds = (function () {

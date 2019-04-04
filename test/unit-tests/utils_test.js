@@ -10,7 +10,10 @@ describe('utils', () => {
   describe('inherit', () => {
     let p;
     before(() => {
-      p = function () { this.name = 'parent'; this.list = []; };
+      p = function () {
+        this.name = 'parent';
+        this.list = [];
+      };
       OO._.extend(p.prototype, {
         foo() {
           this.list.push(1);
@@ -20,9 +23,13 @@ describe('utils', () => {
     });
 
     it('should inherit', () => {
-      const c = OO.inherit(p, function () { this.name = 'child'; });
+      const c = OO.inherit(p, function () {
+        this.name = 'child';
+      });
       OO._.extend(c.prototype, {
-        foo() { return 'fromChild'; },
+        foo() {
+          return 'fromChild';
+        },
       });
       const v = new c();
       expect(v.name).to.equal('child');
@@ -32,7 +39,8 @@ describe('utils', () => {
     });
 
     it('should inherit for two child', () => {
-      const c = OO.inherit(p, () => { });
+      const c = OO.inherit(p, () => {
+      });
       const v = new c();
       v.foo();
       const v1 = new c();
@@ -92,14 +100,16 @@ describe('utils', () => {
     });
 
     it('should handle circular inclusion', () => {
-      const a = { a: 2 }; a.b = a;
+      const a = { a: 2 };
+      a.b = a;
       const aClone = OO.safeClone(a);
       expect(a).not.to.equal(aClone);
       expect(a.a).to.eql(aClone.a);
     });
 
     it('should handle function', () => {
-      const f = function () {};
+      const f = function () {
+      };
       const a = { a: f };
       const aClone = OO.safeClone(a);
       expect(a).not.to.equal(aClone);
@@ -119,13 +129,32 @@ describe('utils', () => {
           server_latency: '5.994',
           request_id: 'ip-10-112-191-8_1337038754_5',
           user_info: {
-            device: 'html5', ip_address: '204.124.203.201', timezone: -7.0, continent: 'NORTH AMERICA', request_timestamp: '1337038754', country: 'US', language: 'en-us', domain: 'mtv-eng-154.mtv',
+            device: 'html5',
+            ip_address: '204.124.203.201',
+            timezone: -7.0,
+            continent: 'NORTH AMERICA',
+            request_timestamp: '1337038754',
+            country: 'US',
+            language: 'en-us',
+            domain: 'mtv-eng-154.mtv',
           },
         },
         signature: 'dvUyhch5QcXxzF3c9he8Q7CZmL/0FafQ5e7HKBkAmlc=\n',
         authorization_data: {
           '45cmZqNDrKn7TvtpfGa9k9fQSeyK4VaI': {
-            code: '0', message: 'authorized', request_timestamp: '1337038754', retry: null, streams: [{ url: { data: 'aHR0cDovL3BsYXllci5vb3lhbGEuY29tL3BsYXllci9pcGhvbmUvNDVjbVpx\nTkRyS243VHZ0cGZHYTlrOWZRU2V5SzRWYUkubTN1OA==', format: 'encoded' }, delivery_type: 'hls' }], authorized: true,
+            code: '0',
+            message: 'authorized',
+            request_timestamp: '1337038754',
+            retry: null,
+            streams: [{
+              url: {
+                // eslint-disable-next-line max-len
+                data: 'aHR0cDovL3BsYXllci5vb3lhbGEuY29tL3BsYXllci9pcGhvbmUvNDVjbVpx\nTkRyS243VHZ0cGZHYTlrOWZRU2V5SzRWYUkubTN1OA==',
+                format: 'encoded',
+              },
+              delivery_type: 'hls',
+            }],
+            authorized: true,
           },
         },
       };
@@ -179,17 +208,28 @@ describe('utils', () => {
     });
 
     it('should getNormalizedTagUrl', () => {
-      Date.prototype.getTime = function () { return 123; };
+      Date.prototype.getTime = function () {
+        return 123;
+      };
       expect(OO.getNormalizedTagUrl('http://foo?<now>&[LR_URL]')).to.be(`http://foo?123&${escape(document.URL)}`);
     });
 
     it('should safeSeekRange', () => {
-      const seekRange = { length: 1, start() { return 2; }, end() { return 5; } };
+      const seekRange = {
+        length: 1,
+        start() {
+          return 2;
+        },
+        end() {
+          return 5;
+        },
+      };
       expect(OO.safeSeekRange(seekRange)).to.eql({ start: 2, end: 5 });
     });
 
     it('should loadScriptOnce', () => {
-      $.ajax = function () {};
+      $.ajax = function () {
+      };
       const firstLoad = OO.loadScriptOnce('foo.js');
       const secondLoad = OO.loadScriptOnce('foo.js');
       expect(firstLoad).to.be(true);

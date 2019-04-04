@@ -1873,6 +1873,7 @@
   };
 
   // All Server-side URLS
+  /* eslint-disable max-len */
   OO.URLS = {
     VAST_PROXY: _.template('http://player.ooyala.com/nuplayer/mobile_vast_ads_proxy?callback=<%=cb%>&embed_code=<%=embedCode%>&expires=<%=expires%>&tag_url=<%=tagUrl%>'),
     EXTERNAL_ID: _.template('<%=server%>/player_api/v1/content_tree/external_id/<%=pcode%>/<%=externalId%>'),
@@ -1883,6 +1884,7 @@
     THUMBNAILS: _.template('<%=server%>/api/v1/thumbnail_images/<%=embedCode%>'),
     __end_marker: true,
   };
+  /* eslint-enable max-len */
 
   /**
    * Defines all the possible tracking levels for analytics.
@@ -2245,18 +2247,25 @@
   };
 
   OO.TEMPLATES = {
-    RANDOM_PLACE_HOLDER: ['[place_random_number_here]', '<now>', '[timestamp]', '<rand-num>', '[cache_buster]', '[random]'],
+    RANDOM_PLACE_HOLDER: [
+      '[place_random_number_here]',
+      '<now>',
+      '[timestamp]',
+      '<rand-num>',
+      '[cache_buster]',
+      '[random]',
+    ],
     REFERAK_PLACE_HOLDER: ['[referrer_url]', '[LR_URL]', '[description_url]'],
     EMBED_CODE_PLACE_HOLDER: ['[oo_embedcode]'],
     MESSAGE: '\
-                  <table width="100%" height="100%" bgcolor="black" style="padding-left:55px; padding-right:55px; \
-                  background-color:black; color: white;">\
-                  <tbody>\
-                  <tr valign="middle">\
-                  <td align="right"><span style="font-family:Arial; font-size:20px">\
-                  <%= message %>\
-                  </span></td></tr></tbody></table>\
-                  ',
+              <table width="100%" height="100%" bgcolor="black" style="padding-left:55px; padding-right:55px; \
+              background-color:black; color: white;">\
+              <tbody>\
+              <tr valign="middle">\
+              <td align="right"><span style="font-family:Arial; font-size:20px">\
+              <%= message %>\
+              </span></td></tr></tbody></table>\
+              ',
     __end_marker: true,
   };
 

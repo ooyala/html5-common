@@ -19,8 +19,12 @@ describe('emitter', () => {
     messageCalled = {
       foo: false, foo1: false, foo2: false, foo3: false, foo4: false,
     };
-    callback = function (eventName) { messageCalled[eventName] = true; };
-    callbackWithParam = function (eventName) { messageCalled[eventName] = arguments['1']; };
+    callback = function (eventName) {
+      messageCalled[eventName] = true;
+    };
+    callbackWithParam = function (eventName) {
+      messageCalled[eventName] = arguments['1'];
+    };
   });
 
   afterEach(() => {
@@ -38,7 +42,9 @@ describe('emitter', () => {
     const messageCalled1 = {
       foo: false, foo1: false, foo2: false, foo3: false, foo4: false,
     };
-    const callback1 = function (eventName) { messageCalled1[eventName] = true; };
+    const callback1 = function (eventName) {
+      messageCalled1[eventName] = true;
+    };
     mb1.subscribe('foo', 'test', callback1);
     mb.subscribe('foo', 'test', callback);
     mb.publish('foo');
@@ -54,7 +60,9 @@ describe('emitter', () => {
   });
 
   it('should pass multiple params for simple case', () => {
-    const callbackWithParams = function (...args) { messageCalled[args[0]] = args; };
+    const callbackWithParams = function (...args) {
+      messageCalled[args[0]] = args;
+    };
     mb.subscribe('foo', 'test', callbackWithParams);
     expect(messageCalled.foo).to.equal(false);
 
@@ -75,7 +83,9 @@ describe('emitter', () => {
 
   it('should pass params should not care depedent order and override by dependent params', () => {
     mb.subscribe('foo', 'test', callbackWithParam);
-    const overrideParam = function () { return { foo2: 'hello' }; };
+    const overrideParam = function () {
+      return { foo2: 'hello' };
+    };
     mb.intercept('foo', 'test', overrideParam);
     mb.addDependent('foo', 'foo1', 'test');
     mb.publish('foo1');
@@ -87,7 +97,9 @@ describe('emitter', () => {
   it('should not trigger callback when dependent is ready', () => {
     let fooCalled = false;
 
-    const fooCallback = function () { fooCalled = true; };
+    const fooCallback = function () {
+      fooCalled = true;
+    };
     mb.subscribe('foo', 'test', fooCallback);
     mb.addDependent('foo', 'foo1', 'test', callback);
     expect(messageCalled.foo).to.equal(false);
@@ -150,7 +162,8 @@ describe('emitter', () => {
     expect(messageCalled.foo).to.equal(true);
   });
 
-  it('should one event depend on multiple events, it shouldnt be called until it no longer depends on anything', () => {
+  it(`should one event depend on multiple events, it shouldnt be called
+      until it no longer depends on anything`, () => {
     mb.subscribe('foo1', 'test', callback);
     mb.subscribe('foo2', 'test', callback);
     mb.subscribe('foo3', 'test', callback);
@@ -174,7 +187,8 @@ describe('emitter', () => {
     expect(messageCalled.foo3).to.equal(true);
   });
 
-  it('should one event depend on multiple events, it shouldnt be called if blocked even if it has arguments', () => {
+  it(`should one event depend on multiple events, it shouldnt be called
+      if blocked even if it has arguments`, () => {
     mb.subscribe('foo1', 'test', callback);
     mb.subscribe('foo2', 'test', callback);
     mb.subscribe('foo3', 'test', callback);
@@ -312,9 +326,17 @@ describe('emitter', () => {
     let foo1Params = null;
     let arg0 = null;
     let arg1 = null;
-    mb.subscribe('foo', 'test', (...args) => { fooParams = args; });
-    mb.subscribe('foo1', 'test', (...args) => { foo1Params = args; });
-    const onMerge = function (e0, e1, e0s, e1s) { arg0 = e0s; arg1 = e1s; return ['mynewfoo']; };
+    mb.subscribe('foo', 'test', (...args) => {
+      fooParams = args;
+    });
+    mb.subscribe('foo1', 'test', (...args) => {
+      foo1Params = args;
+    });
+    const onMerge = function (e0, e1, e0s, e1s) {
+      arg0 = e0s;
+      arg1 = e1s;
+      return ['mynewfoo'];
+    };
     mb.addDependent('foo', 'foo1', 'test', onMerge);
     mb.publish('foo', 'v0');
     mb.publish('foo1', 'v1');
@@ -330,9 +352,16 @@ describe('emitter', () => {
     let foo1Params = null;
     let arg0 = null;
     let arg1 = null;
-    mb.subscribe('foo', 'test', (...arg) => { fooParams = arg; });
-    mb.subscribe('foo1', 'test', (...arg) => { foo1Params = arg; });
-    const onMerge = function (e0, e1, e0s, e1s) { arg0 = e0s; arg1 = e1s; };
+    mb.subscribe('foo', 'test', (...arg) => {
+      fooParams = arg;
+    });
+    mb.subscribe('foo1', 'test', (...arg) => {
+      foo1Params = arg;
+    });
+    const onMerge = function (e0, e1, e0s, e1s) {
+      arg0 = e0s;
+      arg1 = e1s;
+    };
     mb.addDependent('foo', 'foo1', 'test', onMerge);
     mb.publish('foo', 'v0');
     mb.publish('foo1', 'v1');
@@ -348,9 +377,17 @@ describe('emitter', () => {
     let foo1Params = null;
     let arg0 = null;
     let arg1 = null;
-    mb.subscribe('foo', 'test', (...arg) => { fooParams = arg; });
-    mb.subscribe('foo1', 'test', (...arg) => { foo1Params = arg; });
-    const onMerge = function (e0, e1, e0s, e1s) { arg0 = e0s; arg1 = e1s; return null; };
+    mb.subscribe('foo', 'test', (...arg) => {
+      fooParams = arg;
+    });
+    mb.subscribe('foo1', 'test', (...arg) => {
+      foo1Params = arg;
+    });
+    const onMerge = function (e0, e1, e0s, e1s) {
+      arg0 = e0s;
+      arg1 = e1s;
+      return null;
+    };
     mb.addDependent('foo', 'foo1', 'test', onMerge);
     mb.publish('foo', 'v0');
     mb.publish('foo1', 'v1');
@@ -364,8 +401,12 @@ describe('emitter', () => {
   it('should maintain original params when not giving merge function', () => {
     let fooParams = null;
     let foo1Params = null;
-    mb.subscribe('foo', 'test', (...arg) => { fooParams = arg; });
-    mb.subscribe('foo1', 'test', (...arg) => { foo1Params = arg; });
+    mb.subscribe('foo', 'test', (...arg) => {
+      fooParams = arg;
+    });
+    mb.subscribe('foo1', 'test', (...arg) => {
+      foo1Params = arg;
+    });
     mb.addDependent('foo', 'foo1', 'test');
     mb.publish('foo', 'v0');
     mb.publish('foo1', 'v1');
@@ -376,9 +417,15 @@ describe('emitter', () => {
   it('should not affect params of subsequent unblocked events', () => {
     let fooParams = null;
     let foo1Params = null;
-    mb.subscribe('foo', 'test', (...arg) => { fooParams = arg; });
-    mb.subscribe('foo1', 'test', (...arg) => { foo1Params = arg; });
-    const onMerge = function (e0, e1, e0s, e1s) { return ['mynewfoo']; };
+    mb.subscribe('foo', 'test', (...arg) => {
+      fooParams = arg;
+    });
+    mb.subscribe('foo1', 'test', (...arg) => {
+      foo1Params = arg;
+    });
+    const onMerge = function (e0, e1, e0s, e1s) {
+      return ['mynewfoo'];
+    };
     mb.addDependent('foo', 'foo1', 'test', onMerge);
     mb.publish('foo', 'v0', 'v3');
     mb.publish('foo1', 'v1', 'v2');
@@ -484,8 +531,13 @@ describe('emitter', () => {
   it('should intercept the event and change arguments', () => {
     let eventName = null;
     let hash = null;
-    const subscribeCallback = function (en, h) { eventName = en; hash = h; };
-    const interceptCallback = function (en, h) { return ['wtf']; };
+    const subscribeCallback = function (en, h) {
+      eventName = en;
+      hash = h;
+    };
+    const interceptCallback = function (en, h) {
+      return ['wtf'];
+    };
     mb.subscribe('foo', 'test', subscribeCallback);
     mb.publish('foo', 'bar');
     expect(eventName).to.equal('foo');
@@ -523,8 +575,14 @@ describe('emitter', () => {
   it('should call all subscribers on exception', () => {
     let test1 = false;
     let test2 = false;
-    const excepts1 = function () { test1 = true; throw ''; };
-    const excepts2 = function () { test2 = true; throw ''; };
+    const excepts1 = function () {
+      test1 = true;
+      throw '';
+    };
+    const excepts2 = function () {
+      test2 = true;
+      throw '';
+    };
     mb.subscribe('foo', 'test1', excepts1);
     mb.subscribe('foo', 'test2', excepts2);
     mb.subscribe('foo1', 'test', callback);
@@ -541,8 +599,16 @@ describe('emitter', () => {
   it('should call all subscribers on exception with params', () => {
     let test1 = false;
     let test2 = false;
-    const excepts1 = function () { test1 = true; callbackWithParam.apply(this, arguments); throw ''; };
-    const excepts2 = function () { test2 = true; callbackWithParam.apply(this, arguments); throw ''; };
+    const excepts1 = function () {
+      test1 = true;
+      callbackWithParam.apply(this, arguments);
+      throw '';
+    };
+    const excepts2 = function () {
+      test2 = true;
+      callbackWithParam.apply(this, arguments);
+      throw '';
+    };
     mb.subscribe('foo', 'test1', excepts1);
     mb.subscribe('foo', 'test2', excepts2);
     mb.subscribe('foo1', 'test', callbackWithParam);
@@ -559,7 +625,10 @@ describe('emitter', () => {
 
   it('should call all subscribers on exception in dependent', () => {
     let test0 = false;
-    const excepts0 = function () { test0 = true; throw ''; };
+    const excepts0 = function () {
+      test0 = true;
+      throw '';
+    };
     mb.subscribe('foo', 'test', excepts0);
     mb.subscribe('foo1', 'test', callback);
     mb.addDependent('foo1', 'foo');
@@ -573,7 +642,10 @@ describe('emitter', () => {
 
   it('should call all subscribers on exception in dependent with params', () => {
     let test0 = false;
-    const excepts0 = function () { test0 = true; throw ''; };
+    const excepts0 = function () {
+      test0 = true;
+      throw '';
+    };
     mb.subscribe('foo', 'test', excepts0);
     mb.subscribe('foo1', 'test', callbackWithParam);
     mb.addDependent('foo1', 'foo');
@@ -588,8 +660,16 @@ describe('emitter', () => {
   it('should call all subscribers on null pointer exception', () => {
     let test1 = false;
     let test2 = false;
-    const excepts1 = function () { test1 = true; let bar = null; bar = bar.baz; };
-    const excepts2 = function () { test2 = true; let bar = null; bar = bar.baz; };
+    const excepts1 = function () {
+      test1 = true;
+      let bar = null;
+      bar = bar.baz;
+    };
+    const excepts2 = function () {
+      test2 = true;
+      let bar = null;
+      bar = bar.baz;
+    };
     mb.subscribe('foo', 'test1', excepts1);
     mb.subscribe('foo', 'test2', excepts2);
     mb.subscribe('foo1', 'test', callback);
@@ -605,7 +685,11 @@ describe('emitter', () => {
 
   it('should call all subscribers on null pointer exception in dependent', () => {
     let test0 = false;
-    const excepts0 = function () { test0 = true; let bar = null; bar = bar.baz; };
+    const excepts0 = function () {
+      test0 = true;
+      let bar = null;
+      bar = bar.baz;
+    };
     mb.subscribe('foo', 'test', excepts0);
     mb.subscribe('foo1', 'test', callback);
     mb.addDependent('foo1', 'foo');
