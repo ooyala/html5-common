@@ -1,4 +1,15 @@
 (function (OO, _, HM) {
+  const updateServerHost = function () {
+    OO.SERVER = {
+      API: OO.isSSL ? OO.playerParams.api_ssl_server || 'https://player.ooyala.com'
+        : OO.playerParams.api_server || 'http://player.ooyala.com',
+      AUTH: OO.isSSL ? OO.playerParams.auth_ssl_server || 'https://player.ooyala.com/sas'
+        : OO.playerParams.auth_server || 'http://player.ooyala.com/sas',
+      ANALYTICS: OO.isSSL ? OO.playerParams.analytics_ssl_server || 'https://player.ooyala.com'
+        : OO.playerParams.analytics_server || 'http://player.ooyala.com',
+    };
+  };
+
   // Ensure playerParams exists
   OO.playerParams = HM.safeObject('environment.playerParams', OO.playerParams, {});
 
@@ -26,17 +37,6 @@
     updateServerHost();
   };
 
-  var updateServerHost = function () {
-    OO.SERVER = {
-      API: OO.isSSL ? OO.playerParams.api_ssl_server || 'https://player.ooyala.com'
-        : OO.playerParams.api_server || 'http://player.ooyala.com',
-      AUTH: OO.isSSL ? OO.playerParams.auth_ssl_server || 'https://player.ooyala.com/sas'
-        : OO.playerParams.auth_server || 'http://player.ooyala.com/sas',
-      ANALYTICS: OO.isSSL ? OO.playerParams.analytics_ssl_server || 'https://player.ooyala.com'
-        : OO.playerParams.analytics_server || 'http://player.ooyala.com',
-    };
-  };
-
   // process tweaks
   // tweaks is optional. Hazmat takes care of this but throws an undesirable warning.
   OO.playerParams.tweaks = OO.playerParams.tweaks || '';
@@ -56,7 +56,8 @@
 
   // Ripped from: http://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid-in-javascript
   OO.guid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
-    const r = Math.random() * 16 | 0; const
+    const r = Math.random() * 16 | 0;
+    const
       v = c == 'x' ? r : (r & 0x3 | 0x8);
     return v.toString(16);
   });
@@ -64,7 +65,7 @@
 
   // Check environment to see if this is prod
   OO.isProd = !!(OO.playerParams.environment
-                   && OO.playerParams.environment.match(/^prod/i));
+    && OO.playerParams.environment.match(/^prod/i));
 
   // Environment invariant.
   OO.platform = window.navigator.platform;
@@ -74,7 +75,7 @@
   OO.browserSupportsCors = (function () {
     try {
       return _.has(new XMLHttpRequest(), 'withCredentials')
-          || _.has(XMLHttpRequest.prototype, 'withCredentials');
+        || _.has(XMLHttpRequest.prototype, 'withCredentials');
     } catch (e) {
       return false;
     }
@@ -121,9 +122,9 @@
   }());
 
   /**
-     * Check if Android version > 4.3
-     * @returns {boolean} true if OS is not Android or Android version > 4.3 otherwise false
-     */
+   * Check if Android version > 4.3
+   * @returns {boolean} true if OS is not Android or Android version > 4.3 otherwise false
+   */
   OO.isAndroid4_4Plus = (function () {
     if (OO.isAndroid) {
       const userAgent = OO.os.match(/Android [\d\.]*;/);
@@ -151,8 +152,8 @@
 
   OO.isSafari = (function () {
     return (!!window.navigator.userAgent.match(/AppleWebKit/)
-              && !window.navigator.userAgent.match(/Chrome/)
-              && !window.navigator.userAgent.match(/like iPhone/));
+      && !window.navigator.userAgent.match(/Chrome/)
+      && !window.navigator.userAgent.match(/like iPhone/));
   }());
 
   OO.chromeMajorVersion = (function () {
@@ -189,7 +190,7 @@
 
   OO.isSmartTV = (function () {
     return (!!window.navigator.userAgent.match(/SmartTV/)
-             || !!window.navigator.userAgent.match(/NetCast/));
+      || !!window.navigator.userAgent.match(/NetCast/));
   }());
 
   OO.isMacOs = (function () {
@@ -199,7 +200,9 @@
   OO.isMacOsLionOrLater = (function () {
     // TODO: revisit for Firefox when possible/necessary
     const macOs = OO.os.match(/Mac OS X ([0-9]+)_([0-9]+)/);
-    if (macOs == null || macOs.length < 3) { return false; }
+    if (macOs == null || macOs.length < 3) {
+      return false;
+    }
     return (parseInt(macOs[1], 10) >= 10 && parseInt(macOs[2], 10) >= 7);
   }());
 
@@ -238,7 +241,9 @@
 
   OO.supportTouch = (function () {
     // IE8- doesn't support JS functions on DOM elements
-    if (document.documentElement.hasOwnProperty && document.documentElement.hasOwnProperty('ontouchstart')) { return true; }
+    if (document.documentElement.hasOwnProperty && document.documentElement.hasOwnProperty('ontouchstart')) {
+      return true;
+    }
     return false;
   }());
 
@@ -246,9 +251,14 @@
     let domain = null;
     try {
       domain = document.domain;
-    } catch (e) {}
-    if (!OO._.isEmpty(domain)) { return domain; }
-    if (OO.isSmartTV) { return 'SmartTV'; }
+    } catch (e) {
+    }
+    if (!OO._.isEmpty(domain)) {
+      return domain;
+    }
+    if (OO.isSmartTV) {
+      return 'SmartTV';
+    }
     return 'unknown';
   }());
 
@@ -292,8 +302,8 @@
       // Windows Phone is mobile only for now, tablets not yet released
       paradigm = 'mobile';
     } else if (!!OO.platform.match(/Mac/) // Macs
-                || !!OO.platform.match(/Win/) // Winboxes
-                || !!OO.platform.match(/Linux/)) { // Linux
+      || !!OO.platform.match(/Win/) // Winboxes
+      || !!OO.platform.match(/Linux/)) { // Linux
       paradigm = 'desktop';
     }
 
@@ -301,17 +311,17 @@
   }());
 
   /**
-     * Determines if a single video element should be used.<br/>
-     * <ul><li>Use single video element on iOS, all versions</li>
-     *     <li>Use single video element on Android, all versions</li></ul>
-     * 01/11/17 Previous JSDoc for Android - to be removed once fix is confirmed and there is no regression:<br />
-     * <ul><li>Use single video element on Android < v4.0</li>
-     *     <li>Use single video element on Android with Chrome < v40<br/>
-     *       (note, it might work on earlier versions but don't know which ones! Does not work on v18)</li></ul>
-     *
-     * @private
-     * @returns {boolean} True if a single video element is required
-     */
+   * Determines if a single video element should be used.<br/>
+   * <ul><li>Use single video element on iOS, all versions</li>
+   *     <li>Use single video element on Android, all versions</li></ul>
+   * 01/11/17 Previous JSDoc for Android - to be removed once fix is confirmed and there is no regression:<br />
+   * <ul><li>Use single video element on Android < v4.0</li>
+   *     <li>Use single video element on Android with Chrome < v40<br/>
+   *       (note, it might work on earlier versions but don't know which ones! Does not work on v18)</li></ul>
+   *
+   * @private
+   * @returns {boolean} True if a single video element is required
+   */
   OO.requiresSingleVideoElement = (function () {
     return OO.isIos || OO.isAndroid;
     // 01/11/17 - commenting out, but not removing three lines below pending QA, we may need to restore this logic
@@ -334,7 +344,19 @@
   // TODO(jj): add AppleTV and other devices as necessary
   OO.device = (function () {
     let device = 'html5';
-    if (OO.isIphone) { device = 'iphone-html5'; } else if (OO.isIpad) { device = 'ipad-html5'; } else if (OO.isAndroid) { device = 'android-html5'; } else if (OO.isRimDevice) { device = 'rim-html5'; } else if (OO.isWinPhone) { device = 'winphone-html5'; } else if (OO.isSmartTV) { device = 'smarttv-html5'; }
+    if (OO.isIphone) {
+      device = 'iphone-html5';
+    } else if (OO.isIpad) {
+      device = 'ipad-html5';
+    } else if (OO.isAndroid) {
+      device = 'android-html5';
+    } else if (OO.isRimDevice) {
+      device = 'rim-html5';
+    } else if (OO.isWinPhone) {
+      device = 'winphone-html5';
+    } else if (OO.isSmartTV) {
+      device = 'smarttv-html5';
+    }
     return device;
   }());
 
@@ -347,7 +369,9 @@
       features.push('html5-playback');
     } else { // normal html5
       features.push('html5-playback');
-      if (OO.supportAds) { features.push('ads'); }
+      if (OO.supportAds) {
+        features.push('ads');
+      }
     }
 
     return _.reduce(features, (memo, feature) => `${memo + feature} `, '');
@@ -383,6 +407,6 @@
   };
   OO.getLocale = function () {
     return (OO.locale || document.documentElement.lang || navigator.language
-              || navigator.userLanguage || 'en').substr(0, 2).toUpperCase();
+      || navigator.userLanguage || 'en').substr(0, 2).toUpperCase();
   };
 }(OO, OO._, OO.HM));

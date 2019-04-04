@@ -69,7 +69,6 @@ module.exports = {
     "no-multi-assign": "warn",
     "prefer-spread": "warn",
     "no-mixed-operators": "warn",
-    "no-var": "warn",
     "radix": "warn",
     "no-underscore-dangle": "warn",
     "no-tabs": "warn",
