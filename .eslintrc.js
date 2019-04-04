@@ -71,8 +71,6 @@ module.exports = {
     "no-mixed-operators": "warn",
     "radix": "warn",
     "no-underscore-dangle": "warn",
-    "no-tabs": "warn",
-    "vars-on-top": "warn",
     "no-multi-str": "warn",
     "prefer-destructuring": "warn",
     "no-dupe-keys": "warn",
