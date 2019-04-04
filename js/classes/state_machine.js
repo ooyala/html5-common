@@ -1,47 +1,46 @@
 (function (OO, _) {
   OO.StateMachine = {
 
-    //Based on https://github.com/jakesgordon/javascript-state-machine
-    create: function(_cfg) {
+    // Based on https://github.com/jakesgordon/javascript-state-machine
+    create(_cfg) {
       // validate parameters
-      var cfg = OO.HM.safeObject('statemachine.create.cfg', _cfg);
-      var initial = OO.HM.safeDomId('statemachine.create.cfg.initial', cfg.initial);
-      var fsm = OO.HM.safeObject('statemachine.create.cfg.target', cfg.target, {});
-      var events = OO.HM.safeArrayOfElements('statemachine.create.cfg.events', cfg.events, function(element){ return OO.HM.safeObject('statemachine.create.cfg.events[]', element); }, []);
-      var moduleName = OO.HM.safeString('statemachine.create.cfg.moduleName', cfg.moduleName,"");
-      var mb = OO.HM.safeObject('statemachine.create.cfg.messageBus', cfg.messageBus);
+      let cfg = OO.HM.safeObject('statemachine.create.cfg', _cfg);
+      let initial = OO.HM.safeDomId('statemachine.create.cfg.initial', cfg.initial);
+      let fsm = OO.HM.safeObject('statemachine.create.cfg.target', cfg.target, {});
+      let events = OO.HM.safeArrayOfElements('statemachine.create.cfg.events', cfg.events, element => OO.HM.safeObject('statemachine.create.cfg.events[]', element), []);
+      let moduleName = OO.HM.safeString('statemachine.create.cfg.moduleName', cfg.moduleName, '');
+      let mb = OO.HM.safeObject('statemachine.create.cfg.messageBus', cfg.messageBus);
 
-      var map        = {};
-      var n;
+      let map = {};
+      let n;
 
       fsm.debugTransitions = false;
-      var lastEvent = "";
+      let lastEvent = '';
 
       OO.StateMachine.addToActiveList(cfg.moduleName, fsm);
 
-      var doCallback = function(name) {
-        var f = null;
-        var shortEventName = name.replace(/[^\/]*\//,'').match(/^(.)(.*)/);   // transform xxx/abc into ['abc','a','bc']
-        var shortMethodName = 'on'+shortEventName[1].toUpperCase() + shortEventName[2];
-        if(fsm[shortMethodName]) {
+      const doCallback = function (name) {
+        let f = null;
+        const shortEventName = name.replace(/[^\/]*\//, '').match(/^(.)(.*)/); // transform xxx/abc into ['abc','a','bc']
+        const shortMethodName = `on${shortEventName[1].toUpperCase()}${shortEventName[2]}`;
+        if (fsm[shortMethodName]) {
           f = fsm[shortMethodName];
         } else {
-          var fullEventName = name.replace(/\/.*/, '').match(/^(.)(.*)/);    // transform xyz/abc into ['xyz','x','yz']
-          var fullMethodName = 'on'+fullEventName[1].toUpperCase() + fullEventName[2] + shortEventName[1].toUpperCase() + shortEventName[2];
-          if(fsm[fullMethodName]) {
+          const fullEventName = name.replace(/\/.*/, '').match(/^(.)(.*)/); // transform xyz/abc into ['xyz','x','yz']
+          const fullMethodName = `on${fullEventName[1].toUpperCase()}${fullEventName[2]}${shortEventName[1].toUpperCase()}${shortEventName[2]}`;
+          if (fsm[fullMethodName]) {
             f = fsm[fullMethodName];
           }
         }
 
         if (f) {
           try {
-            var result = f.apply(fsm, arguments);
+            const result = f.apply(fsm, arguments);
             return (result !== false ? 'ok' : 'fail');
-          }
-          catch(e) {
+          } catch (e) {
             OO.log(e);
-            if(OO.TEST_TEST_TEST) {
-              throw e;  // rethrow in test environment
+            if (OO.TEST_TEST_TEST) {
+              throw e; // rethrow in test environment
             }
             return 'fail';
           }
@@ -51,20 +50,20 @@
         return 'not_found';
       };
 
-      var add = function(e) {
-        var from = (e.from instanceof Array) ? e.from : (e.from ? [e.from] : ['*']); // allow 'wildcard' transition if 'from' is not specified
-        var n;
+      const add = function (e) {
+        const from = (e.from instanceof Array) ? e.from : (e.from ? [e.from] : ['*']); // allow 'wildcard' transition if 'from' is not specified
+        let n;
         map[e.name] = map[e.name] || {};
-        for (n = 0 ; n < from.length ; n++) {
+        for (n = 0; n < from.length; n++) {
           map[e.name][from[n]] = e.to || from[n]; // allow no-op transition if 'to' is not specified
         }
       };
 
-      fsm.removeEvent = function(eventname) {
+      fsm.removeEvent = function (eventname) {
         if (map[eventname]) map[eventname] = null;
-      }
+      };
 
-      fsm.destroyFsm = function() {
+      fsm.destroyFsm = function () {
         OO.StateMachine.removeFromActiveList(this.moduleName, this);
         for (n in map) {
           mb.unsubscribe(n.toString(), moduleName, fsm.receive);
@@ -78,37 +77,37 @@
         map = {};
       };
 
-      var updateState = function(fsm, state) {
-        if (!fsm || state === "*") { return; } // no op  for * state
+      const updateState = function (fsm, state) {
+        if (!fsm || state === '*') { return; } // no op  for * state
         if (fsm.debugTransitions) {
-          OO.log( "Transition " + (moduleName ? moduleName : "") +
-                  "\n  OldState: " + (fsm.currentState ? fsm.currentState : "") +
-                  "\n  NewState: " + (state ? state : "") +
-                  "\n  CausedBy: " + (lastEvent ? lastEvent : ""));
+          OO.log(`Transition ${moduleName || ''
+          }\n  OldState: ${fsm.currentState ? fsm.currentState : ''
+          }\n  NewState: ${state || ''
+          }\n  CausedBy: ${lastEvent || ''}`);
         }
         fsm.currentState = state;
       };
 
-      fsm.canReceive = function(event) { return map[event] && (map[event].hasOwnProperty(fsm.currentState) || map[event].hasOwnProperty('*')); };
+      fsm.canReceive = function (event) { return map[event] && (map[event].hasOwnProperty(fsm.currentState) || map[event].hasOwnProperty('*')); };
 
-      fsm.receive = function(event/*....arguments*/) {
-        //drop events not valid in current state
+      fsm.receive = function (event/* ....arguments */) {
+        // drop events not valid in current state
         if (!fsm) {
           return;
         }
         if (!fsm.canReceive(event)) {
-          //using arguments[0] instead of event because safari and iOS don't display this nicely in the console.
-          OO.log('dropped event \'' + arguments[0] + '\' for \'' + moduleName + '\' while in state \'' + fsm.currentState + '\' with map:',map);
+          // using arguments[0] instead of event because safari and iOS don't display this nicely in the console.
+          OO.log(`dropped event '${arguments[0]}' for '${moduleName}' while in state '${fsm.currentState}' with map:`, map);
           return;
         }
 
         lastEvent = arguments[0];
 
-        var from  = fsm.currentState;
-        var to    = map[event][from] || map[event]['*'] || from;
-        var n;
+        const from = fsm.currentState;
+        const to = map[event][from] || map[event]['*'] || from;
+        let n;
 
-        //handle transition to same state
+        // handle transition to same state
         if (from === to) {
           doCallback.apply(fsm, arguments);
           return;
@@ -116,13 +115,13 @@
 
         updateState(fsm, to);
 
-        var callbackResult = 'not_found';
-        if(to !== "*") { callbackResult = doCallback.apply(fsm, _.union([to], _.rest(arguments))); }
-        if(callbackResult==='not_found') { callbackResult = doCallback.apply(fsm, arguments); }
+        let callbackResult = 'not_found';
+        if (to !== '*') { callbackResult = doCallback.apply(fsm, _.union([to], _.rest(arguments))); }
+        if (callbackResult === 'not_found') { callbackResult = doCallback.apply(fsm, arguments); }
 
-        switch ( callbackResult )  {
+        switch (callbackResult) {
           case 'not_found':
-            OO.log('Module \'' + moduleName + '\' does not handle state \'' + to + '\' or event \'' + arguments[0] + '\'');
+            OO.log(`Module '${moduleName}' does not handle state '${to}' or event '${arguments[0]}'`);
             updateState(fsm, from);
             break;
           case 'fail':
@@ -133,15 +132,15 @@
         }
       };
 
-      for(n = 0 ; n < events.length ; n++) {
-        if(typeof(events[n]) == 'object') {
+      for (n = 0; n < events.length; n++) {
+        if (typeof (events[n]) === 'object') {
           add(events[n]);
         }
       }
 
       updateState(fsm, initial);
       if (mb !== undefined) {
-        for(n in map) {
+        for (n in map) {
           mb.subscribe(n.toString(), moduleName, fsm.receive);
         }
       }
@@ -156,7 +155,7 @@
      * @public
      * @method StateMachine#addToActiveList
      */
-    addToActiveList: function(smName, sm)  {
+    addToActiveList(smName, sm) {
       if (!this.activeStateMachines[smName]) {
         this.activeStateMachines[smName] = [];
       }
@@ -169,14 +168,14 @@
      * @public
      * @method StateMachine#removeFromActiveList
      */
-    removeFromActiveList: function(smName, sm) {
-      var list = this.activeStateMachines[smName];
+    removeFromActiveList(smName, sm) {
+      const list = this.activeStateMachines[smName];
       if (!list) {
         return;
       }
 
-      for (var index = 0; index < list.length; index++) {
-        if(list[index] === sm) {
+      for (let index = 0; index < list.length; index++) {
+        if (list[index] === sm) {
           list.splice(index, 1);
           break;
         }
@@ -189,16 +188,16 @@
      * enabled.
      * @public
      * @method StateMachine#startDebugTransitionsFor
-     * @return string Message stating whether debugging was succesfully started
+     * @returns string Message stating whether debugging was succesfully started
      *           (Mostly for debugging in the console)
      */
-    startDebugTransitionsFor: function(smName) {
-      var result = this.debugTransitionsHelper(smName, true)
-      var msg;
+    startDebugTransitionsFor(smName) {
+      const result = this.debugTransitionsHelper(smName, true);
+      let msg;
       if (result) {
-        msg = "STATEMACHINE \'" + smName + "\' DEBUGGING STARTED";
+        msg = `STATEMACHINE \'${smName}\' DEBUGGING STARTED`;
       } else {
-        msg = "Couldn't find \'" + smName +"\'";
+        msg = `Couldn't find \'${smName}\'`;
       }
 
       return msg;
@@ -210,16 +209,16 @@
     * disabled.
      * @public
      * @method StateMachine#stopDebugTransitionsFor
-     * @return string Message stating whether debugging was succesfully stopped
+     * @returns string Message stating whether debugging was succesfully stopped
      *           (Mostly for debugging in the console)
      */
-    stopDebugTransitionsFor: function(smName) {
-      var result = this.debugTransitionsHelper(smName, false)
-      var msg;
+    stopDebugTransitionsFor(smName) {
+      const result = this.debugTransitionsHelper(smName, false);
+      let msg;
       if (result) {
-        msg = "STATEMACHINE \'" + smName + "\' DEBUGGING STOPPED";
+        msg = `STATEMACHINE \'${smName}\' DEBUGGING STOPPED`;
       } else {
-        msg = "Couldn't find \'" + smName +"\'";
+        msg = `Couldn't find \'${smName}\'`;
       }
 
       return msg;
@@ -231,15 +230,15 @@
      * @method StateMachine#debugTransitionsHelper
      * @param string smName - name of the statemachine you want to debug
      * @param boolean enable - whether to turn debugging on or off.
-     * @return boolean True if successfully at least 1 state machine found to enable/disable
+     * @returns boolean True if successfully at least 1 state machine found to enable/disable
      */
-    debugTransitionsHelper: function(smName, enable) {
-      var list = this.activeStateMachines[smName];
+    debugTransitionsHelper(smName, enable) {
+      const list = this.activeStateMachines[smName];
       if (!list) {
         return false;
       }
 
-      for ( var sm in list) {
+      for (const sm in list) {
         list[sm].debugTransitions = enable;
       }
 
@@ -251,19 +250,18 @@
      * how many instances are each state machine are active.
      * @public
      * @method StateMachine#getActiveList
-     * @return object An object who's keys are the names of the statemachines and
+     * @returns object An object who's keys are the names of the statemachines and
      *           the value is the number of active instances of that statemachine.
      */
-    getActiveList: function() {
-      var list = {};
-      for (var smName in this.activeStateMachines) {
+    getActiveList() {
+      const list = {};
+      for (const smName in this.activeStateMachines) {
         list[smName] = this.activeStateMachines[smName].length;
       }
       return list;
     },
 
-    __end_marker : true,
+    __end_marker: true,
 
   };
-
 }(OO, OO._));

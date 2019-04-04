@@ -1,18 +1,15 @@
-(function(OO,_) {
-
-  _.extend(OO.MessageBus.prototype,  {
-    published: function(event) {
-      var matches = _.filter(this._messageHistory, function(msg) { return msg[0] === 'publish' && msg[1] === event; });
+(function (OO, _) {
+  _.extend(OO.MessageBus.prototype, {
+    published(event) {
+      const matches = _.filter(this._messageHistory, msg => msg[0] === 'publish' && msg[1] === event);
       return _.rest(_.last(matches) || []);
     },
 
-    countEvents: function(event) {
-      var matches = _.filter(this._messageHistory, function(msg) { return msg[0] === 'publish' && msg[1] === event; });
+    countEvents(event) {
+      const matches = _.filter(this._messageHistory, msg => msg[0] === 'publish' && msg[1] === event);
       return matches.length;
     },
 
-    __end_marker: true
+    __end_marker: true,
   });
-
-}(OO,OO._));
-
+}(OO, OO._));
