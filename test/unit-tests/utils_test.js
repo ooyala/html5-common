@@ -23,15 +23,15 @@ describe('utils', () => {
     });
 
     it('should inherit', () => {
-      const c = OO.inherit(p, function () {
+      const C = OO.inherit(p, function () {
         this.name = 'child';
       });
-      OO._.extend(c.prototype, {
+      OO._.extend(C.prototype, {
         foo() {
           return 'fromChild';
         },
       });
-      const v = new c();
+      const v = new C();
       expect(v.name).to.equal('child');
       expect(v.foo).to.be.a('function');
       expect(v.foo()).to.equal('fromChild');
@@ -39,11 +39,11 @@ describe('utils', () => {
     });
 
     it('should inherit for two child', () => {
-      const c = OO.inherit(p, () => {
+      const C = OO.inherit(p, () => {
       });
-      const v = new c();
+      const v = new C();
       v.foo();
-      const v1 = new c();
+      const v1 = new C();
       expect(v.name).to.equal('parent');
       expect(v1.name).to.equal('parent');
 

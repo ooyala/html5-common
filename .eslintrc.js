@@ -33,13 +33,13 @@ module.exports = {
       }
     ],
     "no-plusplus": [
-      "warn",
+      "error",
       {
         "allowForLoopAfterthoughts": true
       }
     ],
     "no-param-reassign": [
-      "warn",
+      "error",
       {
         "props": false
       }
@@ -65,7 +65,6 @@ module.exports = {
       }
     ],
     "no-extend-native": "warn",
-    "new-cap": "warn",
     "import/no-dynamic-require": "warn",
     "eqeqeq": "warn",
     "no-unused-vars": "warn",
