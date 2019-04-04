@@ -85,7 +85,6 @@ module.exports = {
     "no-dupe-keys": "warn",
     "no-use-before-define": "warn",
     "guard-for-in": "warn",
-    "default-case": "warn",
     "no-shadow": "warn",
     "no-nested-ternary": "warn",
     "no-useless-concat": "warn",

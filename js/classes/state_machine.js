@@ -142,6 +142,8 @@
             break;
           case 'ok':
             break;
+          default:
+          // do nothing
         }
       };
 
