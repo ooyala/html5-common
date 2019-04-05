@@ -105,9 +105,9 @@
         const origParams = OO.safeClone(this.blockedParams[eventName]);
         args.shift();
         origParams.shift();
+        let newArgs = (onMergeParams && onMergeParams
+          .apply(this, [eventName, dependentEvent, origParams, args])) || origParams;
 
-        let newArgs = onMergeParams && onMergeParams
-          .apply(this, [eventName, dependentEvent, origParams, args]) || origParams;
         newArgs = [e].concat(newArgs);
         delete this.blockedEvent[e];
         this.blockedParams[e] = [];
