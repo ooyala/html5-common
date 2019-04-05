@@ -33,7 +33,7 @@ describe('state machine', () => {
       moduleName: 'testModule',
       messageBus: {
         subscribe(eventName, moduleName) {
-          if (eventName == 'event_1' && moduleName == 'testModule') {
+          if (eventName === 'event_1' && moduleName === 'testModule') {
             subscribed = true;
           }
         },

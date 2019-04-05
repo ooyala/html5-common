@@ -44,6 +44,7 @@ module.exports = {
         "props": false
       }
     ],
+    "no-underscore-dangle": "warn",
     "require-jsdoc": [
       "warn",
       {
@@ -66,7 +67,6 @@ module.exports = {
     ],
     "no-extend-native": "warn",
     "import/no-dynamic-require": "warn",
-    "eqeqeq": "warn",
     "no-unused-vars": "warn",
     "no-throw-literal": "warn",
     "prefer-rest-params": "warn",
@@ -76,11 +76,8 @@ module.exports = {
     "no-restricted-globals": "warn",
     "no-multi-assign": "warn",
     "prefer-spread": "warn",
-    "no-underscore-dangle": "warn",
-    "no-multi-str": "warn",
     "prefer-destructuring": "warn",
     "no-dupe-keys": "warn",
-    "no-use-before-define": "warn",
     "guard-for-in": "warn",
     "no-restricted-syntax": "warn",
     "import/no-extraneous-dependencies": "warn",

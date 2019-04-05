@@ -81,7 +81,7 @@
      */
     addDependent(eventName, dependentEvent, subscriber, onMergeParams) {
       // TODO, add a circular detectecion here.
-      if (!eventName || eventName == '' || !dependentEvent || dependentEvent == '') {
+      if (!eventName || eventName === '' || !dependentEvent || dependentEvent === '') {
         console.error(`MB: addDependent called on message bus from subscriber ${subscriber} with no event name given.`);
         return;
       }
@@ -97,7 +97,7 @@
       this.blockedParams[eventName] = [];
 
       const onSourceReady = OO._.bind(function (e) {
-        if (this.blockedEvent[e] != 1) {
+        if (this.blockedEvent[e] !== 1) {
           return;
         }
 
@@ -129,7 +129,7 @@
      * @param {string} target The dependent event that is blocking
      */
     removeDependent(source, target) {
-      if (!source || source == '' || !target || target == '') {
+      if (!source || source === '' || !target || target === '') {
         console.warn('MB: removeDependent called on message bus with no event name given.');
         return;
       }
@@ -151,7 +151,7 @@
      * @example myplayer.mb.publish(OO.EVENTS.WILL_CHANGE_FULLSCREEN,true);
      */
     publish() {
-      if (!arguments || !arguments[0] || arguments[0] == '') {
+      if (!arguments || !arguments[0] || arguments[0] === '') {
         console.error('MB: publish called on message bus with no event name given.');
         return;
       }
@@ -257,12 +257,12 @@
      */
     intercept(eventName, subscriber, callback) {
       this._interceptEmitter.on(eventName, subscriber, _.bind(function (e) {
-        if (!eventName || eventName == '') {
+        if (!eventName || eventName === '') {
           console.error(`MB: intercept called on message bus from subscriber ${subscriber} with no event name given.`);
           return;
         }
         const args = OO.safeClone(_.flatten(arguments));
-        if (this._interceptArgs[eventName] != false) {
+        if (this._interceptArgs[eventName] !== false) {
           this._interceptArgs[eventName] = callback.apply(this, args);
         }
       }, this));
@@ -284,7 +284,7 @@
     subscribe(eventName, subscriber, callback) {
       // TODO check if it is on the dependent queue, should not allow this action if a event is blocking
       // other event.
-      if (!eventName || eventName == '') {
+      if (!eventName || eventName === '') {
         console.error(`MB: subscribe called on message bus from subscriber ${subscriber} with no event name given.`);
         return;
       }
@@ -304,7 +304,7 @@
      * messageBus.unsubscribe("*", 'example', function(eventName) {});
      */
     unsubscribe(eventName, subscriber, callback) {
-      if (!eventName || eventName == '') {
+      if (!eventName || eventName === '') {
         console.error(`MB: unsubscribe called on message bus from subscriber ${subscriber} with no event name given.`);
         return;
       }
@@ -370,7 +370,7 @@
         for (const eventName in this._dependentList) {
           if (this._dependentList[eventName]) {
             for (index = 0; index < this._dependentList[eventName].length; index++) {
-              if (this.blockedEvent[eventName] == 1) {
+              if (this.blockedEvent[eventName] === 1) {
                 output += '[blocked]';
               }
 
