@@ -22,8 +22,10 @@ describe('emitter', () => {
     callback = function (eventName) {
       messageCalled[eventName] = true;
     };
-    callbackWithParam = function (eventName) {
-      messageCalled[eventName] = arguments['1'];
+
+    callbackWithParam = function (...args) {
+      const [eventName, eventValue] = args;
+      messageCalled[eventName] = eventValue;
     };
   });
 
@@ -599,14 +601,14 @@ describe('emitter', () => {
   it('should call all subscribers on exception with params', () => {
     let test1 = false;
     let test2 = false;
-    const excepts1 = function () {
+    const excepts1 = function (...args) {
       test1 = true;
-      callbackWithParam.apply(this, arguments);
+      callbackWithParam.apply(this, args);
       throw '';
     };
-    const excepts2 = function () {
+    const excepts2 = function (...args) {
       test2 = true;
-      callbackWithParam.apply(this, arguments);
+      callbackWithParam.apply(this, args);
       throw '';
     };
     mb.subscribe('foo', 'test1', excepts1);

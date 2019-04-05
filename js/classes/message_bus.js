@@ -33,8 +33,8 @@
     addTracer(newTracer) {
       if (newTracer && _.isFunction(newTracer)) {
         if (this._tracer) {
-          this._tracer = _.wrap(this._tracer, function (f) {
-            newTracer.apply(this, _.rest(arguments));
+          this._tracer = _.wrap(this._tracer, function (...args) {
+            newTracer.apply(this, _.rest(args));
           });
         } else {
           this._tracer = newTracer;
@@ -42,8 +42,8 @@
       }
     },
 
-    _internalTracer() {
-      this._messageHistory.push(_.toArray(arguments));
+    _internalTracer(...args) {
+      this._messageHistory.push(_.toArray(args));
     },
 
     messageTraceSnapshot() {
@@ -96,12 +96,13 @@
       this._blockList[dependentEvent].push(eventName);
       this.blockedParams[eventName] = [];
 
-      const onSourceReady = OO._.bind(function (e) {
+      const onSourceReady = OO._.bind(function (...params) {
+        const [e] = params;
         if (this.blockedEvent[e] !== 1) {
           return;
         }
 
-        const args = OO.safeClone(_.flatten(arguments));
+        const args = OO.safeClone(_.flatten(params));
         const origParams = OO.safeClone(this.blockedParams[eventName]);
         args.shift();
         origParams.shift();
@@ -150,17 +151,18 @@
      * @example myplayer.mb.publish(OO.EVENTS.PLAY);
      * @example myplayer.mb.publish(OO.EVENTS.WILL_CHANGE_FULLSCREEN,true);
      */
-    publish() {
-      if (!arguments || !arguments[0] || arguments[0] === '') {
+    publish(...params) {
+      const [eventName] = params;
+      if (!params || !eventName || eventName === '') {
         console.error('MB: publish called on message bus with no event name given.');
         return;
       }
 
-      const args = OO.safeClone(_.flatten(arguments));
+      const args = OO.safeClone(_.flatten(params));
       this._publishingQueue.push(args);
 
       if (this.debug) {
-        OO.log(`MB DEBUG: queueing \'${arguments[0]}\' w\/ args`, args);
+        OO.log(`MB DEBUG: queueing \'${eventName}\' w\/ args`, args);
       }
 
       if (!this._dispatching) {
@@ -175,11 +177,12 @@
     },
 
 
-    _publish(eventName) {
+    _publish(...paramsArr) {
+      const [eventName] = paramsArr;
       // queue event here untill all dependency is cleared.
       // also trigger queued event if there are blocked by this event.
       this._readyEventList[eventName] = 1;
-      let args = OO.safeClone(_.flatten(arguments));
+      let args = OO.safeClone(_.flatten(paramsArr));
 
       this._interceptEmitter.trigger.apply(this._interceptEmitter, args);
       if (this._interceptArgs[eventName] === false) {
@@ -256,12 +259,12 @@
      * //   Console displays "play: goodbye"
      */
     intercept(eventName, subscriber, callback) {
-      this._interceptEmitter.on(eventName, subscriber, _.bind(function (e) {
+      this._interceptEmitter.on(eventName, subscriber, _.bind(function (...params) {
         if (!eventName || eventName === '') {
           console.error(`MB: intercept called on message bus from subscriber ${subscriber} with no event name given.`);
           return;
         }
-        const args = OO.safeClone(_.flatten(arguments));
+        const args = OO.safeClone(_.flatten(params));
         if (this._interceptArgs[eventName] !== false) {
           this._interceptArgs[eventName] = callback.apply(this, args);
         }

@@ -17,9 +17,10 @@
       );
     },
 
-    trigger(eventName /* , args... */) {
-      _.each(this._subscribers[eventName] || [], _.bind(this._triggerSubscriber, this, eventName, arguments));
-      _.each(this._subscribers['*'] || [], _.bind(this._triggerSubscriber, this, eventName, arguments));
+    trigger(...args) {
+      const [eventName] = args;
+      _.each(this._subscribers[eventName] || [], _.bind(this._triggerSubscriber, this, eventName, args));
+      _.each(this._subscribers['*'] || [], _.bind(this._triggerSubscriber, this, eventName, args));
     },
 
     _triggerSubscriber(eventName, params, subscriber) {

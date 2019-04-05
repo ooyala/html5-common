@@ -24,7 +24,8 @@
 
       OO.StateMachine.addToActiveList(cfg.moduleName, fsm);
 
-      const doCallback = function (name) {
+      const doCallback = function (...args) {
+        const [name] = args;
         let f = null;
         const shortEventName = name.replace(/[^\/]*\//, '').match(/^(.)(.*)/); // transform xxx/abc into ['abc','a','bc']
         const shortMethodName = `on${shortEventName[1].toUpperCase()}${shortEventName[2]}`;
@@ -40,7 +41,7 @@
 
         if (f) {
           try {
-            const result = f.apply(fsm, arguments);
+            const result = f.apply(fsm, args);
             return (result !== false ? 'ok' : 'fail');
           } catch (e) {
             OO.log(e);
@@ -65,8 +66,8 @@
         }
       };
 
-      fsm.removeEvent = function (eventname) {
-        if (map[eventname]) map[eventname] = null;
+      fsm.removeEvent = function (eventName) {
+        if (map[eventName]) map[eventName] = null;
       };
 
       fsm.destroyFsm = function () {
@@ -100,25 +101,26 @@
         return map[event] && (map[event].hasOwnProperty(fsm.currentState) || map[event].hasOwnProperty('*'));
       };
 
-      fsm.receive = function (event/* ....arguments */) {
+      fsm.receive = function (...args) {
+        const [event] = args;
         // drop events not valid in current state
         if (!fsm) {
           return;
         }
         if (!fsm.canReceive(event)) {
           // using arguments[0] instead of event because safari and iOS don't display this nicely in the console.
-          OO.log(`dropped event '${arguments[0]}' for '${moduleName}' while in state '${fsm.currentState}' with map:`, map);
+          OO.log(`dropped event '${event}' for '${moduleName}' while in state '${fsm.currentState}' with map:`, map);
           return;
         }
 
-        lastEvent = arguments[0];
+        lastEvent = event;
 
         const from = fsm.currentState;
         const to = map[event][from] || map[event]['*'] || from;
 
         // handle transition to same state
         if (from === to) {
-          doCallback.apply(fsm, arguments);
+          doCallback.apply(fsm, args);
           return;
         }
 
@@ -126,15 +128,15 @@
 
         let callbackResult = 'not_found';
         if (to !== '*') {
-          callbackResult = doCallback.apply(fsm, _.union([to], _.rest(arguments)));
+          callbackResult = doCallback.apply(fsm, _.union([to], _.rest(args)));
         }
         if (callbackResult === 'not_found') {
-          callbackResult = doCallback.apply(fsm, arguments);
+          callbackResult = doCallback.apply(fsm, args);
         }
 
         switch (callbackResult) {
           case 'not_found':
-            OO.log(`Module '${moduleName}' does not handle state '${to}' or event '${arguments[0]}'`);
+            OO.log(`Module '${moduleName}' does not handle state '${to}' or event '${event}'`);
             updateState(fsm, from);
             break;
           case 'fail':
