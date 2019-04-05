@@ -56,7 +56,7 @@
       };
 
       const add = function (e) {
-        const from = (e.from instanceof Array) ? e.from : (e.from ? [e.from] : ['*']); // allow 'wildcard' transition if 'from' is not specified
+        const from = e.from instanceof Array ? e.from : [e.from || '*']; // allow 'wildcard' transition if 'from' is not specified
         let i = 0;
         const ln = from.length;
         map[e.name] = map[e.name] || {};
