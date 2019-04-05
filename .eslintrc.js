@@ -70,7 +70,6 @@ module.exports = {
     "no-unused-vars": "warn",
     "no-throw-literal": "warn",
     "global-require": "warn",
-    "no-prototype-builtins": "warn",
     "no-useless-escape": "warn",
     "no-restricted-globals": "warn",
     "prefer-spread": "warn",

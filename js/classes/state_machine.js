@@ -98,7 +98,10 @@
       };
 
       fsm.canReceive = function (event) {
-        return map[event] && (map[event].hasOwnProperty(fsm.currentState) || map[event].hasOwnProperty('*'));
+        return map[event] && (
+          Object.prototype.hasOwnProperty.call(map[event], fsm.currentState)
+          || Object.prototype.hasOwnProperty.call(map[event], '*')
+        );
       };
 
       fsm.receive = function (...args) {
