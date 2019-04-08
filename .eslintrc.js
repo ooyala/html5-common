@@ -68,7 +68,6 @@ module.exports = {
     "no-extend-native": "warn",
     "no-useless-escape": "warn",
     "no-restricted-globals": "warn",
-    "prefer-spread": "warn",
     "no-restricted-syntax": "warn",
   },
 };

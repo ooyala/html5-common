@@ -117,7 +117,7 @@
           OO.log(`MB DEBUG: unblocking \'${e}\' because of \'${dependentEvent}\' with args `, newArgs);
         }
 
-        this._publish.apply(this, newArgs);
+        this._publish(...newArgs);
       }, this);
 
       this._dependentEmitter.on(eventName, subscriber, onSourceReady);
@@ -169,7 +169,7 @@
         this._dispatching = true;
         let ev = this._publishingQueue.shift();
         while (ev) {
-          this._publish.apply(this, ev);
+          this._publish(...ev);
           ev = this._publishingQueue.shift();
         }
         this._dispatching = false;
@@ -184,7 +184,7 @@
       this._readyEventList[eventName] = 1;
       let paramsArr = OO.safeClone(_.flatten(args));
 
-      this._interceptEmitter.trigger.apply(this._interceptEmitter, paramsArr);
+      this._interceptEmitter.trigger(...paramsArr);
       if (this._interceptArgs[eventName] === false) {
         this._interceptArgs[eventName] = true;
         return;
@@ -203,11 +203,11 @@
           OO.log(`MB DEBUG: publishing \'${eventName}\' w\/ args `, paramsArr);
         }
 
-        this._emitter.trigger.apply(this._emitter, paramsArr);
+        this._emitter.trigger(...paramsArr);
         _.each(this._blockList[eventName], function (e) {
           this._clearDependent(e, eventName);
           paramsArr[0] = e;
-          this._dependentEmitter.trigger.apply(this._dependentEmitter, paramsArr);
+          this._dependentEmitter.trigger(...paramsArr);
         }, this);
         delete this._blockList[eventName];
       } else {
