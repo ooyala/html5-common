@@ -1204,14 +1204,6 @@
       VC_RELOAD: 'videoReload',
 
       /**
-       * Commands the video controller to prepare all video elements for playback.  This event should be
-       * called on a click event and used to enable api-control on html5-based video elements.
-       * @event OO.EVENTS#VC_PRIME_VIDEOS
-       * @public
-       */
-      VC_PRIME_VIDEOS: 'videoPrimeVideos',
-
-      /**
        * Notifies the player of tags (such as ID3) encountered during video playback.
        * The handler is called with the following arguments:
        * <ul>
