@@ -1,4 +1,4 @@
-/* eslint-disable import/no-dynamic-require */
+/* eslint-disable import/no-dynamic-require,global-require */
 // Assuming that this repo lives as a submodule at the root folder of other repos, this is the code location
 global.SRC_ROOT = '../../../js/';
 global.TEST_ROOT = '../../../test/';
