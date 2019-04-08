@@ -1,3 +1,4 @@
+/* eslint-disable require-jsdoc */
 (function (OO, _) {
   _.extend(OO.MessageBus.prototype, {
     published(event) {

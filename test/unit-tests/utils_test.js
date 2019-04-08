@@ -1,4 +1,4 @@
-/* eslint-disable import/no-dynamic-require */
+/* eslint-disable import/no-dynamic-require,require-jsdoc */
 require(`${COMMON_SRC_ROOT}utils/utils.js`);
 
 describe('utils', () => {

@@ -46,7 +46,7 @@ module.exports = {
     ],
     "no-underscore-dangle": 0,
     "require-jsdoc": [
-      "warn",
+      "error",
       {
       "require": {
         "FunctionDeclaration": true,
@@ -57,7 +57,7 @@ module.exports = {
       }
     }],
     "valid-jsdoc": [
-      "warn",
+      "error",
       {
         "prefer": {
           "return": "returns"

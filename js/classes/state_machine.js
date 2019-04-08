@@ -1,7 +1,10 @@
 (function (OO, _) {
   OO.StateMachine = {
-
-    // Based on https://github.com/jakesgordon/javascript-state-machine
+    /**
+     * Based on https://github.com/jakesgordon/javascript-state-machine
+     * @param {object} _cfg The config object.
+     * @returns {object} fsm
+     */
     create(_cfg) {
       // validate parameters
       let cfg = OO.HM.safeObject('statemachine.create.cfg', _cfg);
@@ -24,6 +27,11 @@
 
       OO.StateMachine.addToActiveList(cfg.moduleName, fsm);
 
+      /**
+       * Do Callback.
+       * @param {array} args The array of arguments.
+       * @returns {string} callback not found.
+       */
       const doCallback = function (...args) {
         const [name] = args;
         let f = null;
@@ -52,10 +60,13 @@
           }
         }
 
-        // callback not found
         return 'not_found';
       };
 
+      /**
+       * Add
+       * @param {object} e The e object.
+       */
       const add = function (e) {
         const from = e.from instanceof Array ? e.from : [e.from || '*']; // allow 'wildcard' transition if 'from' is not specified
         let i = 0;
@@ -86,6 +97,11 @@
         map = {};
       };
 
+      /**
+       * Update State.
+       * @param {object} fsmObj The fsm object
+       * @param {string} state The fsm state
+       */
       const updateState = function (fsmObj, state) {
         if (!fsmObj || state === '*') {
           return;
@@ -154,7 +170,8 @@
         }
       };
 
-      for (n = 0; n < events.length; n++) {
+      const ln = events.length;
+      for (n = 0; n < ln; n++) {
         if (typeof (events[n]) === 'object') {
           add(events[n]);
         }
@@ -176,8 +193,10 @@
 
     /**
      * Adds a StateMachine to the list of currently active state machines.
-     * @public
+     * @param {string} smName The name of the statemachine.
+     * @param {object} sm The sm object.
      * @method StateMachine#addToActiveList
+     * @public
      */
     addToActiveList(smName, sm) {
       if (!this.activeStateMachines[smName]) {
@@ -188,17 +207,20 @@
     },
 
     /**
-     * Remove the StateMachine from the list of curently active state machines.
-     * @public
+     * Remove the StateMachine from the list of currently active state machines.
+     * @param {string} smName The name of the statemachine.
+     * @param {object} sm The sm object.
      * @method StateMachine#removeFromActiveList
+     * @public
      */
     removeFromActiveList(smName, sm) {
       const list = this.activeStateMachines[smName];
       if (!list) {
         return;
       }
-
-      for (let index = 0; index < list.length; index++) {
+      let index = 0;
+      const ln = list.length;
+      for (; index < ln; index++) {
         if (list[index] === sm) {
           list.splice(index, 1);
           break;
@@ -210,10 +232,11 @@
      * Enable debugging state transitions for a particular state machine. If
      * multiple of the same state machine are active, all of them have debugging
      * enabled.
-     * @public
+     * @param {string} smName The name of the statemachine.
      * @method StateMachine#startDebugTransitionsFor
-     * @returns string Message stating whether debugging was succesfully started
-     *           (Mostly for debugging in the console)
+     * @public
+     * @returns {string} Message stating whether debugging was successfully started
+     * (Mostly for debugging in the console)
      */
     startDebugTransitionsFor(smName) {
       const result = this.debugTransitionsHelper(smName, true);
@@ -228,13 +251,13 @@
     },
 
     /**
-     * Disable debugging state transitions for a particular state machine. If
-     * multiple of the same state machine are active, all of them have debugging
-     * disabled.
+     * Disable debugging state transitions for a particular state machine.
+     * If multiple of the same state machine are active, all of them have debugging disabled.
      * @public
      * @method StateMachine#stopDebugTransitionsFor
-     * @returns string Message stating whether debugging was succesfully stopped
-     *           (Mostly for debugging in the console)
+     * @param {string} smName The name of the statemachine.
+     * @returns {string} Message stating whether debugging was successfully stopped
+     * (Mostly for debugging in the console)
      */
     stopDebugTransitionsFor(smName) {
       const result = this.debugTransitionsHelper(smName, false);
@@ -250,11 +273,10 @@
 
     /**
      * Helper function to enable/disable all statemachines with the specified name.
-     * @private
      * @method StateMachine#debugTransitionsHelper
-     * @param string smName - name of the statemachine you want to debug
-     * @param boolean enable - whether to turn debugging on or off.
-     * @returns boolean True if successfully at least 1 state machine found to enable/disable
+     * @param {string} smName The name of the statemachine you want to debug.
+     * @param {boolean} enable The whether to turn debugging on or off.
+     * @returns {boolean} True if successfully at least 1 state machine found to enable/disable.
      */
     debugTransitionsHelper(smName, enable) {
       const list = this.activeStateMachines[smName];
@@ -276,8 +298,8 @@
      * how many instances are each state machine are active.
      * @public
      * @method StateMachine#getActiveList
-     * @returns object An object who's keys are the names of the statemachines and
-     *           the value is the number of active instances of that statemachine.
+     * @returns {object} An object who's keys are the names of the statemachines and
+     * the value is the number of active instances of that statemachine.
      */
     getActiveList() {
       const list = {};

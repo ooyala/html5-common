@@ -29,7 +29,10 @@
   };
 
   _.extend(OO.MessageBus.prototype, {
-    // Adds a tracer function, which will be fired for each published/executed event
+    /**
+     * Adds a tracer function, which will be fired for each published/executed event.
+     * @param {object} newTracer The newTracer object.
+     */
     addTracer(newTracer) {
       if (newTracer && _.isFunction(newTracer)) {
         if (this._tracer) {
@@ -42,19 +45,26 @@
       }
     },
 
+    /**
+     * Internal tracer.
+     * @param {array} args The array of arguments.
+     * @private
+     */
     _internalTracer(...args) {
       this._messageHistory.push(args);
     },
 
+    /**
+     * Message trace snapshot.
+     * @returns {array} message history.
+     */
     messageTraceSnapshot() {
       return _.toArray(this._messageHistory);
     },
 
-    /*
-       * addDependent blocks eventName until dependentEvent fires, at which point onMergeParams will be
-       * called.  This means that eventName MUST be fired before dependentEvent.
-       */
     /**
+     * addDependent blocks eventName until dependentEvent fires, at which point onMergeParams will be called.
+     * This means that eventName MUST be fired before dependentEvent.
      * Enables you to send a publish or subscribe message that is dependent on a condition or event.
      * For example, you might want to change the UI based on the location or time of day.
      * This method blocks the event (<code>eventName</code>) until the dependent event (<code>dependentEvent</code>) fires.
@@ -177,6 +187,11 @@
     },
 
 
+    /**
+     * Publish
+     * @param {array} args The array of arguments.
+     * @private
+     */
     _publish(...args) {
       const [eventName] = args;
       // queue event here untill all dependency is cleared.
@@ -316,6 +331,12 @@
 
     // Start of the private member function, all internal used func will prefix with _
 
+    /**
+     * No dependency.
+     * @param {string} eventName The name of event.
+     * @returns {boolean} True if dependency list has no eventName or eventName is array with length = 0
+     * @private
+     */
     _noDependency(eventName) {
       if (!this._dependentList[eventName]) {
         return true;
@@ -323,6 +344,12 @@
       return (this._dependentList[eventName].length === 0);
     },
 
+    /**
+     * Clear dependent.
+     * @param {string} source The depending event that is blocked.
+     * @param {string} target The dependent event that is blocking.
+     * @private
+     */
     _clearDependent(source, target) {
       const depEvents = this._dependentList[source];
       this._dependentList[source] = OO._.filter(depEvents, e => e !== target, this);
