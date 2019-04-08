@@ -1,3 +1,4 @@
+/* eslint-disable import/no-dynamic-require */
 require(`${COMMON_SRC_ROOT}utils/constants.js`);
 require(`${COMMON_SRC_ROOT}classes/state_machine.js`);
 

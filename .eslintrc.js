@@ -66,7 +66,6 @@ module.exports = {
       }
     ],
     "no-extend-native": "warn",
-    "import/no-dynamic-require": "warn",
     "global-require": "warn",
     "no-useless-escape": "warn",
     "no-restricted-globals": "warn",

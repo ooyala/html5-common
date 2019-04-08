@@ -1,4 +1,4 @@
-/* eslint-disable no-throw-literal */
+/* eslint-disable no-throw-literal,import/no-dynamic-require */
 require(`${COMMON_SRC_ROOT}utils/utils.js`);
 require(`${COMMON_SRC_ROOT}classes/emitter.js`);
 require(`${COMMON_SRC_ROOT}classes/message_bus.js`);
