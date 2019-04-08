@@ -42,8 +42,8 @@
       }
     },
 
-    _internalTracer(...paramsArr) {
-      this._messageHistory.push(paramsArr);
+    _internalTracer(...args) {
+      this._messageHistory.push(args);
     },
 
     messageTraceSnapshot() {
@@ -96,18 +96,18 @@
       this._blockList[dependentEvent].push(eventName);
       this.blockedParams[eventName] = [];
 
-      const onSourceReady = OO._.bind(function (...paramsArr) {
-        const [e] = paramsArr;
+      const onSourceReady = OO._.bind(function (...args) {
+        const [e] = args;
         if (this.blockedEvent[e] !== 1) {
           return;
         }
 
-        const args = OO.safeClone(_.flatten(paramsArr));
+        const params = OO.safeClone(_.flatten(args));
         const origParams = OO.safeClone(this.blockedParams[eventName]);
-        args.shift();
+        params.shift();
         origParams.shift();
         let newArgs = (onMergeParams && onMergeParams
-          .apply(this, [eventName, dependentEvent, origParams, args])) || origParams;
+          .apply(this, [eventName, dependentEvent, origParams, params])) || origParams;
 
         newArgs = [e].concat(newArgs);
         delete this.blockedEvent[e];
@@ -151,18 +151,18 @@
      * @example myplayer.mb.publish(OO.EVENTS.PLAY);
      * @example myplayer.mb.publish(OO.EVENTS.WILL_CHANGE_FULLSCREEN,true);
      */
-    publish(...paramsArr) {
-      const [eventName] = paramsArr;
-      if (!paramsArr || !eventName || eventName === '') {
+    publish(...args) {
+      const [eventName] = args;
+      if (!args || !eventName || eventName === '') {
         console.error('MB: publish called on message bus with no event name given.');
         return;
       }
 
-      const args = OO.safeClone(_.flatten(paramsArr));
-      this._publishingQueue.push(args);
+      const params = OO.safeClone(_.flatten(args));
+      this._publishingQueue.push(params);
 
       if (this.debug) {
-        OO.log(`MB DEBUG: queueing \'${eventName}\' w\/ args`, args);
+        OO.log(`MB DEBUG: queueing \'${eventName}\' w\/ args`, params);
       }
 
       if (!this._dispatching) {
@@ -177,37 +177,37 @@
     },
 
 
-    _publish(...paramsArr) {
-      const [eventName] = paramsArr;
+    _publish(...args) {
+      const [eventName] = args;
       // queue event here untill all dependency is cleared.
       // also trigger queued event if there are blocked by this event.
       this._readyEventList[eventName] = 1;
-      let args = OO.safeClone(_.flatten(paramsArr));
+      let paramsArr = OO.safeClone(_.flatten(args));
 
-      this._interceptEmitter.trigger.apply(this._interceptEmitter, args);
+      this._interceptEmitter.trigger.apply(this._interceptEmitter, paramsArr);
       if (this._interceptArgs[eventName] === false) {
         this._interceptArgs[eventName] = true;
         return;
       }
       if (this._interceptArgs[eventName]) {
-        args = _.flatten([eventName, this._interceptArgs[eventName]]);
+        paramsArr = _.flatten([eventName, this._interceptArgs[eventName]]);
       }
 
       if (this._tracer && _.isFunction(this._tracer)) {
-        const params = _.flatten(['publish'].concat(args));
+        const params = _.flatten(['publish'].concat(paramsArr));
         this._tracer.apply(this._tracer, params);
       }
 
       if (this._noDependency(eventName)) {
         if (this.debug) {
-          OO.log(`MB DEBUG: publishing \'${eventName}\' w\/ args `, args);
+          OO.log(`MB DEBUG: publishing \'${eventName}\' w\/ args `, paramsArr);
         }
 
-        this._emitter.trigger.apply(this._emitter, args);
+        this._emitter.trigger.apply(this._emitter, paramsArr);
         _.each(this._blockList[eventName], function (e) {
           this._clearDependent(e, eventName);
-          args[0] = e;
-          this._dependentEmitter.trigger.apply(this._dependentEmitter, args);
+          paramsArr[0] = e;
+          this._dependentEmitter.trigger.apply(this._dependentEmitter, paramsArr);
         }, this);
         delete this._blockList[eventName];
       } else {
@@ -216,7 +216,7 @@
           OO.log(`MB DEBUG: blocking \'${eventName}\' because of \'${blockers}\'`);
         }
         this.blockedEvent[eventName] = 1;
-        this.blockedParams[eventName] = args;
+        this.blockedParams[eventName] = paramsArr;
       }
     },
 
@@ -259,14 +259,14 @@
      * //   Console displays "play: goodbye"
      */
     intercept(eventName, subscriber, callback) {
-      this._interceptEmitter.on(eventName, subscriber, _.bind(function (...paramsArr) {
+      this._interceptEmitter.on(eventName, subscriber, _.bind(function (...args) {
         if (!eventName || eventName === '') {
           console.error(`MB: intercept called on message bus from subscriber ${subscriber} with no event name given.`);
           return;
         }
-        const args = OO.safeClone(_.flatten(paramsArr));
+        const params = OO.safeClone(_.flatten(args));
         if (this._interceptArgs[eventName] !== false) {
-          this._interceptArgs[eventName] = callback.apply(this, args);
+          this._interceptArgs[eventName] = callback.apply(this, params);
         }
       }, this));
       this._interceptArgs[eventName] = [eventName];

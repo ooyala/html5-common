@@ -44,7 +44,7 @@ module.exports = {
         "props": false
       }
     ],
-    "no-underscore-dangle": "warn",
+    "no-underscore-dangle": 0,
     "require-jsdoc": [
       "warn",
       {
