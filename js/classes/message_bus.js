@@ -42,8 +42,8 @@
       }
     },
 
-    _internalTracer(...args) {
-      this._messageHistory.push(_.toArray(args));
+    _internalTracer(...paramsArr) {
+      this._messageHistory.push(paramsArr);
     },
 
     messageTraceSnapshot() {
@@ -96,13 +96,13 @@
       this._blockList[dependentEvent].push(eventName);
       this.blockedParams[eventName] = [];
 
-      const onSourceReady = OO._.bind(function (...params) {
-        const [e] = params;
+      const onSourceReady = OO._.bind(function (...paramsArr) {
+        const [e] = paramsArr;
         if (this.blockedEvent[e] !== 1) {
           return;
         }
 
-        const args = OO.safeClone(_.flatten(params));
+        const args = OO.safeClone(_.flatten(paramsArr));
         const origParams = OO.safeClone(this.blockedParams[eventName]);
         args.shift();
         origParams.shift();
@@ -151,14 +151,14 @@
      * @example myplayer.mb.publish(OO.EVENTS.PLAY);
      * @example myplayer.mb.publish(OO.EVENTS.WILL_CHANGE_FULLSCREEN,true);
      */
-    publish(...params) {
-      const [eventName] = params;
-      if (!params || !eventName || eventName === '') {
+    publish(...paramsArr) {
+      const [eventName] = paramsArr;
+      if (!paramsArr || !eventName || eventName === '') {
         console.error('MB: publish called on message bus with no event name given.');
         return;
       }
 
-      const args = OO.safeClone(_.flatten(params));
+      const args = OO.safeClone(_.flatten(paramsArr));
       this._publishingQueue.push(args);
 
       if (this.debug) {
@@ -212,8 +212,8 @@
         delete this._blockList[eventName];
       } else {
         if (this.debug) {
-          const foo = this._dependentList ? this._dependentList[eventName] : '[null]';
-          OO.log(`MB DEBUG: blocking \'${eventName}\' because of \'${foo}\'`);
+          const blockers = this._dependentList ? this._dependentList[eventName] : '[null]';
+          OO.log(`MB DEBUG: blocking \'${eventName}\' because of \'${blockers}\'`);
         }
         this.blockedEvent[eventName] = 1;
         this.blockedParams[eventName] = args;
@@ -259,12 +259,12 @@
      * //   Console displays "play: goodbye"
      */
     intercept(eventName, subscriber, callback) {
-      this._interceptEmitter.on(eventName, subscriber, _.bind(function (...params) {
+      this._interceptEmitter.on(eventName, subscriber, _.bind(function (...paramsArr) {
         if (!eventName || eventName === '') {
           console.error(`MB: intercept called on message bus from subscriber ${subscriber} with no event name given.`);
           return;
         }
-        const args = OO.safeClone(_.flatten(params));
+        const args = OO.safeClone(_.flatten(paramsArr));
         if (this._interceptArgs[eventName] !== false) {
           this._interceptArgs[eventName] = callback.apply(this, args);
         }
