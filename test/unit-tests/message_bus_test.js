@@ -426,7 +426,7 @@ describe('emitter', () => {
     mb.subscribe('foo1', 'test', (...arg) => {
       foo1Params = arg;
     });
-    const onMerge = function (e0, e1, e0s, e1s) {
+    const onMerge = function () {
       return ['mynewfoo'];
     };
     mb.addDependent('foo', 'foo1', 'test', onMerge);
@@ -538,7 +538,7 @@ describe('emitter', () => {
       eventName = en;
       hash = h;
     };
-    const interceptCallback = function (en, h) {
+    const interceptCallback = function () {
       return ['wtf'];
     };
     mb.subscribe('foo', 'test', subscribeCallback);
@@ -665,13 +665,9 @@ describe('emitter', () => {
     let test2 = false;
     const excepts1 = function () {
       test1 = true;
-      let bar = null;
-      bar = bar.baz;
     };
     const excepts2 = function () {
       test2 = true;
-      let bar = null;
-      bar = bar.baz;
     };
     mb.subscribe('foo', 'test1', excepts1);
     mb.subscribe('foo', 'test2', excepts2);
@@ -690,8 +686,6 @@ describe('emitter', () => {
     let test0 = false;
     const excepts0 = function () {
       test0 = true;
-      let bar = null;
-      bar = bar.baz;
     };
     mb.subscribe('foo', 'test', excepts0);
     mb.subscribe('foo1', 'test', callback);

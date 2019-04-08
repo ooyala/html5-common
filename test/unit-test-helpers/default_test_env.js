@@ -38,7 +38,7 @@ window.DOMParser = function () {};
 require(`${COMMON_SRC_ROOT}utils/InitModules/InitOOUnderscore.js`);
 
 OO._.extend(window.DOMParser.prototype, {
-  parseFromString(data, type) {
+  parseFromString(data) {
     return jsdom.jsdom(data, jsdom.level(3, 'core'));
   },
 });

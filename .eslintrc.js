@@ -67,13 +67,11 @@ module.exports = {
     ],
     "no-extend-native": "warn",
     "import/no-dynamic-require": "warn",
-    "no-unused-vars": "warn",
     "global-require": "warn",
     "no-useless-escape": "warn",
     "no-restricted-globals": "warn",
     "prefer-spread": "warn",
     "guard-for-in": "warn",
     "no-restricted-syntax": "warn",
-    "import/no-extraneous-dependencies": "warn",
   },
 };
