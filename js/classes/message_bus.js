@@ -92,7 +92,7 @@
     addDependent(eventName, dependentEvent, subscriber, onMergeParams) {
       // TODO, add a circular detectecion here.
       if (!eventName || eventName === '' || !dependentEvent || dependentEvent === '') {
-        console.error(`MB: addDependent called on message bus from subscriber ${subscriber} with no event name given.`);
+        OO.log(`MB: addDependent called on message bus from subscriber ${subscriber} with no event name given.`);
         return;
       }
 
@@ -141,7 +141,7 @@
      */
     removeDependent(source, target) {
       if (!source || source === '' || !target || target === '') {
-        console.warn('MB: removeDependent called on message bus with no event name given.');
+        OO.log('MB: removeDependent called on message bus with no event name given.');
         return;
       }
 
@@ -164,7 +164,7 @@
     publish(...args) {
       const [eventName] = args;
       if (!args || !eventName || eventName === '') {
-        console.error('MB: publish called on message bus with no event name given.');
+        OO.log('MB: publish called on message bus with no event name given.');
         return;
       }
 
@@ -276,7 +276,7 @@
     intercept(eventName, subscriber, callback) {
       this._interceptEmitter.on(eventName, subscriber, _.bind(function (...args) {
         if (!eventName || eventName === '') {
-          console.error(`MB: intercept called on message bus from subscriber ${subscriber} with no event name given.`);
+          OO.log(`MB: intercept called on message bus from subscriber ${subscriber} with no event name given.`);
           return;
         }
         const params = OO.safeClone(_.flatten(args));
@@ -303,7 +303,7 @@
       // TODO check if it is on the dependent queue, should not allow this action if a event is blocking
       // other event.
       if (!eventName || eventName === '') {
-        console.error(`MB: subscribe called on message bus from subscriber ${subscriber} with no event name given.`);
+        OO.log(`MB: subscribe called on message bus from subscriber ${subscriber} with no event name given.`);
         return;
       }
       this._emitter.on(eventName, subscriber, callback);
@@ -323,7 +323,7 @@
      */
     unsubscribe(eventName, subscriber, callback) {
       if (!eventName || eventName === '') {
-        console.error(`MB: unsubscribe called on message bus from subscriber ${subscriber} with no event name given.`);
+        OO.log(`MB: unsubscribe called on message bus from subscriber ${subscriber} with no event name given.`);
         return;
       }
       this._emitter.off(eventName, subscriber, callback);

@@ -43,6 +43,7 @@ OO._.extend(window.DOMParser.prototype, {
     return jsdom.jsdom(data, jsdom.level(3, 'core'));
   },
 });
+// eslint-disable-next-line no-console
 OO.log = console.log;
 // In a browser environment, all of the properties of "window" (like navigator) are in the global scope:
 OO._.extend(global, window);
