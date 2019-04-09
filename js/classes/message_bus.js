@@ -395,11 +395,14 @@
       let output = '------------------------------------\n'
         + '[blocked] Message --> Dependency\n'
         + '------------------------------------\n';
-      let index;
+
       if (this._dependentList) {
-        for (const eventName in this._dependentList) {
+        Object.keys(this._dependentList).forEach((eventName) => {
           if (this._dependentList[eventName]) {
-            for (index = 0; index < this._dependentList[eventName].length; index++) {
+            let index = 0;
+            const ln = this._dependentList[eventName].length;
+
+            for (; index < ln; index++) {
               if (this.blockedEvent[eventName] === 1) {
                 output += '[blocked]';
               }
@@ -407,7 +410,7 @@
               output += `${eventName} --> ${this._dependentList[eventName]}\n`;
             }
           }
-        }
+        });
       }
 
       output += '------------------------------------';

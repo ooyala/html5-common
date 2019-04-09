@@ -66,6 +66,5 @@ module.exports = {
       }
     ],
     "func-names": 0,
-    "no-restricted-syntax": "warn",
   },
 };

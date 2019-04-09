@@ -20,7 +20,6 @@
       let mb = OO.HM.safeObject('statemachine.create.cfg.messageBus', cfg.messageBus);
 
       let map = {};
-      let n;
 
       fsm.debugTransitions = false;
       let lastEvent = '';
@@ -84,11 +83,9 @@
 
       fsm.destroyFsm = function () {
         OO.StateMachine.removeFromActiveList(this.moduleName, this);
-        for (n in map) {
-          if (Object.prototype.hasOwnProperty.call(map, n)) {
-            mb.unsubscribe(n.toString(), moduleName, fsm.receive);
-          }
-        }
+        Object.keys(map).forEach((n) => {
+          mb.unsubscribe(n.toString(), moduleName, fsm.receive);
+        });
         cfg = null;
         initial = null;
         fsm = null;
@@ -171,20 +168,19 @@
         }
       };
 
+      let i = 0;
       const ln = events.length;
-      for (n = 0; n < ln; n++) {
-        if (typeof (events[n]) === 'object') {
-          add(events[n]);
+      for (; i < ln; i++) {
+        if (typeof (events[i]) === 'object') {
+          add(events[i]);
         }
       }
 
       updateState(fsm, initial);
       if (mb !== undefined) {
-        for (n in map) {
-          if (Object.prototype.hasOwnProperty.call(map, n)) {
-            mb.subscribe(n.toString(), moduleName, fsm.receive);
-          }
-        }
+        Object.keys(map).forEach((n) => {
+          mb.subscribe(n.toString(), moduleName, fsm.receive);
+        });
       }
 
       return fsm;
@@ -285,11 +281,9 @@
         return false;
       }
 
-      for (const sm in list) {
-        if (Object.prototype.hasOwnProperty.call(list, sm)) {
-          list[sm].debugTransitions = enable;
-        }
-      }
+      Object.keys(list).forEach((sm) => {
+        list[sm].debugTransitions = enable;
+      });
 
       return true;
     },
@@ -304,11 +298,10 @@
      */
     getActiveList() {
       const list = {};
-      for (const smName in this.activeStateMachines) {
-        if (Object.prototype.hasOwnProperty.call(this.activeStateMachines, smName)) {
-          list[smName] = this.activeStateMachines[smName].length;
-        }
-      }
+      Object.keys(this.activeStateMachines).forEach((smName) => {
+        list[smName] = this.activeStateMachines[smName].length;
+      });
+
       return list;
     },
 
