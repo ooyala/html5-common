@@ -35,6 +35,7 @@
       const doCallback = function (...args) {
         const [name] = args;
         let f = null;
+        // eslint-disable-next-line no-useless-escape
         const shortEventName = name.replace(/[^\/]*\//, '').match(/^(.)(.*)/); // transform xxx/abc into ['abc','a','bc']
         const shortMethodName = `on${shortEventName[1].toUpperCase()}${shortEventName[2]}`;
         if (fsm[shortMethodName]) {
@@ -242,9 +243,9 @@
       const result = this.debugTransitionsHelper(smName, true);
       let msg;
       if (result) {
-        msg = `STATEMACHINE \'${smName}\' DEBUGGING STARTED`;
+        msg = `STATEMACHINE '${smName}' DEBUGGING STARTED`;
       } else {
-        msg = `Couldn't find \'${smName}\'`;
+        msg = `Couldn't find '${smName}'`;
       }
 
       return msg;
@@ -263,9 +264,9 @@
       const result = this.debugTransitionsHelper(smName, false);
       let msg;
       if (result) {
-        msg = `STATEMACHINE \'${smName}\' DEBUGGING STOPPED`;
+        msg = `STATEMACHINE '${smName}' DEBUGGING STOPPED`;
       } else {
-        msg = `Couldn't find \'${smName}\'`;
+        msg = `Couldn't find '${smName}'`;
       }
 
       return msg;

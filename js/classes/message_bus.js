@@ -97,7 +97,7 @@
       }
 
       if (this.debug) {
-        OO.log(`MB DEBUG: \'${eventName}\' depends on \'${dependentEvent}\'. Added by \'${subscriber}\'`);
+        OO.log(`MB DEBUG: '${eventName}' depends on '${dependentEvent}'. Added by '${subscriber}'`);
       }
 
       this._dependentList[eventName] = this._dependentList[eventName] || [];
@@ -124,7 +124,7 @@
         this.blockedParams[e] = [];
 
         if (this.debug) {
-          OO.log(`MB DEBUG: unblocking \'${e}\' because of \'${dependentEvent}\' with args `, newArgs);
+          OO.log(`MB DEBUG: unblocking '${e}' because of '${dependentEvent}' with args `, newArgs);
         }
 
         this._publish(...newArgs);
@@ -146,7 +146,7 @@
       }
 
       if (this.debug) {
-        OO.log(`MB DEBUG: \'${source}\' no longer depends on \'${target}\'`);
+        OO.log(`MB DEBUG: '${source}' no longer depends on '${target}'`);
       }
 
       this._clearDependent(source, target);
@@ -172,7 +172,7 @@
       this._publishingQueue.push(params);
 
       if (this.debug) {
-        OO.log(`MB DEBUG: queueing \'${eventName}\' w\/ args`, params);
+        OO.log(`MB DEBUG: queueing '${eventName}' w/ args`, params);
       }
 
       if (!this._dispatching) {
@@ -215,7 +215,7 @@
 
       if (this._noDependency(eventName)) {
         if (this.debug) {
-          OO.log(`MB DEBUG: publishing \'${eventName}\' w\/ args `, paramsArr);
+          OO.log(`MB DEBUG: publishing '${eventName}' w/ args `, paramsArr);
         }
 
         this._emitter.trigger(...paramsArr);
@@ -228,7 +228,7 @@
       } else {
         if (this.debug) {
           const blockers = this._dependentList ? this._dependentList[eventName] : '[null]';
-          OO.log(`MB DEBUG: blocking \'${eventName}\' because of \'${blockers}\'`);
+          OO.log(`MB DEBUG: blocking '${eventName}' because of '${blockers}'`);
         }
         this.blockedEvent[eventName] = 1;
         this.blockedParams[eventName] = paramsArr;
