@@ -66,8 +66,6 @@ module.exports = {
       }
     ],
     "func-names": 0,
-    "no-extend-native": "warn",
-    // "no-useless-escape": "warn",
     "no-restricted-syntax": "warn",
   },
 };

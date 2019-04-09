@@ -209,6 +209,7 @@ describe('utils', () => {
     });
 
     it('should getNormalizedTagUrl', () => {
+      // eslint-disable-next-line no-extend-native
       Date.prototype.getTime = function () {
         return 123;
       };
