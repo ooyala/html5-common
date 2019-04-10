@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "test": "make test",
-    "lint": "eslint ./**/*.js",
+    "lint": "eslint .",
     "build": "echo",
     "start": "echo",
     "analysis": "echo"
