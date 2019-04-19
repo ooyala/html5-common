@@ -151,10 +151,14 @@
       return (!!window.navigator.userAgent.match(/Chrome/) && !window.navigator.userAgent.match(/Edge/));
     }());
 
-    OO.isSafari = (function () {
-      return (!!window.navigator.userAgent.match(/AppleWebKit/) &&
-              !window.navigator.userAgent.match(/Chrome/) &&
-              !window.navigator.userAgent.match(/like iPhone/));
+    OO.isSafari = (function() {
+      return (
+        !!window.navigator.userAgent.match(/AppleWebKit/) &&
+        !window.navigator.userAgent.match(/Chrome/) &&
+        !window.navigator.userAgent.match(/CriOS/) && // check Chrome/Chromium on iPhone
+        // more info is here https://chromium.googlesource.com/chromium/src/+/master/docs/ios/user_agent.md
+        !window.navigator.userAgent.match(/like iPhone/)
+      );
     }());
 
     OO.chromeMajorVersion = (function () {
