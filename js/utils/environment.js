@@ -84,6 +84,10 @@
       return !!OO.platform.match(/Win/);
     }());
 
+    OO.isWindows7 = (function() {
+      return OO.isWindows && OO.os.split('NT')[1].split(';')[0].trim() === '6.1';
+    }());
+
     OO.isIos = (function() {
       return !!OO.platform.match(/iPhone|iPad|iPod/);
     }());
