@@ -85,7 +85,7 @@
     }());
 
     OO.isWindows7 = (function() {
-      return OO.isWindows && OO.os.split('NT')[1].split(';')[0].trim() === '6.1';
+      return OO.isWindows && window.navigator.userAgent.match(/Windows NT [\d.]*/)[0].trim() === 'Windows NT 6.1';
     }());
 
     OO.isIos = (function() {
