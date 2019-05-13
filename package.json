@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "test": "make test",
-    "lint": "echo",
+    "lint": "eslint .",
     "build": "echo",
     "start": "echo",
     "analysis": "echo"
@@ -22,12 +22,15 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0",
     "expect.js": "0.3.1",
     "hazmat": "*",
+    "jquery": "3.3.1",
     "jsdom": "11.11.0",
     "mocha": "~5.2.0",
-    "underscore": "1.9.1",
-    "jquery": "3.3.1"
+    "underscore": "1.9.1"
   },
   "author": "Ooyala",
   "contributors": [],

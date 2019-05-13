@@ -1,8 +1,7 @@
-  /**
+/**
    * @namespace OO
    */
-  (function(OO,_){
-
+(function (OO, _) {
     // External States
 	/**
 	 * @description The Ooyala Player run-time states apply to an Ooyala player while it is running. These states apply equally to both HTML5 and Flash players.
@@ -13,7 +12,7 @@
 	 */
     OO.STATE = {
       /** The embed code has been set. The movie and its metadata is currently being loaded into the player. */
-      LOADING : 'loading',
+    LOADING: 'loading',
       /**
        * One of the following applies:
        * <ul>
@@ -21,23 +20,23 @@
        *   <li>Playback of the asset has finished and is ready to restart from the beginning.</li>
        * </ul>
        */
-      READY : 'ready',
+    READY: 'ready',
       /** The player is currently playing video content. */
-      PLAYING : 'playing',
+    PLAYING: 'playing',
       /** The player has currently paused after playback had begun. */
-      PAUSED : 'paused',
+    PAUSED: 'paused',
 
       /** Playback has currently stopped because it doesn't have enough movie data to continue and is downloading more. */
-      BUFFERING : 'buffering',
+    BUFFERING: 'buffering',
       /** The player has encountered an error that prevents playback of the asset. The error could be due to many reasons,
        * such as video format, syndication rules, or the asset being disabled. Refer to the list of errors for details.
        * The error code for the root cause of the error is available from the [OO.Player.getErrorCode()]{@link OO.Player#getErrorCode} method.
        */
-      ERROR : 'error',
+    ERROR: 'error',
       /** The player has been destroyed via its [OO.Player.destroy(<i>callback</i>)]{@link OO.Player#destroy} method. */
-      DESTROYED : 'destroyed',
+    DESTROYED: 'destroyed',
 
-      __end_marker : true
+    __end_marker: true,
     };
 
     // All Events Constants
@@ -59,7 +58,7 @@
       *
       * @event OO.EVENTS#PLAYER_CREATED
       */
-      PLAYER_CREATED : 'playerCreated',
+    PLAYER_CREATED: 'playerCreated',
 
       PLAYER_EMBEDDED: 'playerEmbedded',
 
@@ -75,7 +74,7 @@
        *
        * @event OO.EVENTS#SET_EMBED_CODE
        */
-      SET_EMBED_CODE : 'setEmbedCode',
+    SET_EMBED_CODE: 'setEmbedCode',
 
       /**
        * HEVC playback availablility has been checked
@@ -88,7 +87,7 @@
        * @event OO.EVENTS#HEVC_CHECKED
        * @private
        */
-      HEVC_CHECKED : 'hevcChecked',
+    HEVC_CHECKED: 'hevcChecked',
 
       /**
        * An attempt has been made to set the embed code by Ooyala Ads.
@@ -103,7 +102,7 @@
        * @event OO.EVENTS#SET_EMBED_CODE_AFTER_OOYALA_AD
        * @private
        */
-      SET_EMBED_CODE_AFTER_OOYALA_AD : 'setEmbedCodeAfterOoyalaAd',
+    SET_EMBED_CODE_AFTER_OOYALA_AD: 'setEmbedCodeAfterOoyalaAd',
 
       /**
        * The player's embed code has changed. The handler is called with two parameters:
@@ -115,7 +114,7 @@
        *
        * @event OO.EVENTS#EMBED_CODE_CHANGED
        */
-      EMBED_CODE_CHANGED : 'embedCodeChanged',
+    EMBED_CODE_CHANGED: 'embedCodeChanged',
 
       /**
        * An attempt has been made to set a new asset.
@@ -214,7 +213,7 @@
        *
        * @event OO.EVENTS#AUTH_TOKEN_CHANGED
        */
-      AUTH_TOKEN_CHANGED: "authTokenChanged",
+    AUTH_TOKEN_CHANGED: 'authTokenChanged',
 
       /**
        * The GUID has been set. The handler is called with the GUID.
@@ -338,13 +337,13 @@
        * @event OO.EVENTS#INITIAL_PLAY
        * @public
        */
-      INITIAL_PLAY: "initialPlay", // when play is called for the very first time ( in start screen )
+    INITIAL_PLAY: 'initialPlay', // when play is called for the very first time ( in start screen )
 
-      WILL_PLAY : 'willPlay',
+    WILL_PLAY: 'willPlay',
 
 
       /** The user has restarted the playback after the playback finished */
-      REPLAY : 'replay',
+    REPLAY: 'replay',
 
       /**
        * The user is trying to set the playbackspeed of the main content.
@@ -353,7 +352,7 @@
        * </ul>
        * @event OO.EVENTS#SET_PLAYBACK_SPEED
        */
-      SET_PLAYBACK_SPEED: "setPlaybackSpeed",
+    SET_PLAYBACK_SPEED: 'setPlaybackSpeed',
 
       /**
        * The playback speed changed. The handler is called with the following arguments:
@@ -363,7 +362,7 @@
        * </ul>
        * @event OO.EVENTS#PLAYBACK_SPEED_CHANGED
        */
-      PLAYBACK_SPEED_CHANGED: "playbackSpeedChanged",
+    PLAYBACK_SPEED_CHANGED: 'playbackSpeedChanged',
 
       /**
        * The playhead time changed. The handler is called with the following arguments:
@@ -1438,8 +1437,8 @@
        */
       ADS_CLICKED: 'adsClicked',
 
-      FIRST_AD_FETCHED: "firstAdFetched",
-      AD_CONFIG_READY: "adConfigReady",
+    FIRST_AD_FETCHED: 'firstAdFetched',
+    AD_CONFIG_READY: 'adConfigReady',
 
       /**
        * This event is triggered before the companion ads are shown.
@@ -1458,29 +1457,29 @@
        *
        * @event OO.EVENTS#WILL_SHOW_COMPANION_ADS
        */
-      WILL_SHOW_COMPANION_ADS: "willShowCompanionAds",
-      AD_FETCH_FAILED: "adFetchFailed",
+    WILL_SHOW_COMPANION_ADS: 'willShowCompanionAds',
+    AD_FETCH_FAILED: 'adFetchFailed',
 
-      MIDROLL_PLAY_FAILED: "midrollPlayFailed",
-      SKIP_AD: "skipAd",
-      UPDATE_AD_COUNTDOWN: "updateAdCountdown",
+    MIDROLL_PLAY_FAILED: 'midrollPlayFailed',
+    SKIP_AD: 'skipAd',
+    UPDATE_AD_COUNTDOWN: 'updateAdCountdown',
 
       // this player is part of these experimental variations
-      REPORT_EXPERIMENT_VARIATIONS: "reportExperimentVariations",
+    REPORT_EXPERIMENT_VARIATIONS: 'reportExperimentVariations',
 
-      FETCH_STYLE: "fetchStyle",
-      STYLE_FETCHED: "styleFetched",
-      SET_STYLE: "setStyle",
+    FETCH_STYLE: 'fetchStyle',
+    STYLE_FETCHED: 'styleFetched',
+    SET_STYLE: 'setStyle',
 
-      USE_SERVER_SIDE_HLS_ADS: "useServerSideHlsAds",
+    USE_SERVER_SIDE_HLS_ADS: 'useServerSideHlsAds',
 
-      LOAD_ALL_VAST_ADS: "loadAllVastAds",
-      ADS_FILTERED: "adsFiltered",
-      ADS_MANAGER_HANDLING_ADS: "adsManagerHandlingAds",
-      ADS_MANAGER_FINISHED_ADS: "adsManagerFinishedAds",
+    LOAD_ALL_VAST_ADS: 'loadAllVastAds',
+    ADS_FILTERED: 'adsFiltered',
+    ADS_MANAGER_HANDLING_ADS: 'adsManagerHandlingAds',
+    ADS_MANAGER_FINISHED_ADS: 'adsManagerFinishedAds',
 
       // This event contains the information AMC need to know to place the overlay in the correct position.
-      OVERLAY_RENDERING: "overlayRendering",
+    OVERLAY_RENDERING: 'overlayRendering',
 
       /**
        * Event for signaling Ad Controls (Scrubber bar and Control bar) rendering:
@@ -1491,7 +1490,7 @@
        *
        * @event OO.EVENTS#SHOW_AD_CONTROLS
        */
-      SHOW_AD_CONTROLS: "showAdControls",
+    SHOW_AD_CONTROLS: 'showAdControls',
 
       /**
        * Event for signaling Ad Marquee rendering:
@@ -1502,7 +1501,7 @@
        *
        * @event OO.EVENTS#SHOW_AD_MARQUEE
        */
-      SHOW_AD_MARQUEE: "showAdMarquee",
+    SHOW_AD_MARQUEE: 'showAdMarquee',
 
       /**
        * An ad plugin will publish this event whenever the ad SDK throws an ad event. Typical ad events are
@@ -1511,7 +1510,7 @@
        * @event OO.EVENTS#SDK_AD_EVENT
        * @private
        */
-      SDK_AD_EVENT: "sdkAdEvent",
+    SDK_AD_EVENT: 'sdkAdEvent',
 
       // Window published beforeUnload event. It's still user cancellable.
       /**
@@ -1526,17 +1525,17 @@
        *
        * @event OO.EVENTS#PAGE_UNLOAD_REQUESTED
        */
-      PAGE_UNLOAD_REQUESTED: "pageUnloadRequested",
+    PAGE_UNLOAD_REQUESTED: 'pageUnloadRequested',
       // Either 1) The page is refreshing (almost certain) or 2) The user tried to refresh
       // the page, the embedding page had an "Are you sure?" prompt, the user clicked
       // on "stay", and a real error was produced due to another reason during the
       // following few seconds. The real error, if any, will be received in some seconds.
       // If we are certain it has unloaded, it's too late to be useful.
-      PAGE_PROBABLY_UNLOADING: "pageProbablyUnloading",
+    PAGE_PROBABLY_UNLOADING: 'pageProbablyUnloading',
 
       // DiscoveryApi publishes these, OoyalaAnalytics listens for them and propagates to reporter.js
-      REPORT_DISCOVERY_IMPRESSION: "reportDiscoveryImpression",
-      REPORT_DISCOVERY_CLICK: "reportDiscoveryClick",
+    REPORT_DISCOVERY_IMPRESSION: 'reportDiscoveryImpression',
+    REPORT_DISCOVERY_CLICK: 'reportDiscoveryClick',
 
       // These discovery events are propagated to the iq plugin
       DISCOVERY_API: {
@@ -1545,14 +1544,14 @@
          * @event OO.EVENTS.DISCOVERY_API#SEND_DISPLAY_EVENT
          * @public
         */
-        SEND_DISPLAY_EVENT: "sendDisplayEvent",
+      SEND_DISPLAY_EVENT: 'sendDisplayEvent',
 
         /**
          * Represents the discovery click event
          * @event OO.EVENTS.DISCOVERY_API#SEND_CLICK_EVENT
          * @public
         */
-        SEND_CLICK_EVENT: "sendClickEvent"
+      SEND_CLICK_EVENT: 'sendClickEvent',
       },
 
       /**
@@ -1567,7 +1566,7 @@
        * @event OO.EVENTS#VIDEO_TYPE_CHANGED
        * @public
        */
-      VIDEO_TYPE_CHANGED: "videoTypeChanged",
+    VIDEO_TYPE_CHANGED: 'videoTypeChanged',
 
       /**
        * The UI layer has finished its initial render. The handler is called with an object
@@ -1582,9 +1581,9 @@
        *
        * @event OO.EVENTS#UI_READY
        */
-      UI_READY: "uiReady",
+    UI_READY: 'uiReady',
 
-      __end_marker : true
+    __end_marker: true,
     };
 
     /**
@@ -1606,7 +1605,7 @@
     	* @constant OO.ERROR.API.NETWORK
     	* @type {string}
     	*/
-        NETWORK:'network',
+      NETWORK: 'network',
         /**
          * @description Represents the <code>OO.ERROR.API.SAS</code> Ooyala V3 Player Errors for the Stream Authorization Server.
          * Use message bus events to handle errors by subscribing to or intercepting the <code>OO.EVENTS.ERROR</code> event.
@@ -1620,61 +1619,61 @@
           * @constant OO.ERROR.API.SAS.GENERIC
           * @type {string}
           */
-          GENERIC:'sas',
+        GENERIC: 'sas',
           /**
            * @description <code>OO.ERROR.API.SAS.GEO ('geo')</code>: This video is not authorized for your location.
            * @constant OO.ERROR.API.SAS.GEO
            * @type {string}
            */
-          GEO:'geo',
+        GEO: 'geo',
           /**
            * @description <code>OO.ERROR.API.SAS.DOMAIN ('domain')</code>: This video is not authorized for your domain.
            * @constant OO.ERROR.API.SAS.DOMAIN
            * @type {string}
            */
-          DOMAIN:'domain',
+        DOMAIN: 'domain',
           /**
            * @description <code>OO.ERROR.API.SAS.FUTURE ('future')</code>: This video will be available soon.
            * @constant OO.ERROR.API.SAS.FUTURE
            * @type {string}
            */
-          FUTURE:'future',
+        FUTURE: 'future',
           /**
            * @description <code>OO.ERROR.API.SAS.PAST ('past')</code>: This video is no longer available.
            * @constant OO.ERROR.API.SAS.PAST
            * @type {string}
            */
-          PAST:'past',
+        PAST: 'past',
           /**
            * @description <code>OO.ERROR.API.SAS.DEVICE ('device')</code>: This video is not authorized for playback on this device.
            * @constant OO.ERROR.API.SAS.DEVICE
            * @type {string}
            */
-          DEVICE:'device',
+        DEVICE: 'device',
           /**
            * @description <code>OO.ERROR.API.SAS.PROXY ('proxy')</code>: An anonymous proxy was detected. Please disable the proxy and retry.
            * @constant OO.ERROR.API.SAS.PROXY
            * @type {string}
            */
-          PROXY:'proxy',
+        PROXY: 'proxy',
           /**
            * @description <code>OO.ERROR.API.SAS.CONCURRENT_STREAM ('concurrent_streams')S</code>: You have exceeded the maximum number of concurrent streams.
            * @constant OO.ERROR.API.SAS.CONCURRENT_STREAMS
            * @type {string}
            */
-          CONCURRENT_STREAMS:'concurrent_streams',
+        CONCURRENT_STREAMS: 'concurrent_streams',
           /**
            * @description <code>OO.ERROR.API.SAS.INVALID_HEARTBEAT ('invalid_heartbeat')</code>: Invalid heartbeat response.
            * @constant OO.ERROR.API.SAS.INVALID_HEARTBEAT
            * @type {string}
            */
-          INVALID_HEARTBEAT:'invalid_heartbeat',
+        INVALID_HEARTBEAT: 'invalid_heartbeat',
           /**
            * @description <code>OO.ERROR.API.SAS.ERROR_DEVICE_INVALID_AUTH_TOKEN ('device_invalid_auth_token')</code>: Invalid Ooyala Player token.
            * @constant OO.ERROR.API.SAS.ERROR_DEVICE_INVALID_AUTH_TOKEN
            * @type {string}
            */
-          ERROR_DEVICE_INVALID_AUTH_TOKEN:'device_invalid_auth_token',
+        ERROR_DEVICE_INVALID_AUTH_TOKEN: 'device_invalid_auth_token',
           /**
            * @description <code>OO.ERROR.API.SAS.ERROR_DEVICE_LIMIT_REACHED ('device_limit_reached')</code>: The device limit has been reached.
            * The device limit is the maximum number of devices that can be registered with the viewer.
@@ -1682,7 +1681,7 @@
            * @constant OO.ERROR.API.SAS.ERROR_DEVICE_LIMIT_REACHED
            * @type {string}
            */
-          ERROR_DEVICE_LIMIT_REACHED:'device_limit_reached',
+        ERROR_DEVICE_LIMIT_REACHED: 'device_limit_reached',
           /**
            * @description <code>OO.ERROR.API.SAS.ERROR_DEVICE_BINDING_FAILED ('device_binding_failed')</code>: Device binding failed.
            * If the number of devices registered is already equal to the number of devices that may be bound for the account,
@@ -1690,46 +1689,46 @@
            * @constant OO.ERROR.API.SAS.ERROR_DEVICE_BINDING_FAILED
            * @type {string}
            */
-          ERROR_DEVICE_BINDING_FAILED:'device_binding_failed',
+        ERROR_DEVICE_BINDING_FAILED: 'device_binding_failed',
           /**
            * @description <code>OO.ERROR.API.SAS.ERROR_DEVICE_ID_TOO_LONG ('device_id_too_long')</code>: The device ID is too long.
            * The length limit for the device ID is 1000 characters.
            * @constant OO.ERROR.API.SAS.ERROR_DEVICE_ID_TOO_LONG
            * @type {string}
            */
-          ERROR_DEVICE_ID_TOO_LONG:'device_id_too_long',
+        ERROR_DEVICE_ID_TOO_LONG: 'device_id_too_long',
           /**
            * @description <code>OO.ERROR.API.SAS.ERROR_DRM_RIGHTS_SERVER_ERROR ('drm_server_error')</code>: DRM server error.
            * @constant OO.ERROR.API.SAS.ERROR_DRM_RIGHTS_SERVER_ERROR
            * @type {string}
            */
-          ERROR_DRM_RIGHTS_SERVER_ERROR:'drm_server_error',
+        ERROR_DRM_RIGHTS_SERVER_ERROR: 'drm_server_error',
           /**
            * @description <code>OO.ERROR.API.SAS.ERROR_DRM_GENERAL_FAILURE ('drm_general_failure')</code>: General error with acquiring license.
            * @constant OO.ERROR.API.SAS.ERROR_DRM_GENERAL_FAILURE
            * @type {string}
            */
-          ERROR_DRM_GENERAL_FAILURE:'drm_general_failure',
+        ERROR_DRM_GENERAL_FAILURE: 'drm_general_failure',
 
           /**
            * @description <code>OO.ERROR.API.SAS.ERROR_INVALID_ENTITLEMENTS ('invalid_entitlements')</code>: User Entitlement Terminated - Stream No Longer Active for the User.
            * @constant OO.ERROR.API.SAS.ERROR_INVALID_ENTITLEMENTS
            * @type {string}
            */
-          ERROR_INVALID_ENTITLEMENTS:'invalid_entitlements'
+        ERROR_INVALID_ENTITLEMENTS: 'invalid_entitlements',
         },
        /**
         * @description <code>OO.ERROR.API.CONTENT_TREE ('content_tree')</code>: Invalid Content.
      	* @constant OO.ERROR.API.CONTENT_TREE
      	* @type {string}
      	*/
-        CONTENT_TREE:'content_tree',
+      CONTENT_TREE: 'content_tree',
        /**
         * @description <code>OO.ERROR.API.METADATA ('metadata')</code>: Invalid Metadata.
       	* @constant OO.ERROR.API.METADATA
       	* @type {string}
       	*/
-        METADATA:'metadata'
+      METADATA: 'metadata',
       },
      /**
       * @description Represents the <code>OO.ERROR.PLAYBACK</code> Ooyala V3 Player Errors. Use message bus events to handle errors by subscribing to or intercepting the <code>OO.EVENTS.ERROR</code> event.
@@ -1743,62 +1742,62 @@
         * @constant OO.ERROR.PLAYBACK.GENERIC
         * @type {string}
         */
-        GENERIC:'playback',
+      GENERIC: 'playback',
         /**
          * @description <code>OO.ERROR.PLAYBACK.STREAM ('stream')</code>: This video is not encoded for your device.
          * @constant OO.ERROR.PLAYBACK.STREAM
          * @type {string}
          */
-        STREAM:'stream',
+      STREAM: 'stream',
         /**
          * @description <code>OO.ERROR.PLAYBACK.LIVESTREAM ('livestream')</code>: Live stream is off air.
          * @constant OO.ERROR.PLAYBACK.LIVESTREAM
          * @type {string}
          */
-        LIVESTREAM:'livestream',
+      LIVESTREAM: 'livestream',
         /**
          * @description <code>OO.ERROR.PLAYBACK.NETWORK ('network_error')</code>: The network connection was temporarily lost.
          * @constant OO.ERROR.PLAYBACK.NETWORK
          * @type {string}
          */
-        NETWORK: 'network_error'
+      NETWORK: 'network_error',
       },
       CHROMECAST: {
-        MANIFEST:'chromecast_manifest',
-        MEDIAKEYS:'chromecast_mediakeys',
-        NETWORK:'chromecast_network',
-        PLAYBACK:'chromecast_playback'
+      MANIFEST: 'chromecast_manifest',
+      MEDIAKEYS: 'chromecast_mediakeys',
+      NETWORK: 'chromecast_network',
+      PLAYBACK: 'chromecast_playback',
       },
      /**
       * @description <code>OO.ERROR.UNPLAYABLE_CONTENT ('unplayable_content')</code>: This video is not playable on this player.
    	  * @constant OO.ERROR.UNPLAYABLE_CONTENT
    	  * @type {string}
    	  */
-      UNPLAYABLE_CONTENT:'unplayable_content',
+    UNPLAYABLE_CONTENT: 'unplayable_content',
      /**
       * @description <code>OO.ERROR.INVALID_EXTERNAL_ID ('invalid_external_id')</code>: Invalid External ID.
       * @constant OO.ERROR.INVALID_EXTERNAL_ID
       * @type {string}
       */
-      INVALID_EXTERNAL_ID:'invalid_external_id',
+    INVALID_EXTERNAL_ID: 'invalid_external_id',
       /**
        * @description <code>OO.ERROR.EMPTY_CHANNEL ('empty_channel')</code>: This channel is empty.
        * @constant OO.ERROR.EMPTY_CHANNEL
        * @type {string}
        */
-      EMPTY_CHANNEL:'empty_channel',
+    EMPTY_CHANNEL: 'empty_channel',
       /**
        * @description <code>OO.ERROR.EMPTY_CHANNEL_SET ('empty_channel_set')</code>: This channel set is empty.
        * @constant OO.ERROR.EMPTY_CHANNEL_SET
        * @type {string}
        */
-      EMPTY_CHANNEL_SET:'empty_channel_set',
+    EMPTY_CHANNEL_SET: 'empty_channel_set',
       /**
        * @description <code>OO.ERROR.CHANNEL_CONTENT ('channel_content')</code>: This channel is not playable at this time.
        * @constant OO.ERROR.CHANNEL_CONTENT
        * @type {string}
        */
-      CHANNEL_CONTENT:'channel_content',
+    CHANNEL_CONTENT: 'channel_content',
       /**
        * @description Represents the <code>OO.ERROR.VC</code> Ooyala V4 Player Errors for the Video Technology stack.
        * Use message bus events to handle errors by subscribing to or intercepting the <code>OO.EVENTS.ERROR</code> event.
@@ -1813,7 +1812,7 @@
         * @constant OO.ERROR.VC.UNSUPPORTED_ENCODING
         * @type {string}
         */
-        UNSUPPORTED_ENCODING:'unsupported_encoding',
+      UNSUPPORTED_ENCODING: 'unsupported_encoding',
 
         /**
         * @description <code>OO.ERROR.VC.UNABLE_TO_CREATE_VIDEO_ELEMENT ('unable_to_create_video_element')</code>:
@@ -1821,7 +1820,7 @@
         * @constant OO.ERROR.VC.UNABLE_TO_CREATE_VIDEO_ELEMENT
         * @type {string}
         */
-        UNABLE_TO_CREATE_VIDEO_ELEMENT:'unable_to_create_video_element',
+      UNABLE_TO_CREATE_VIDEO_ELEMENT: 'unable_to_create_video_element',
       },
 
       /**
@@ -1835,7 +1834,7 @@
          * @constant OO.ERROR.MEDIA.MEDIA_ERR_ABORTED
          * @type {string}
          */
-        MEDIA_ERR_ABORTED: "aborted",
+      MEDIA_ERR_ABORTED: 'aborted',
 
         /**
          * @description <code>OO.ERROR.MEDIA.MEDIA_ERR_NETWORK ('aborted')</code>:
@@ -1844,7 +1843,7 @@
          * @constant OO.ERROR.MEDIA.MEDIA_ERR_NETWORK
          * @type {string}
          */
-        MEDIA_ERR_NETWORK: "network_error",
+      MEDIA_ERR_NETWORK: 'network_error',
 
         /**
          * @description <code>OO.ERROR.MEDIA.MEDIA_ERR_DECODE ('aborted')</code>:
@@ -1853,7 +1852,7 @@
          * @constant OO.ERROR.MEDIA.MEDIA_ERR_DECODE
          * @type {string}
          */
-        MEDIA_ERR_DECODE:  "decode_error",
+      MEDIA_ERR_DECODE: 'decode_error',
 
         /**
          * @description <code>OO.ERROR.MEDIA.MEDIA_ERR_SRC_NOT_SUPPORTED ('aborted')</code>:
@@ -1861,11 +1860,12 @@
          * @constant OO.ERROR.MEDIA.MEDIA_ERR_SRC_NOT_SUPPORTED
          * @type {string}
          */
-        MEDIA_ERR_SRC_NOT_SUPPORTED: "unsupported_source"
-      }
+      MEDIA_ERR_SRC_NOT_SUPPORTED: 'unsupported_source',
+    },
     };
 
     // All Server-side URLS
+  /* eslint-disable max-len */
     OO.URLS = {
       VAST_PROXY: _.template('http://player.ooyala.com/nuplayer/mobile_vast_ads_proxy?callback=<%=cb%>&embed_code=<%=embedCode%>&expires=<%=expires%>&tag_url=<%=tagUrl%>'),
       EXTERNAL_ID: _.template('<%=server%>/player_api/v1/content_tree/external_id/<%=pcode%>/<%=externalId%>'),
@@ -1874,8 +1874,9 @@
       SAS: _.template('<%=server%>/player_api/v1/authorization/embed_code/<%=pcode%>/<%=embedCode%>'),
       ANALYTICS: _.template('<%=server%>/reporter.js'),
       THUMBNAILS: _.template('<%=server%>/api/v1/thumbnail_images/<%=embedCode%>'),
-      __end_marker : true
+    __end_marker: true,
     };
+  /* eslint-enable max-len */
 
     /**
      * Defines all the possible tracking levels for analytics.
@@ -1898,20 +1899,20 @@
        * GUID not saved in local storage.
        * @private
        */
-      DISABLED: 'disabled'
+    DISABLED: 'disabled',
     };
 
     OO.PLUGINS = {
-      ADS: "ads",
-      VIDEO: "video",
-      ANALYTICS: "analytics",
-      PLAYLIST: "playlist",
-      SKIN: "skin"
+    ADS: 'ads',
+    VIDEO: 'video',
+    ANALYTICS: 'analytics',
+    PLAYLIST: 'playlist',
+    SKIN: 'skin',
     };
 
     OO.VIDEO = {
-      MAIN: "main",
-      ADS: "ads",
+    MAIN: 'main',
+    ADS: 'ads',
 
       /**
        * @description Represents the <code>OO.VIDEO.ENCODING</code> encoding types. Used to denote video
@@ -1925,14 +1926,14 @@
          * @summary Represents the <code>OO.VIDEO.ENCODING.DRM</code> encoding types.
          * @namespace OO.VIDEO.ENCODING.DRM
          */
-        DRM : {
+      DRM: {
           /**
            * @description <code>OO.VIDEO.ENCODING.DRM.HLS ('hls_drm')</code>:
            *   An encoding type for drm HLS streams.
            * @constant OO.VIDEO.ENCODING.DRM.HLS
            * @type {string}
            */
-          HLS: "hls_drm",
+        HLS: 'hls_drm',
 
           /**
            * @description <code>OO.VIDEO.ENCODING.DRM.DASH ('dash_drm')</code>:
@@ -1940,7 +1941,7 @@
            * @constant OO.VIDEO.ENCODING.DRM.DASH
            * @type {string}
            */
-          DASH: "dash_drm",
+        DASH: 'dash_drm',
         },
         /**
          * @description <code>OO.VIDEO.ENCODING.AUDIO ('audio')</code>:
@@ -1948,7 +1949,7 @@
          * @constant OO.VIDEO.ENCODING.AUDIO
          * @type {string}
          */
-        AUDIO: "audio",
+      AUDIO: 'audio',
 
         /**
          * @description <code>OO.VIDEO.ENCODING.AUDIO_OGG ('audio_ogg')</code>:
@@ -1956,7 +1957,7 @@
          * @constant OO.VIDEO.ENCODING.AUDIO_OGG
          * @type {string}
          */
-        AUDIO_OGG: "audio_ogg",
+      AUDIO_OGG: 'audio_ogg',
 
         /**
          * @description <code>OO.VIDEO.ENCODING.AUDIO_M4A ('audio_m4a')</code>:
@@ -1964,7 +1965,7 @@
          * @constant OO.VIDEO.ENCODING.AUDIO_M4A
          * @type {string}
          */
-        AUDIO_M4A: "audio_m4a",
+      AUDIO_M4A: 'audio_m4a',
 
         /**
          * @description <code>OO.VIDEO.ENCODING.AUDIO_HLS ('audio_hls')</code>:
@@ -1972,7 +1973,7 @@
          * @constant OO.VIDEO.ENCODING.AUDIO_HLS
          * @type {string}
          */
-        AUDIO_HLS: "audio_hls",
+      AUDIO_HLS: 'audio_hls',
 
         /**
          * @description <code>OO.VIDEO.ENCODING.DASH ('dash')</code>:
@@ -1980,7 +1981,7 @@
          * @constant OO.VIDEO.ENCODING.DASH
          * @type {string}
          */
-        DASH: "dash",
+      DASH: 'dash',
 
         /**
          * @description <code>OO.VIDEO.ENCODING.HDS ('hds')</code>:
@@ -1988,7 +1989,7 @@
          * @constant OO.VIDEO.ENCODING.HDS
          * @type {string}
          */
-        HDS: "hds",
+      HDS: 'hds',
 
         /**
          * @description <code>OO.VIDEO.ENCODING.HLS ('hls')</code>:
@@ -1996,7 +1997,7 @@
          * @constant OO.VIDEO.ENCODING.HLS
          * @type {string}
          */
-        HLS: "hls",
+      HLS: 'hls',
 
         /**
          * @description <code>OO.VIDEO.ENCODING.IMA ('ima')</code>:
@@ -2004,7 +2005,7 @@
          * @constant OO.VIDEO.ENCODING.IMA
          * @type {string}
          */
-        IMA: "ima",
+      IMA: 'ima',
 
         /**
          * @description <code>OO.VIDEO.ENCODING.PULSE ('pulse')</code>:
@@ -2012,7 +2013,7 @@
          * @constant OO.VIDEO.ENCODING.PULSE
          * @type {string}
          */
-        PULSE: "pulse",
+      PULSE: 'pulse',
 
         /**
          * @description <code>OO.VIDEO.ENCODING.MP4 ('mp4')</code>:
@@ -2020,7 +2021,7 @@
          * @constant OO.VIDEO.ENCODING.MP4
          * @type {string}
          */
-        MP4: "mp4",
+      MP4: 'mp4',
 
         /**
          * @description <code>OO.VIDEO.ENCODING.YOUTUBE ('youtube')</code>:
@@ -2028,7 +2029,7 @@
          * @constant OO.VIDEO.ENCODING.YOUTUBE
          * @type {string}
          */
-        YOUTUBE:"youtube",
+      YOUTUBE: 'youtube',
 
         /**
          * @description <code>OO.VIDEO.ENCODING.RTMP ('rtmp')</code>:
@@ -2036,7 +2037,7 @@
          * @constant OO.VIDEO.ENCODING.RTMP
          * @type {string}
          */
-        RTMP: "rtmp",
+      RTMP: 'rtmp',
 
         /**
          * @description <code>OO.VIDEO.ENCODING.SMOOTH ('smooth')</code>:
@@ -2044,7 +2045,7 @@
          * @constant OO.VIDEO.ENCODING.SMOOTH
          * @type {string}
          */
-        SMOOTH: "smooth",
+      SMOOTH: 'smooth',
 
         /**
          * @description <code>OO.VIDEO.ENCODING.WEBM ('webm')</code>:
@@ -2052,7 +2053,7 @@
          * @constant OO.VIDEO.ENCODING.WEBM
          * @type {string}
          */
-        WEBM: "webm",
+      WEBM: 'webm',
 
         /**
          * @description <code>OO.VIDEO.ENCODING.AKAMAI_HD_VOD ('akamai_hd_vod')</code>:
@@ -2060,7 +2061,7 @@
          * @constant OO.VIDEO.ENCODING.AKAMAI_HD_VOD
          * @type {string}
          */
-        AKAMAI_HD_VOD: "akamai_hd_vod",
+      AKAMAI_HD_VOD: 'akamai_hd_vod',
 
         /**
          * @description <code>OO.VIDEO.ENCODING.AKAMAI_HD2_VOD_HLS ('akamai_hd2_vod_hls')</code>:
@@ -2068,7 +2069,7 @@
          * @constant OO.VIDEO.ENCODING.AKAMAI_HD2_VOD_HLS
          * @type {string}
          */
-        AKAMAI_HD2_VOD_HLS: "akamai_hd2_vod_hls",
+      AKAMAI_HD2_VOD_HLS: 'akamai_hd2_vod_hls',
 
         /**
          * @description <code>OO.VIDEO.ENCODING.AKAMAI_HD2_VOD_HDS ('akamai_hd2_vod_hds')</code>:
@@ -2076,7 +2077,7 @@
          * @constant OO.VIDEO.ENCODING.AKAMAI_HD2_VOD_HDS
          * @type {string}
          */
-        AKAMAI_HD2_VOD_HDS: "akamai_hd2_vod_hds",
+      AKAMAI_HD2_VOD_HDS: 'akamai_hd2_vod_hds',
 
         /**
          * @description <code>OO.VIDEO.ENCODING.AKAMAI_HD2_HDS ('akamai_hd2_hds')</code>:
@@ -2084,7 +2085,7 @@
          * @constant OO.VIDEO.ENCODING.AKAMAI_HD2_HDS
          * @type {string}
          */
-        AKAMAI_HD2_HDS: "akamai_hd2_hds",
+      AKAMAI_HD2_HDS: 'akamai_hd2_hds',
 
         /**
          * @description <code>OO.VIDEO.ENCODING.AKAMAI_HD2_HLS ('akamai_hd2_hls')</code>:
@@ -2092,7 +2093,7 @@
          * @constant OO.VIDEO.ENCODING.AKAMAI_HD2_HLS
          * @type {string}
          */
-        AKAMAI_HD2_HLS: "akamai_hd2_hls",
+      AKAMAI_HD2_HLS: 'akamai_hd2_hls',
 
         /**
          * @description <code>OO.VIDEO.ENCODING.FAXS_HLS ('faxs_hls')</code>:
@@ -2100,7 +2101,7 @@
          * @constant OO.VIDEO.ENCODING.FAXS_HLS
          * @type {string}
          */
-        FAXS_HLS: "faxs_hls",
+      FAXS_HLS: 'faxs_hls',
 
         /**
          * @description <code>OO.VIDEO.ENCODING.WIDEVINE_HLS ('wv_hls')</code>:
@@ -2108,7 +2109,7 @@
          * @constant OO.VIDEO.ENCODING.WIDEVINE_HLS
          * @type {string}
          */
-        WIDEVINE_HLS: "wv_hls",
+      WIDEVINE_HLS: 'wv_hls',
 
         /**
          * @description <code>OO.VIDEO.ENCODING.WIDEVINE_MP4 ('wv_mp4')</code>:
@@ -2116,7 +2117,7 @@
          * @constant OO.VIDEO.ENCODING.WIDEVINE_MP4
          * @type {string}
          */
-        WIDEVINE_MP4: "wv_mp4",
+      WIDEVINE_MP4: 'wv_mp4',
 
         /**
          * @description <code>OO.VIDEO.ENCODING.WIDEVINE_WVM ('wv_wvm')</code>:
@@ -2124,7 +2125,7 @@
          * @constant OO.VIDEO.ENCODING.WIDEVINE_WVM
          * @type {string}
          */
-        WIDEVINE_WVM: "wv_wvm",
+      WIDEVINE_WVM: 'wv_wvm',
 
         /**
          * @description <code>OO.VIDEO.ENCODING.UNKNOWN ('unknown')</code>:
@@ -2132,7 +2133,7 @@
          * @constant OO.VIDEO.ENCODING.UNKNOWN
          * @type {string}
          */
-        UNKNOWN: "unknown"
+      UNKNOWN: 'unknown',
       },
 
       /**
@@ -2148,7 +2149,7 @@
          * @constant OO.VIDEO.FEATURE.CLOSED_CAPTIONS
          * @type {string}
          */
-        CLOSED_CAPTIONS: "closedCaptions",
+      CLOSED_CAPTIONS: 'closedCaptions',
 
         /**
          * @description <code>OO.VIDEO.FEATURE.VIDEO_OBJECT_SHARING_GIVE ('videoObjectSharingGive')</code>:
@@ -2157,7 +2158,7 @@
          * @constant OO.VIDEO.FEATURE.VIDEO_OBJECT_SHARING_GIVE
          * @type {string}
          */
-        VIDEO_OBJECT_SHARING_GIVE: "videoObjectSharingGive",
+      VIDEO_OBJECT_SHARING_GIVE: 'videoObjectSharingGive',
 
         /**
          * @description <code>OO.VIDEO.FEATURE.VIDEO_OBJECT_SHARING_TAKE ('videoObjectSharingTake')</code>:
@@ -2166,7 +2167,7 @@
          * @constant OO.VIDEO.FEATURE.VIDEO_OBJECT_SHARING_TAKE
          * @type {string}
          */
-        VIDEO_OBJECT_SHARING_TAKE: "videoObjectSharingTake",
+      VIDEO_OBJECT_SHARING_TAKE: 'videoObjectSharingTake',
 
         /**
          * @description <code>OO.VIDEO.FEATURE.BITRATE_CONTROL ('bitrateControl')</code>:
@@ -2178,7 +2179,7 @@
          * @constant OO.VIDEO.FEATURE.BITRATE_CONTROL
          * @type {string}
          */
-        BITRATE_CONTROL: "bitrateControl"
+      BITRATE_CONTROL: 'bitrateControl',
       },
 
       /**
@@ -2193,7 +2194,7 @@
          * @constant OO.VIDEO.TECHNOLOGY.FLASH
          * @type {string}
          */
-        FLASH: "flash",
+      FLASH: 'flash',
 
         /**
          * @description <code>OO.VIDEO.TECHNOLOGY.HTML5 ('html5')</code>:
@@ -2201,7 +2202,7 @@
          * @constant OO.VIDEO.TECHNOLOGY.HTML5
          * @type {string}
          */
-        HTML5: "html5",
+      HTML5: 'html5',
 
         /**
          * @description <code>OO.VIDEO.TECHNOLOGY.MIXED ('mixed')</code>:
@@ -2209,7 +2210,7 @@
          * @constant OO.VIDEO.TECHNOLOGY.MIXED
          * @type {string}
          */
-        MIXED: "mixed",
+      MIXED: 'mixed',
 
         /**
          * @description <code>OO.VIDEO.TECHNOLOGY.OTHER ('other')</code>:
@@ -2218,30 +2219,37 @@
          * @constant OO.VIDEO.TECHNOLOGY.OTHER
          * @type {string}
          */
-        OTHER: "other"
-      }
+      OTHER: 'other',
+    },
 
     };
 
     OO.CSS = {
-      VISIBLE_POSITION : "0px",
-      INVISIBLE_POSITION : "-100000px",
-      VISIBLE_DISPLAY : "block",
-      INVISIBLE_DISPLAY : "none",
+    VISIBLE_POSITION: '0px',
+    INVISIBLE_POSITION: '-100000px',
+    VISIBLE_DISPLAY: 'block',
+    INVISIBLE_DISPLAY: 'none',
       VIDEO_Z_INDEX: 10000,
       SUPER_Z_INDEX: 20000,
       ALICE_SKIN_Z_INDEX: 11000,
       OVERLAY_Z_INDEX: 10500,
-      TRANSPARENT_COLOR : "rgba(255, 255, 255, 0)",
+    TRANSPARENT_COLOR: 'rgba(255, 255, 255, 0)',
 
-      __end_marker : true
+    __end_marker: true,
     };
 
     OO.TEMPLATES = {
-      RANDOM_PLACE_HOLDER: ['[place_random_number_here]', '<now>', '[timestamp]', '<rand-num>', '[cache_buster]', '[random]'],
+    RANDOM_PLACE_HOLDER: [
+      '[place_random_number_here]',
+      '<now>',
+      '[timestamp]',
+      '<rand-num>',
+      '[cache_buster]',
+      '[random]',
+    ],
       REFERAK_PLACE_HOLDER: ['[referrer_url]', '[LR_URL]', '[description_url]'],
       EMBED_CODE_PLACE_HOLDER: ['[oo_embedcode]'],
-      MESSAGE : '\
+    MESSAGE: '\
                   <table width="100%" height="100%" bgcolor="black" style="padding-left:55px; padding-right:55px; \
                   background-color:black; color: white;">\
                   <tbody>\
@@ -2250,14 +2258,14 @@
                   <%= message %>\
                   </span></td></tr></tbody></table>\
                   ',
-      __end_marker : true
+    __end_marker: true,
     };
 
     OO.CONSTANTS = {
       // Ad frequency constants
-      AD_PLAY_COUNT_KEY: "oo_ad_play_count",
-      AD_ID_TO_PLAY_COUNT_DIVIDER: ":",
-      AD_PLAY_COUNT_DIVIDER: "|",
+    AD_PLAY_COUNT_KEY: 'oo_ad_play_count',
+    AD_ID_TO_PLAY_COUNT_DIVIDER: ':',
+    AD_PLAY_COUNT_DIVIDER: '|',
       MAX_AD_PLAY_COUNT_HISTORY_LENGTH: 20,
 
       CONTROLS_BOTTOM_PADDING: 10,
@@ -2288,8 +2296,8 @@
       },
 
       HEVC_CODEC: {
-        HEV1: "hev1",
-        HVC1: "hvc1"
+      HEV1: 'hev1',
+      HVC1: 'hvc1',
       },
 
       /**
@@ -2305,21 +2313,21 @@
          * @constant OO.CONSTANTS.CLOSED_CAPTIONS.SHOWING
          * @type {string}
          */
-        SHOWING: "showing",
+      SHOWING: 'showing',
         /**
          * @description <code>OO.CONSTANTS.CLOSED_CAPTIONS.HIDDEN ('hidden')</code>:
          *   Closed caption text track mode for hiding closed captions.
          * @constant OO.CONSTANTS.CLOSED_CAPTIONS.HIDDEN
          * @type {string}
          */
-        HIDDEN: "hidden",
+      HIDDEN: 'hidden',
         /**
          * @description <code>OO.CONSTANTS.CLOSED_CAPTIONS.DISABLED ('disabled')</code>:
          *   Closed caption text track mode for disabling closed captions.
          * @constant OO.CONSTANTS.CLOSED_CAPTIONS.DISABLED
          * @type {string}
          */
-        DISABLED: "disabled"
+      DISABLED: 'disabled',
       },
 
       OOYALA_PLAYER_SETTINGS_KEY: 'ooyala_player_settings',
@@ -2336,10 +2344,9 @@
          * @constant OO.CONSTANTS.PLAYBACK_SPEED.MAX
          * @type {Number}
          */
-        MAX: 2.0
+      MAX: 2.0,
       },
 
-      __end_marker : true
+    __end_marker: true,
     };
-
-  }(OO,OO._));
+}(OO, OO._));
