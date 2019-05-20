@@ -1872,7 +1872,7 @@
       CONTENT_TREE: _.template('<%=server%>/player_api/v1/content_tree/embed_code/<%=pcode%>/<%=embedCode%>'),
       METADATA: _.template('<%=server%>/player_api/v1/metadata/embed_code/<%=playerBrandingId%>/<%=embedCode%>?videoPcode=<%=pcode%>'),
       SAS: _.template('<%=server%>/player_api/v1/authorization/embed_code/<%=pcode%>/<%=embedCode%>'),
-      ANALYTICS: _.template('<%=server%>/reporter.js'),
+      ANALYTICS: _.template('https://s3.amazonaws.com/static.ooyala.com/iq/staging/ingestion/static/reporter.js'),
       THUMBNAILS: _.template('<%=server%>/api/v1/thumbnail_images/<%=embedCode%>'),
     __end_marker: true,
     };
